@@ -1,0 +1,14 @@
+elasticsearch security key : bSXq*R0G*7vTwyBhKRWZ
+
+day 1:
+    -setup elasticsearch, audit, filebeat on kali.
+    -install vm and vagrant.
+
+day 2:
+    -setup 1 vm -(client1) setup 
+    -verfy logs coming from client1 vm to elasticsearch
+        - status: "All works"
+
+day 3:
+    -setting up kibana for data visualization.
+        -status: "FAILED" //signing off.
