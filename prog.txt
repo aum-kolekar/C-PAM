@@ -1,5 +1,10 @@
 elasticsearch security key : bSXq*R0G*7vTwyBhKRWZ
 
+ToDo : 
+    -setupproper fields for log.
+    -ship logs between servers.
+    -setup logstash (data cleaner)
+
 day 1:
     -setup elasticsearch, audit, filebeat on kali.
     -install vm and vagrant.
@@ -12,3 +17,4 @@ day 2:
 day 3:
     -setting up kibana for data visualization.
         -status: "FAILED" //signing off.
+
