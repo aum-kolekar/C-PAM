@@ -1,0 +1,14 @@
+filebeat.inputs:
+- type: log
+  enabled: true
+  paths:
+    - /var/log/audit/audit.log
+
+name: client1
+
+output.elasticsearch:
+  hosts: ["https://192.168.1.7:9200"]
+  username: "elastic"
+  password: "bSXq*R0G*7vTwyBhKRWZ"
+  ssl.verification_mode: none
+x

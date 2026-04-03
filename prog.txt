@@ -1,8 +1,22 @@
-elasticsearch security key : bSXq*R0G*7vTwyBhKRWZ
+elasticsearch security key 
+elastic : bSXq*R0G*7vTwyBhKRWZ
+kibana_system : N+7x7tdcPq9jiCl3cZHH
+
+check the data is coming from client1:
+====command====
+curl -k -u elastic https://localhost:9200/filebeat-*/_search \          
+'Content-Type: application/json' -d '
+{
+  "query": {
+    "match": {
+      "host.name": "client1"
+    }
+  }
+}'
+
 
 ToDo : 
     -setupproper fields for log.
-    -ship logs between servers.
     -setup logstash (data cleaner)
 
 day 1:
@@ -18,3 +32,6 @@ day 3:
     -setting up kibana for data visualization.
         -status: "FAILED" //signing off.
 
+day 4:
+    -filebeat on vm file, ships logs to elastic _search
+    -kibana setup done, logs visible on the localhost:5601
