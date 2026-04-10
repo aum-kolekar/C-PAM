@@ -11,4 +11,3 @@ output.elasticsearch:
   username: "elastic"
   password: "bSXq*R0G*7vTwyBhKRWZ"
   ssl.verification_mode: none
-x
