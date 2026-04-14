@@ -16,22 +16,23 @@ curl -k -u elastic https://localhost:9200/filebeat-*/_search \
 
 
 ToDo : 
-    -setupproper fields for log.
-    -setup logstash (data cleaner)
+  -setupproper fields for log.
+  -setup logstash (data cleaner)
 
-day 1:
-    -setup elasticsearch, audit, filebeat on kali.
-    -install vm and vagrant.
-
-day 2:
-    -setup 1 vm -(client1) setup 
-    -verfy logs coming from client1 vm to elasticsearch
-        - status: "All works"
-
-day 3:
-    -setting up kibana for data visualization.
-        -status: "FAILED" //signing off.
-
-day 4:
-    -filebeat on vm file, ships logs to elastic _search
-    -kibana setup done, logs visible on the localhost:5601
+prog:
+  -setup elasticsearch, audit, filebeat on kali.
+  -install vm and vagrant.
+  -setup 1 vm -(client1) setup 
+  -verfy logs coming from client1 vm to elasticsearch
+    - status: "All works"
+  -setting up kibana for data visualization.
+    -status: "FAILED" //signing off.
+  -filebeat on vm file, ships logs to elastic _search
+  -kibana setup done, logs visible on the localhost:5601
+  -linux currupted.
+  -lost entire progress.
+  -deleted linux.
+  -windows bootloader failed.
+  -shift to windows.
+  -install linux on virtual box.
+  -
