@@ -12,6 +12,9 @@ sudo apt update
 sudo apt install filebeat -y
 sudo apt install filebeat -y
 
+--------------------------
+change config file @ /etc/filebeat/filebeat.yml
+
 =============install elasticsearch==============
 sudo apt update
 sudo apt install wget gnupg apt-transport-https -y
@@ -28,3 +31,21 @@ sudo systemctl start elasticsearch
 
     **get elasticsearch password**
     sudo /usr/share/elasticsearch/bin/elasticsearch-reset-password -u elastic
+
+===========install logstash=====================
+sudo apt update
+sudo apt install logstash -y
+
+----------------------------------
+##verify
+sudo journalctl -u logstash -f
+curl -k -u elastic https://localhost:9200/_cat/indices?v 
+----------------------------------
+change config @ /etc/logstash/conf.d/filebeat.conf
+
+
+==============install kibana=======================
+sudo apt update
+sudo apt install kibana -y
+--------------
+change kibana.yml @ /etc/kibana/kibana.yml
