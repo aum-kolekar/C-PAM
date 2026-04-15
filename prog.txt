@@ -35,4 +35,8 @@ prog:
   -windows bootloader failed.
   -shift to windows.
   -install linux on virtual box.
-  -
+  -audit setup complete
+  -filebeat setup complete
+  -elasticsearch setup complete
+  -kibana: unable to connect.
+  -kibana setup complete.
