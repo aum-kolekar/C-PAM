@@ -75,3 +75,6 @@ for user, actions in user_sessions.items():
         score += calculate_risk(action)
     
     final_risk[user] = score
+
+for user, score in final_risk.items():
+    print(user, "→ FINAL RISK:", score)
