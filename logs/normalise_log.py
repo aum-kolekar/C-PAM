@@ -65,6 +65,16 @@ for log in normalised_logs:
     
     user_sessions[user].append(log["action"])
 
+def sequence_risk(actions):
+    score = 0
+
+    if "sudo" in actions and any("rm -rf" in a for a in actions):
+        score += 50
+
+    if actions.count("login_failed") >= 2:
+        score += 20
+
+    return score
 
 final_risk = {}
 
@@ -73,6 +83,8 @@ for user, actions in user_sessions.items():
     
     for action in actions:
         score += calculate_risk(action, user)
+
+    score += sequence_risk(action)
     
     final_risk[user] = score
 
