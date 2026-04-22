@@ -72,9 +72,19 @@ for user, actions in user_sessions.items():
     score = 0
     
     for action in actions:
-        score += calculate_risk(action)
+        score += calculate_risk(action, user)
     
     final_risk[user] = score
 
 for user, score in final_risk.items():
     print(user, "→ FINAL RISK:", score)
+
+import json
+
+# Save normalized logs
+with open("normalized_logs.json", "w") as f:
+    json.dump(normalised_logs, f, indent=4)
+
+# Save final risk
+with open("risk_scores.json", "w") as f:
+    json.dump(final_risk, f, indent=4)

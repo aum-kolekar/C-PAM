@@ -1,0 +1,104 @@
+[
+    {
+        "user": "admin1",
+        "action": "login_success",
+        "timestamp": "10:00",
+        "source": "linux"
+    },
+    {
+        "user": "user1",
+        "action": "login_success",
+        "timestamp": "10:00",
+        "source": "ldap"
+    },
+    {
+        "user": "user1",
+        "action": "login_failed",
+        "timestamp": "10:01",
+        "source": "ldap"
+    },
+    {
+        "user": "admin1",
+        "action": "sudo",
+        "timestamp": "10:02",
+        "source": "linux"
+    },
+    {
+        "user": "admin1",
+        "action": "rm -rf /tmp",
+        "timestamp": "10:03",
+        "source": "linux"
+    },
+    {
+        "user": "admin1",
+        "action": "logout",
+        "timestamp": "10:10",
+        "source": "linux"
+    },
+    {
+        "user": "dev1",
+        "action": "login_success",
+        "timestamp": "11:00",
+        "source": "linux"
+    },
+    {
+        "user": "user2",
+        "action": "login_success",
+        "timestamp": "11:00",
+        "source": "ldap"
+    },
+    {
+        "user": "dev1",
+        "action": "ls",
+        "timestamp": "11:05",
+        "source": "linux"
+    },
+    {
+        "user": "dev1",
+        "action": "logout",
+        "timestamp": "11:10",
+        "source": "linux"
+    },
+    {
+        "user": "admin2",
+        "action": "login_success",
+        "timestamp": "12:00",
+        "source": "linux"
+    },
+    {
+        "user": "admin2",
+        "action": "sudo",
+        "timestamp": "12:02",
+        "source": "linux"
+    },
+    {
+        "user": "admin2",
+        "action": "apt-get update",
+        "timestamp": "12:03",
+        "source": "linux"
+    },
+    {
+        "user": "admin2",
+        "action": "logout",
+        "timestamp": "12:10",
+        "source": "linux"
+    },
+    {
+        "user": "dev2",
+        "action": "login_success",
+        "timestamp": "13:00",
+        "source": "linux"
+    },
+    {
+        "user": "dev2",
+        "action": "ls",
+        "timestamp": "13:05",
+        "source": "linux"
+    },
+    {
+        "user": "dev2",
+        "action": "logout",
+        "timestamp": "13:10",
+        "source": "linux"
+    }
+]
