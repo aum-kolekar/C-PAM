@@ -40,3 +40,12 @@ prog:
   -elasticsearch setup complete
   -kibana: unable to connect.
   -kibana setup complete.
+
+
+X----X-----X-----X-----X----X-----X-----X-----X----X-----X-----X-----X----X-----X-----X-----X----X-----X-----X-----X
+
+- created synthetic data of multiple source in json format
+- normalised the logs in a standard format
+- risk scored based on the type of command and the sequence of execution
+- specific user wise command sagrigation
+- storing final output in a json file
