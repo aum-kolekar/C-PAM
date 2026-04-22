@@ -40,6 +40,21 @@ for logs in normalised_logs:
 
 normalised_logs.sort(key=lambda x: x["timestamp"])
 
+def calculate_risk(action, user):
+    score = 0
+    
+    if "admin" in user:
+        score += 20   # privilege weight
+    
+    if action == "sudo":
+        score += 50
+    if "rm -rf" in action:
+        score += 30
+    if action == "login_failed":
+        score += 10
+    
+    return score
+
 user_sessions = {}
 
 for log in normalised_logs:
@@ -49,3 +64,5 @@ for log in normalised_logs:
         user_sessions[user] = []
     
     user_sessions[user].append(log["action"])
+
+
