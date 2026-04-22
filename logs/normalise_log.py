@@ -1,5 +1,6 @@
 import json
 
+# normalise linux logs
 def normalise_linux(log):
     return {
         "user": log["user"],
@@ -8,6 +9,7 @@ def normalise_linux(log):
         "source": "linux"
     }
 
+# normalise ldap logs
 def normalise_ldap(log):
     action_map = {
         "success": "login_success",
@@ -34,12 +36,15 @@ with open('ldap_logs.json') as f:
             log = json.loads(line)
             normalised_logs.append(normalise_ldap(log))
 
-for logs in normalised_logs:
-    print(logs)
+# for logs in normalised_logs:
+#     print(logs)
 
 
+#sort logs by timestamp
 normalised_logs.sort(key=lambda x: x["timestamp"])
 
+
+#calculate risk score for each action
 def calculate_risk(action, user):
     score = 0
     
@@ -55,16 +60,7 @@ def calculate_risk(action, user):
     
     return score
 
-user_sessions = {}
-
-for log in normalised_logs:
-    user = log["user"]
-    
-    if user not in user_sessions:
-        user_sessions[user] = []
-    
-    user_sessions[user].append(log["action"])
-
+# risk scores for sequences of actions
 def sequence_risk(actions):
     score = 0
 
@@ -76,6 +72,20 @@ def sequence_risk(actions):
 
     return score
 
+
+# track user actions
+user_sessions = {}
+
+for log in normalised_logs:
+    user = log["user"]
+    
+    if user not in user_sessions:
+        user_sessions[user] = []
+    
+    user_sessions[user].append(log["action"])
+
+
+# score each user based on their actions and sequences
 final_risk = {}
 
 for user, actions in user_sessions.items():
@@ -89,9 +99,8 @@ for user, actions in user_sessions.items():
     final_risk[user] = score
 
 for user, score in final_risk.items():
-    print(user, "→ FINAL RISK:", score)
+    print(user, "-> FINAL RISK:", score)
 
-import json
 
 # Save normalized logs
 with open("normalized_logs.json", "w") as f:
