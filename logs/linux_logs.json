@@ -1,0 +1,14 @@
+  {"user":"admin1","action":"login_success","time":"10:00"}
+  {"user":"admin1","action":"sudo","time":"10:02"}
+  {"user":"admin1","action":"rm -rf /tmp","time":"10:03"}
+  {"user":"admin1","action":"logout","time":"10:10"}
+  {"user":"dev1","action":"login_success","time":"11:00"}
+  {"user":"dev1","action":"ls","time":"11:05"}
+  {"user":"dev1","action":"logout","time":"11:10"}
+  {"user":"admin2","action":"login_success","time":"12:00"}
+  {"user":"admin2","action":"sudo","time":"12:02"}
+  {"user":"admin2","action":"apt-get update","time":"12:03"}
+  {"user":"admin2","action":"logout","time":"12:10"}
+  {"user":"dev2","action":"login_success","time":"13:00"}
+  {"user":"dev2","action":"ls","time":"13:05"}
+  {"user":"dev2","action":"logout","time":"13:10"}
