@@ -66,3 +66,12 @@ for log in normalised_logs:
     user_sessions[user].append(log["action"])
 
 
+final_risk = {}
+
+for user, actions in user_sessions.items():
+    score = 0
+    
+    for action in actions:
+        score += calculate_risk(action)
+    
+    final_risk[user] = score
