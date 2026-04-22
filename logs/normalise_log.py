@@ -39,3 +39,13 @@ for logs in normalised_logs:
 
 
 normalised_logs.sort(key=lambda x: x["timestamp"])
+
+user_sessions = {}
+
+for log in normalised_logs:
+    user = log["user"]
+    
+    if user not in user_sessions:
+        user_sessions[user] = []
+    
+    user_sessions[user].append(log["action"])
