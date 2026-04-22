@@ -36,3 +36,6 @@ with open('ldap_logs.json') as f:
 
 for logs in normalised_logs:
     print(logs)
+
+
+normalised_logs.sort(key=lambda x: x["timestamp"])
