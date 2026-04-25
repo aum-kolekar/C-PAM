@@ -1,4 +1,55 @@
 import json
+import os
+import re
+
+baseDIR = os.path.expanduser("~/cpam/C-PAM/")
+LOG_DIR = os.path.dirname(os.path.abspath(__file__))
+
+def parse_auth_log(line):
+    # Login success
+    if "Accepted password" in line:
+        user = re.search(r"for (\w+)", line)
+        if user:
+            return {
+                "user": user.group(1),
+                "action": "login_success",
+                "timestamp": line[:15],
+                "source": "auth_log"
+            }
+
+    # Login failure
+    if "Failed password" in line:
+        user = re.search(r"for (\w+)", line)
+        if user:
+            return {
+                "user": user.group(1),
+                "action": "login_failed",
+                "timestamp": line[:15],
+                "source": "auth_log"
+            }
+
+    # sudo commands
+    if "sudo:" in line:
+        user = re.search(r"sudo:\s+(\w+)", line)
+        cmd = re.search(r"COMMAND=(.*)", line)
+        if user and cmd:
+            return {
+                "user": user.group(1),
+                "action": cmd.group(1).strip(),
+                "timestamp": line[:15],
+                "source": "auth_log"
+            }
+
+    return None
+
+
+real_logs = []
+
+with open(os.path.join(baseDIR, "auth.log")) as f:
+    for line in f:
+        parsed = parse_auth_log(line)
+        if parsed:
+            real_logs.append(parsed)
 
 # normalise linux logs
 def normalise_linux(log):
@@ -24,13 +75,13 @@ def normalise_ldap(log):
 
 normalised_logs = []
 
-with open('linux_logs.json') as f:
+with open(os.path.join(LOG_DIR, 'linux_logs.json')) as f:
     for line in f:
         if line.strip():
             log = json.loads(line)
             normalised_logs.append(normalise_linux(log))
 
-with open('ldap_logs.json') as f:
+with open(os.path.join(LOG_DIR, 'ldap_logs.json')) as f:
     for line in f:
         if line.strip():
             log = json.loads(line)
@@ -39,6 +90,7 @@ with open('ldap_logs.json') as f:
 # for logs in normalised_logs:
 #     print(logs)
 
+normalised_logs.extend(real_logs)
 
 #sort logs by timestamp
 normalised_logs.sort(key=lambda x: x["timestamp"])
@@ -57,6 +109,10 @@ def calculate_risk(action, user):
         score += 30
     if action == "login_failed":
         score += 10
+    if "disable" in action:
+        score += 20
+    if "chmod" in action or "chown" in action:
+        score += 15
     
     return score
 
@@ -94,7 +150,7 @@ for user, actions in user_sessions.items():
     for action in actions:
         score += calculate_risk(action, user)
 
-    score += sequence_risk(action)
+    score += sequence_risk(actions)
     
     final_risk[user] = score
 
@@ -103,9 +159,9 @@ for user, score in final_risk.items():
 
 
 # Save normalized logs
-with open("normalized_logs.json", "w") as f:
+with open(os.path.join(LOG_DIR, "normalized_logs.json"), "w") as f:
     json.dump(normalised_logs, f, indent=4)
 
 # Save final risk
-with open("risk_scores.json", "w") as f:
+with open(os.path.join(LOG_DIR, "risk_scores.json"), "w") as f:
     json.dump(final_risk, f, indent=4)

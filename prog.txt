@@ -49,3 +49,5 @@ X----X-----X-----X-----X----X-----X-----X-----X----X-----X-----X-----X----X-----
 - risk scored based on the type of command and the sequence of execution
 - specific user wise command sagrigation
 - storing final output in a json file
+- take actual auth.log file and parse it and convert it to a json file
+- added 'disable', 'chown' and 'chmod' to risk rules.
