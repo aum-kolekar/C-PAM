@@ -1,97 +1,126 @@
+# main.py
+
 import json
 import os
 import sys
+from collections import defaultdict
 
-# fix import path
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 from ingestion import read_auth_logs
 from normalization import normalise_linux, normalise_ldap
-from risk_engine import get_privilege, calculate_risk, sequence_risk
+from risk_engine import get_privilege, calculate_risk, sequence_risk, normalize_score, risk_level
 from utils import save_json
 from ml_model import run_anomaly_detection
 
-# base project directory
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+LOG_DIR  = os.path.join(BASE_DIR, "logs")
 
-# logs directory
-LOG_DIR = os.path.join(BASE_DIR, "logs")
 
-# ingest real logs
-real_logs = read_auth_logs(LOG_DIR)
+def load_logs(log_dir: str) -> list:
+    logs = []
 
-normalised_logs = []
+    linux_path = os.path.join(log_dir, "linux_logs.json")
+    ldap_path  = os.path.join(log_dir, "ldap_logs.json")
 
-# linux logs
-with open(os.path.join(LOG_DIR, 'linux_logs.json')) as f:
-    for line in f:
-        if line.strip():
-            log = json.loads(line)
-            normalised_logs.append(normalise_linux(log))
+    if os.path.exists(linux_path):
+        with open(linux_path) as f:
+            for line in f:
+                if line.strip():
+                    logs.append(normalise_linux(json.loads(line)))
+    else:
+        print(f"[WARN] {linux_path} not found — skipping")
 
-# ldap logs
-with open(os.path.join(LOG_DIR, 'ldap_logs.json')) as f:
-    for line in f:
-        if line.strip():
-            log = json.loads(line)
-            normalised_logs.append(normalise_ldap(log))
+    if os.path.exists(ldap_path):
+        with open(ldap_path) as f:
+            for line in f:
+                if line.strip():
+                    logs.append(normalise_ldap(json.loads(line)))
+    else:
+        print(f"[WARN] {ldap_path} not found — skipping")
 
-# add real logs
-normalised_logs.extend(real_logs)
+    real_logs = read_auth_logs(log_dir)
+    logs.extend(real_logs)
 
-# add privilege
-for log in normalised_logs:
-    log["privilege"] = get_privilege(log["action"])
+    return logs
 
-# sort logs
-normalised_logs.sort(key=lambda x: x["timestamp"])
 
-# build user sessions
-user_sessions = {}
-for log in normalised_logs:
-    user_sessions.setdefault(log["user"], []).append(log["action"])
+def build_user_index(logs: list) -> dict:
+    """Group logs by user once — O(n) instead of O(n²)."""
+    index = defaultdict(list)
+    for log in logs:
+        index[log["user"]].append(log)
+    return index
 
-ml_results = run_anomaly_detection(user_sessions)
 
-for user, actions in user_sessions.items():
-    if actions.count("login_failed") >= 3:
-        ml_results[user] = "ANOMALY"
-
-# calculate risk
-final_risk = {}
-
-for user, actions in user_sessions.items():
-    score = 0
-
+def run_pipeline():
+    # 1. Ingest + normalize
+    normalised_logs = load_logs(LOG_DIR)
     for log in normalised_logs:
-        if log["user"] == user:
-            score += calculate_risk(
-                log["action"],
-                user,
-                log["privilege"]
-            )
+        log["privilege"] = get_privilege(log["action"])
+    normalised_logs.sort(key=lambda x: x["timestamp"])
 
-    score += sequence_risk(actions)
-    final_risk[user] = score
+    # 2. Build per-user index (O(n), not O(n²))
+    user_index = build_user_index(normalised_logs)
+    user_sessions = {user: [log["action"] for log in logs]
+                     for user, logs in user_index.items()}
 
-user_summary = {}
+    # 3. ML detection (separate from rule flags)
+    ml_results = run_anomaly_detection(user_sessions)
 
-for user, actions in user_sessions.items():
-    user_summary[user] = {
-        "total_actions": len(actions),
-        "failed_logins": actions.count("login_failed"),
-        "sudo_count": actions.count("sudo"),
-        "destructive_commands": sum(1 for a in actions if "rm -rf" in a),
-        "final_risk": final_risk[user]
-    }
+    # 4. Rule-based risk scoring
+    raw_scores = {}
+    rule_flags = {}
+
+    for user, logs in user_index.items():
+        actions = [log["action"] for log in logs]
+        score = sum(calculate_risk(log["action"], user, log["privilege"]) for log in logs)
+        score += sequence_risk(actions)
+        raw_scores[user] = score
+
+        # Rule flag is SEPARATE from ML flag — never overwrites it
+        rule_flags[user] = "ANOMALY" if actions.count("login_failed") >= 3 else "NORMAL"
+
+    # 5. Normalize + assemble summary
+    user_summary = {}
+    for user, logs in user_index.items():
+        actions = [log["action"] for log in logs]
+        norm = normalize_score(raw_scores[user])
+        ml_info = ml_results.get(user, {})
+
+        user_summary[user] = {
+            "total_actions"       : len(actions),
+            "failed_logins"       : actions.count("login_failed"),
+            "sudo_count"          : actions.count("sudo"),
+            "destructive_commands": sum(1 for a in actions if "rm -rf" in a),
+            "raw_risk_score"      : raw_scores[user],
+            "normalized_risk"     : norm,
+            "risk_level"          : risk_level(norm),
+            "ml_flag"             : ml_info.get("ml_flag", "UNKNOWN"),
+            "ml_anomaly_score"    : ml_info.get("anomaly_score", 0),
+            "rule_flag"           : rule_flags[user],
+            # Combined verdict: flagged if EITHER system raises alarm
+            "final_verdict"       : "ANOMALY" if (
+                ml_info.get("ml_flag") == "ANOMALY" or rule_flags[user] == "ANOMALY"
+            ) else "NORMAL",
+        }
+
+    # 6. Print summary
+    print("\n=== C-PAM Risk Report ===")
+    for user, summary in sorted(user_summary.items(),
+                                 key=lambda x: x[1]["normalized_risk"], reverse=True):
+        print(f"  {user:<20} Risk: {summary['normalized_risk']:>5}% [{summary['risk_level']:<8}]"
+              f"  ML: {summary['ml_flag']:<7}  Rule: {summary['rule_flag']:<7}"
+              f"  Verdict: {summary['final_verdict']}")
+
+    # 7. Save outputs
+    save_json(os.path.join(LOG_DIR, "normalized_logs.json"), normalised_logs)
+    save_json(os.path.join(LOG_DIR, "risk_scores.json"),
+              {u: s["normalized_risk"] for u, s in user_summary.items()})
+    save_json(os.path.join(LOG_DIR, "ml_results.json"), ml_results)
+    save_json(os.path.join(LOG_DIR, "user_summary.json"), user_summary)
+    print("\n[✓] Output saved to logs/")
 
 
-# output
-for user, score in final_risk.items():
-    print(user, "-> FINAL RISK:", score, "| ML:", ml_results.get(user))
-
-# save output
-save_json(os.path.join(LOG_DIR, "normalized_logs.json"), normalised_logs)
-save_json(os.path.join(LOG_DIR, "risk_scores.json"), final_risk)
-save_json(os.path.join(LOG_DIR, "ml_results.json"), ml_results)
-save_json(os.path.join(LOG_DIR, "user_summary.json"), user_summary)
+if __name__ == "__main__":
+    run_pipeline()
