@@ -1,5 +1,5 @@
 import os
-from parser import parse_auth_log
+from scripts.log_parser import parse_auth_log
 
 
 def read_auth_logs(baseDIR):
