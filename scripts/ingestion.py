@@ -1,35 +1,30 @@
-import re
+import os
+from parser import parse_auth_log
 
-def parse_auth_log(line):
-    if "Accepted password" in line:
-        user = re.search(r"for (\w+)", line)
-        if user:
-            return {
-                "user": user.group(1),
-                "action": "login_success",
-                "timestamp": line[:15],
-                "source": "auth_log"
-            }
 
-    if "Failed password" in line:
-        user = re.search(r"for (\w+)", line)
-        if user:
-            return {
-                "user": user.group(1),
-                "action": "login_failed",
-                "timestamp": line[:15],
-                "source": "auth_log"
-            }
+def read_auth_logs(baseDIR):
+    """
+    Reads auth.log file and parses it into structured logs
+    """
 
-    if "sudo:" in line:
-        user = re.search(r"sudo:\s+(\w+)", line)
-        cmd = re.search(r"COMMAND=(.*)", line)
-        if user and cmd:
-            return {
-                "user": user.group(1),
-                "action": cmd.group(1).strip(),
-                "timestamp": line[:15],
-                "source": "auth_log"
-            }
+    real_logs = []
 
-    return None
+    log_path = os.path.join(baseDIR, "auth.log")
+
+    # check if file exists (prevents crash)
+    if not os.path.exists(log_path):
+        print(f"[WARNING] auth.log not found at {log_path}")
+        return real_logs
+
+    try:
+        with open(log_path, "r") as f:
+            for line in f:
+                parsed = parse_auth_log(line)
+                if parsed:
+                    real_logs.append(parsed)
+
+    except Exception as e:
+        print(f"[ERROR] Failed to read auth.log: {e}")
+        return real_logs
+
+    return real_logs

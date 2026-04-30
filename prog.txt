@@ -51,3 +51,4 @@ X----X-----X-----X-----X----X-----X-----X-----X----X-----X-----X-----X----X-----
 - storing final output in a json file
 - take actual auth.log file and parse it and convert it to a json file
 - added 'disable', 'chown' and 'chmod' to risk rules.
+- added previliged level == 'normal', 'high', 'elevated'
