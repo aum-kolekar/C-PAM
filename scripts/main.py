@@ -9,6 +9,7 @@ from ingestion import read_auth_logs
 from normalization import normalise_linux, normalise_ldap
 from risk_engine import get_privilege, calculate_risk, sequence_risk
 from utils import save_json
+from ml_model import run_anomaly_detection
 
 # base project directory
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -50,6 +51,12 @@ user_sessions = {}
 for log in normalised_logs:
     user_sessions.setdefault(log["user"], []).append(log["action"])
 
+ml_results = run_anomaly_detection(user_sessions)
+
+for user, actions in user_sessions.items():
+    if actions.count("login_failed") >= 3:
+        ml_results[user] = "ANOMALY"
+
 # calculate risk
 final_risk = {}
 
@@ -69,8 +76,9 @@ for user, actions in user_sessions.items():
 
 # output
 for user, score in final_risk.items():
-    print(user, "-> FINAL RISK:", score)
+    print(user, "-> FINAL RISK:", score, "| ML:", ml_results.get(user))
 
 # save output
 save_json(os.path.join(LOG_DIR, "normalized_logs.json"), normalised_logs)
 save_json(os.path.join(LOG_DIR, "risk_scores.json"), final_risk)
+save_json(os.path.join(LOG_DIR, "ml_results.json"), ml_results)
