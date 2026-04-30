@@ -74,6 +74,18 @@ for user, actions in user_sessions.items():
     score += sequence_risk(actions)
     final_risk[user] = score
 
+user_summary = {}
+
+for user, actions in user_sessions.items():
+    user_summary[user] = {
+        "total_actions": len(actions),
+        "failed_logins": actions.count("login_failed"),
+        "sudo_count": actions.count("sudo"),
+        "destructive_commands": sum(1 for a in actions if "rm -rf" in a),
+        "final_risk": final_risk[user]
+    }
+
+
 # output
 for user, score in final_risk.items():
     print(user, "-> FINAL RISK:", score, "| ML:", ml_results.get(user))
@@ -82,3 +94,4 @@ for user, score in final_risk.items():
 save_json(os.path.join(LOG_DIR, "normalized_logs.json"), normalised_logs)
 save_json(os.path.join(LOG_DIR, "risk_scores.json"), final_risk)
 save_json(os.path.join(LOG_DIR, "ml_results.json"), ml_results)
+save_json(os.path.join(LOG_DIR, "user_summary.json"), user_summary)
