@@ -1,0 +1,38 @@
+{
+    "dev1": {
+        "user": "dev1",
+        "insight": "No suspicious patterns detected. User behavior appears normal.",
+        "pattern_count": 0,
+        "highest_severity": "NONE"
+    },
+    "user2": {
+        "user": "user2",
+        "insight": "No suspicious patterns detected. User behavior appears normal.",
+        "pattern_count": 0,
+        "highest_severity": "NONE"
+    },
+    "dev2": {
+        "user": "dev2",
+        "insight": "No suspicious patterns detected. User behavior appears normal.",
+        "pattern_count": 0,
+        "highest_severity": "NONE"
+    },
+    "admin1": {
+        "user": "admin1",
+        "insight": " The user admin1 shows high normalized risk (65%) due to privilege escalation and destructive command execution detected in the last session. Specifically, they used sudo once and executed the command 'rm -rf /tmp' which can be harmful. Immediate investigation is required to understand the intent and potential impact of these actions.",
+        "pattern_count": 2,
+        "highest_severity": "CRITICAL"
+    },
+    "user1": {
+        "user": "user1",
+        "insight": " User1's risk score is low, but there's an anomaly detected due to two consecutive login attempts, one successful and one unsuccessful. It could be a simple mistake or a brute force attack attempt. Monitor user1 closely for any further suspicious activity. Consider sending a security awareness message about secure password practices.",
+        "pattern_count": 0,
+        "highest_severity": "NONE"
+    },
+    "admin2": {
+        "user": "admin2",
+        "insight": " The user admin2 shows signs of a potential privilege escalation attempt, as indicated by the use of sudo once in their session. However, the overall risk score is low and the system verdict is normal. It's recommended to monitor admin2 closely for further suspicious activities, especially around privilege escalation attempts. Additionally, consider implementing stricter access controls for administrative tasks.",
+        "pattern_count": 1,
+        "highest_severity": "HIGH"
+    }
+}
