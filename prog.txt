@@ -52,3 +52,12 @@ X----X-----X-----X-----X----X-----X-----X-----X----X-----X-----X-----X----X-----
 - take actual auth.log file and parse it and convert it to a json file
 - added 'disable', 'chown' and 'chmod' to risk rules.
 - added previliged level == 'normal', 'high', 'elevated'
+
+- ML anomali detection done.
+- structured data storage done.
+- AI generated insights done.
+- user wise session tracking done.
+- SOC dashboard done.
+
+TODO:
+Real time intigration.
