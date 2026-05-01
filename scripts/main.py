@@ -14,6 +14,9 @@ from utils import save_json
 from ml_model import run_anomaly_detection
 from session_tracker import build_sessions, session_summary
 from db import init_db, upsert_users, insert_risk_scores, insert_sessions, insert_events
+from threat_patterns import detect_patterns
+from insight_engine import run_insights
+from db import insert_insights, get_user_insight
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LOG_DIR  = os.path.join(BASE_DIR, "logs")
@@ -137,6 +140,26 @@ def run_pipeline():
     insert_sessions(all_sessions)
     insert_events(normalised_logs)
     print("[DB] All data persisted to cpam.db")
+
+    # Phase 5 — Pattern detection + narrative insights
+    print("\n[Insight] Running threat pattern detection...")
+    all_pattern_data = [
+        detect_patterns(user, all_sessions.get(user, []), user_summary.get(user, {}))
+        for user in user_summary
+    ]
+
+    print("[Insight] Generating LLM narratives via Gemini API...")
+    insights = run_insights(all_pattern_data)
+
+    insert_insights(insights, all_pattern_data)
+    save_json(os.path.join(LOG_DIR, "insights.json"), insights)
+
+    # Print narratives to terminal
+    print("\n=== THREAT NARRATIVES ===")
+    for user, data in insights.items():
+        if data["pattern_count"] > 0:
+            print(f"\n--- {user.upper()} [{data['highest_severity']}] ---")
+            print(data["insight"])
 
 
 if __name__ == "__main__":
