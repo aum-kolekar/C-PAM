@@ -12,6 +12,8 @@ from normalization import normalise_linux, normalise_ldap
 from risk_engine import get_privilege, calculate_risk, sequence_risk, normalize_score, risk_level
 from utils import save_json
 from ml_model import run_anomaly_detection
+from session_tracker import build_sessions, session_summary
+from db import init_db, upsert_users, insert_risk_scores, insert_sessions, insert_events
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LOG_DIR  = os.path.join(BASE_DIR, "logs")
@@ -64,6 +66,13 @@ def run_pipeline():
     user_index = build_user_index(normalised_logs)
     user_sessions = {user: [log["action"] for log in logs]
                      for user, logs in user_index.items()}
+    
+    # Phase 2 — Session tracking
+    all_sessions    = build_sessions(normalised_logs)
+    sess_summary    = session_summary(all_sessions)
+
+    # Merge session summary into user_summary later (already handled below)
+    save_json(os.path.join(LOG_DIR, "sessions.json"), all_sessions)
 
     # 3. ML detection (separate from rule flags)
     ml_results = run_anomaly_detection(user_sessions)
@@ -99,6 +108,7 @@ def run_pipeline():
             "ml_flag"             : ml_info.get("ml_flag", "UNKNOWN"),
             "ml_anomaly_score"    : ml_info.get("anomaly_score", 0),
             "rule_flag"           : rule_flags[user],
+            "session_data": sess_summary.get(user, {}),
             # Combined verdict: flagged if EITHER system raises alarm
             "final_verdict"       : "ANOMALY" if (
                 ml_info.get("ml_flag") == "ANOMALY" or rule_flags[user] == "ANOMALY"
@@ -120,6 +130,13 @@ def run_pipeline():
     save_json(os.path.join(LOG_DIR, "ml_results.json"), ml_results)
     save_json(os.path.join(LOG_DIR, "user_summary.json"), user_summary)
     print("\n[✓] Output saved to logs/")
+
+    init_db()
+    upsert_users(user_summary)
+    insert_risk_scores(user_summary)
+    insert_sessions(all_sessions)
+    insert_events(normalised_logs)
+    print("[DB] All data persisted to cpam.db")
 
 
 if __name__ == "__main__":

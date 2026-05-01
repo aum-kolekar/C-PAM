@@ -1,17 +1,13 @@
+# ingestion.py
+
 import os
-from scripts.log_parser import parse_auth_log
+from log_parser import parse_auth_log   # renamed from parser.py
 
 
-def read_auth_logs(baseDIR):
-    """
-    Reads auth.log file and parses it into structured logs
-    """
-
+def read_auth_logs(baseDIR: str) -> list:
     real_logs = []
-
     log_path = os.path.join(baseDIR, "auth.log")
 
-    # check if file exists (prevents crash)
     if not os.path.exists(log_path):
         print(f"[WARNING] auth.log not found at {log_path}")
         return real_logs
@@ -22,9 +18,8 @@ def read_auth_logs(baseDIR):
                 parsed = parse_auth_log(line)
                 if parsed:
                     real_logs.append(parsed)
-
+        print(f"[INFO] Parsed {len(real_logs)} entries from auth.log")
     except Exception as e:
         print(f"[ERROR] Failed to read auth.log: {e}")
-        return real_logs
 
     return real_logs
