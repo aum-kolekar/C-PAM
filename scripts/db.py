@@ -66,6 +66,17 @@ def init_db():
             privilege   TEXT,
             FOREIGN KEY (user) REFERENCES users(user)
         );
+                    
+        CREATE TABLE IF NOT EXISTS insights (
+            id                INTEGER PRIMARY KEY AUTOINCREMENT,
+            user              TEXT NOT NULL,
+            run_timestamp     TEXT NOT NULL,
+            insight           TEXT,
+            pattern_count     INTEGER,
+            highest_severity  TEXT,
+            patterns_json     TEXT,
+            FOREIGN KEY (user) REFERENCES users(user)
+        );
     """)
 
     conn.commit()
@@ -95,6 +106,8 @@ def insert_risk_scores(user_summary: dict):
     now  = datetime.now().isoformat()
 
     for user, data in user_summary.items():
+        # Delete old scores for this user before inserting fresh
+        c.execute("DELETE FROM risk_scores WHERE user = ?", (user,))
         c.execute("""
             INSERT INTO risk_scores
               (user, run_timestamp, raw_score, normalized_risk, risk_level,
@@ -115,14 +128,16 @@ def insert_risk_scores(user_summary: dict):
     conn.close()
 
 
+
 def insert_sessions(all_sessions: dict):
     conn = get_connection()
     c    = conn.cursor()
 
     for user, sessions in all_sessions.items():
+        c.execute("DELETE FROM sessions WHERE user = ?", (user,))
         for s in sessions:
             c.execute("""
-                INSERT OR IGNORE INTO sessions
+                INSERT INTO sessions
                   (session_id, user, login_time, logout_time, duration_seconds,
                    action_count, sudo_count, failed_logins, destructive_count,
                    actions_per_minute, suspicious_sequence, actions_json)
@@ -222,3 +237,42 @@ def get_dashboard_stats() -> dict:
         "total_events"        : total_events,
         "suspicious_sessions" : suspicious_sessions,
     }
+
+
+
+
+def insert_insights(insights: dict, all_pattern_data: list):
+    conn = get_connection()
+    c    = conn.cursor()
+    now  = datetime.now().isoformat()
+
+    pattern_map = {pd["user"]: pd["patterns_detected"] for pd in all_pattern_data}
+
+    for user, data in insights.items():
+        c.execute("DELETE FROM insights WHERE user = ?", (user,))
+        c.execute("""
+            INSERT INTO insights
+              (user, run_timestamp, insight, pattern_count, highest_severity, patterns_json)
+            VALUES (?, ?, ?, ?, ?, ?)
+        """, (
+            user, now,
+            data.get("insight"),
+            data.get("pattern_count"),
+            data.get("highest_severity"),
+            json.dumps(pattern_map.get(user, [])),
+        ))
+
+    conn.commit()
+    conn.close()
+def get_user_insight(user: str) -> dict:
+    conn = get_connection()
+    row  = conn.execute("""
+        SELECT * FROM insights WHERE user = ?
+        ORDER BY run_timestamp DESC LIMIT 1
+    """, (user,)).fetchone()
+    conn.close()
+    if not row:
+        return {}
+    result = dict(row)
+    result["patterns"] = json.loads(result.get("patterns_json") or "[]")
+    return result
