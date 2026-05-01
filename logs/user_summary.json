@@ -1,0 +1,134 @@
+{
+    "admin1": {
+        "total_actions": 4,
+        "failed_logins": 0,
+        "sudo_count": 1,
+        "destructive_commands": 1,
+        "raw_risk_score": 195,
+        "normalized_risk": 65.0,
+        "risk_level": "HIGH",
+        "ml_flag": "NORMAL",
+        "ml_anomaly_score": 0.0533,
+        "rule_flag": "NORMAL",
+        "session_data": {
+            "total_sessions": 1,
+            "total_actions": 4,
+            "total_sudo": 1,
+            "total_failed_logins": 0,
+            "total_destructive": 1,
+            "avg_session_duration": null,
+            "any_suspicious_seq": false
+        },
+        "final_verdict": "NORMAL"
+    },
+    "user1": {
+        "total_actions": 2,
+        "failed_logins": 1,
+        "sudo_count": 0,
+        "destructive_commands": 0,
+        "raw_risk_score": 10,
+        "normalized_risk": 3.3,
+        "risk_level": "LOW",
+        "ml_flag": "ANOMALY",
+        "ml_anomaly_score": -0.0178,
+        "rule_flag": "NORMAL",
+        "session_data": {
+            "total_sessions": 1,
+            "total_actions": 2,
+            "total_sudo": 0,
+            "total_failed_logins": 1,
+            "total_destructive": 0,
+            "avg_session_duration": null,
+            "any_suspicious_seq": false
+        },
+        "final_verdict": "ANOMALY"
+    },
+    "dev1": {
+        "total_actions": 3,
+        "failed_logins": 0,
+        "sudo_count": 0,
+        "destructive_commands": 0,
+        "raw_risk_score": 0,
+        "normalized_risk": 0.0,
+        "risk_level": "LOW",
+        "ml_flag": "NORMAL",
+        "ml_anomaly_score": 0.2447,
+        "rule_flag": "NORMAL",
+        "session_data": {
+            "total_sessions": 1,
+            "total_actions": 3,
+            "total_sudo": 0,
+            "total_failed_logins": 0,
+            "total_destructive": 0,
+            "avg_session_duration": null,
+            "any_suspicious_seq": false
+        },
+        "final_verdict": "NORMAL"
+    },
+    "user2": {
+        "total_actions": 1,
+        "failed_logins": 0,
+        "sudo_count": 0,
+        "destructive_commands": 0,
+        "raw_risk_score": 0,
+        "normalized_risk": 0.0,
+        "risk_level": "LOW",
+        "ml_flag": "NORMAL",
+        "ml_anomaly_score": 0.1111,
+        "rule_flag": "NORMAL",
+        "session_data": {
+            "total_sessions": 1,
+            "total_actions": 1,
+            "total_sudo": 0,
+            "total_failed_logins": 0,
+            "total_destructive": 0,
+            "avg_session_duration": null,
+            "any_suspicious_seq": false
+        },
+        "final_verdict": "NORMAL"
+    },
+    "admin2": {
+        "total_actions": 4,
+        "failed_logins": 0,
+        "sudo_count": 1,
+        "destructive_commands": 0,
+        "raw_risk_score": 70,
+        "normalized_risk": 23.3,
+        "risk_level": "LOW",
+        "ml_flag": "NORMAL",
+        "ml_anomaly_score": 0.1328,
+        "rule_flag": "NORMAL",
+        "session_data": {
+            "total_sessions": 1,
+            "total_actions": 4,
+            "total_sudo": 1,
+            "total_failed_logins": 0,
+            "total_destructive": 0,
+            "avg_session_duration": null,
+            "any_suspicious_seq": false
+        },
+        "final_verdict": "NORMAL"
+    },
+    "dev2": {
+        "total_actions": 3,
+        "failed_logins": 0,
+        "sudo_count": 0,
+        "destructive_commands": 0,
+        "raw_risk_score": 0,
+        "normalized_risk": 0.0,
+        "risk_level": "LOW",
+        "ml_flag": "NORMAL",
+        "ml_anomaly_score": 0.2447,
+        "rule_flag": "NORMAL",
+        "session_data": {
+            "total_sessions": 1,
+            "total_actions": 3,
+            "total_sudo": 0,
+            "total_failed_logins": 0,
+            "total_destructive": 0,
+            "avg_session_duration": null,
+            "any_suspicious_seq": false
+        },
+        "final_verdict": "NORMAL"
+    }
+}

@@ -1,0 +1,115 @@
+{
+    "admin1": [
+        {
+            "session_id": "admin1_1",
+            "login_time": "10:00",
+            "logout_time": null,
+            "duration_seconds": null,
+            "actions": [
+                "login_success",
+                "sudo",
+                "rm -rf /tmp",
+                "logout"
+            ],
+            "action_count": 4,
+            "sudo_count": 1,
+            "failed_logins": 0,
+            "destructive_count": 1,
+            "actions_per_minute": null,
+            "suspicious_sequence": false
+        }
+    ],
+    "user1": [
+        {
+            "session_id": "user1_1",
+            "login_time": "10:00",
+            "logout_time": null,
+            "duration_seconds": null,
+            "actions": [
+                "login_success",
+                "login_failed"
+            ],
+            "action_count": 2,
+            "sudo_count": 0,
+            "failed_logins": 1,
+            "destructive_count": 0,
+            "actions_per_minute": null,
+            "suspicious_sequence": false
+        }
+    ],
+    "dev1": [
+        {
+            "session_id": "dev1_1",
+            "login_time": "11:00",
+            "logout_time": null,
+            "duration_seconds": null,
+            "actions": [
+                "login_success",
+                "ls",
+                "logout"
+            ],
+            "action_count": 3,
+            "sudo_count": 0,
+            "failed_logins": 0,
+            "destructive_count": 0,
+            "actions_per_minute": null,
+            "suspicious_sequence": false
+        }
+    ],
+    "user2": [
+        {
+            "session_id": "user2_1",
+            "login_time": "11:00",
+            "logout_time": null,
+            "duration_seconds": null,
+            "actions": [
+                "login_success"
+            ],
+            "action_count": 1,
+            "sudo_count": 0,
+            "failed_logins": 0,
+            "destructive_count": 0,
+            "actions_per_minute": null,
+            "suspicious_sequence": false
+        }
+    ],
+    "admin2": [
+        {
+            "session_id": "admin2_1",
+            "login_time": "12:00",
+            "logout_time": null,
+            "duration_seconds": null,
+            "actions": [
+                "login_success",
+                "sudo",
+                "apt-get update",
+                "logout"
+            ],
+            "action_count": 4,
+            "sudo_count": 1,
+            "failed_logins": 0,
+            "destructive_count": 0,
+            "actions_per_minute": null,
+            "suspicious_sequence": false
+        }
+    ],
+    "dev2": [
+        {
+            "session_id": "dev2_1",
+            "login_time": "13:00",
+            "logout_time": null,
+            "duration_seconds": null,
+            "actions": [
+                "login_success",
+                "ls",
+                "logout"
+            ],
+            "action_count": 3,
+            "sudo_count": 0,
+            "failed_logins": 0,
+            "destructive_count": 0,
+            "actions_per_minute": null,
+            "suspicious_sequence": false
+        }
+    ]
+}

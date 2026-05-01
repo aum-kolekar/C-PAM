@@ -1,0 +1,26 @@
+{
+    "admin1": {
+        "ml_flag": "NORMAL",
+        "anomaly_score": 0.0533
+    },
+    "user1": {
+        "ml_flag": "ANOMALY",
+        "anomaly_score": -0.0178
+    },
+    "dev1": {
+        "ml_flag": "NORMAL",
+        "anomaly_score": 0.2447
+    },
+    "user2": {
+        "ml_flag": "NORMAL",
+        "anomaly_score": 0.1111
+    },
+    "admin2": {
+        "ml_flag": "NORMAL",
+        "anomaly_score": 0.1328
+    },
+    "dev2": {
+        "ml_flag": "NORMAL",
+        "anomaly_score": 0.2447
+    }
+}
