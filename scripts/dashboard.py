@@ -170,6 +170,11 @@ DASHBOARD_HTML = """
   <div class="nav-tab active" onclick="showPage('overview')">Overview</div>
   <div class="nav-tab" onclick="showPage('tracking')">User Activity Tracking</div>
   <div class="nav-tab" onclick="showPage('events')">Event Log</div>
+  <div class="nav-tab" onclick="showPage('alerts')">
+    Live Alerts <span id="alert-badge" style="
+    background:var(--critical);color:#fff;border-radius:10px;
+    padding:1px 6px;font-size:10px;margin-left:4px;display:none">0</span>
+  </div>
 </div>
 
 <!-- PAGE: Overview -->
@@ -214,6 +219,17 @@ DASHBOARD_HTML = """
   </div>
 </div>
 
+<!-- PAGE: Live Alerts -->
+<div class="page" id="page-alerts">
+  <div class="card">
+    <h2>Real-time alerts</h2>
+    <div style="font-size:12px;color:var(--muted);margin-bottom:16px">
+      Triggered instantly when suspicious actions are detected. AI summary generated per alert.
+    </div>
+    <div id="alerts-feed"></div>
+  </div>
+</div>
+
 <script>
 let riskChart, flagChart;
 let allRiskData = [];
@@ -241,6 +257,11 @@ function showPage(name) {
   event.target.classList.add('active');
   if (name === 'events')   loadEvents();
   if (name === 'tracking') loadUserList();  // always reload user list fresh
+  if (name === 'alerts') {
+    loadAlerts();
+      document.getElementById('alert-badge').style.display = 'none';
+      lastAlertCount = 0; // reset count when viewing alerts page
+  }
 }
 
 function barColor(level) {
@@ -252,6 +273,45 @@ function actionClass(action) {
   if (action === 'sudo' || action.startsWith('sudo ')) return 'priv';
   if (action === 'login_failed') return 'danger';
   return '';
+}
+
+let lastAlertCount = 0;
+
+async function loadAlerts() {
+  const alerts = await fetch('/api/alerts').then(r => r.json());
+  document.getElementById('alerts-feed').innerHTML = alerts.length === 0
+    ? '<div style="color:var(--muted);padding:20px;text-align:center">No alerts yet — monitor.py will populate this in real time.</div>'
+    : alerts.map(a => `
+        <div style="border:1px solid var(--border);border-radius:8px;padding:16px;
+                    margin-bottom:12px;border-left:3px solid ${alertColor(a.risk_level)}">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+            <div style="display:flex;align-items:center;gap:10px">
+              <strong>${a.user}</strong>
+              <span class="badge ${a.risk_level}">${a.risk_level}</span>
+              <code style="font-size:11px;background:var(--surface2);
+                           padding:2px 6px;border-radius:4px">${a.action}</code>
+            </div>
+            <span style="font-size:11px;color:var(--muted)">${a.timestamp}</span>
+          </div>
+          <div style="font-size:13px;line-height:1.6;color:var(--text)">${a.summary}</div>
+          <div style="font-size:11px;color:var(--muted);margin-top:6px">
+            Risk at time of alert: ${a.risk_score}%
+          </div>
+        </div>`).join('');
+}
+
+function alertColor(level) {
+  return {CRITICAL:'#ef4444',HIGH:'#f97316',MEDIUM:'#eab308',LOW:'#22c55e'}[level]||'#3b82f6';
+}
+
+async function checkAlertBadge() {
+  const d = await fetch('/api/alerts/count').then(r => r.json());
+  const badge = document.getElementById('alert-badge');
+  if (d.count > lastAlertCount) {
+    badge.style.display = 'inline';
+    badge.textContent = d.count;
+    lastAlertCount = d.count;
+  }
 }
 
 async function loadStats() {
@@ -457,13 +517,13 @@ function switchSession(idx) {
 }
 
 async function refresh() {
-  await Promise.all([loadStats(), loadRiskTable()]);
+  await Promise.all([loadStats(), loadRiskTable(), checkAlertBadge()]);
   document.getElementById('last-refresh').textContent =
     'Last refresh: ' + new Date().toLocaleTimeString();
 }
 
 refresh();
-setInterval(refresh, 30000);
+setInterval(refresh, 5000);
 </script>
 </body>
 </html>
@@ -504,6 +564,35 @@ def api_users():
     """).fetchall()
     conn.close()
     return jsonify([dict(r) for r in rows])
+
+@app.route("/api/alerts")
+def api_alerts():
+    from db import get_connection
+    conn = get_connection()
+    try:
+        rows = conn.execute("""
+            SELECT * FROM realtime_alerts
+            ORDER BY timestamp DESC LIMIT 50
+        """).fetchall()
+        return jsonify([dict(r) for r in rows])
+    except Exception:
+        return jsonify([])
+    finally:
+        conn.close()
+
+@app.route("/api/alerts/count")
+def api_alerts_count():
+    from db import get_connection
+    conn = get_connection()
+    try:
+        count = conn.execute(
+            "SELECT COUNT(*) FROM realtime_alerts"
+        ).fetchone()[0]
+        return jsonify({"count": count})
+    except Exception:
+        return jsonify({"count": 0})
+    finally:
+        conn.close()
 
 if __name__ == "__main__":
     print("C-PAM Dashboard → http://localhost:5000")
