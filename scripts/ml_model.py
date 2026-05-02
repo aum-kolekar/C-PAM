@@ -2,30 +2,35 @@
 
 import joblib
 import os
+import numpy as np
 from sklearn.ensemble import IsolationForest
 
-MODEL_PATH = "cpam_model.pkl"
+MODEL_PATH        = "cpam_model.pkl"
+ACTION_MODEL_PATH = "cpam_action_model.pkl"
 
-# Hand-label your known synthetic scenarios here.
-# Even 10–15 users gives you something to evaluate against.
-# Set to None for users you genuinely don't know.
 GROUND_TRUTH = {
-    # "alice": "ANOMALY",
-    # "bob": "NORMAL",
+    # "admin1": "ANOMALY",
+    # "admin2": "NORMAL",
 }
 
+DESTRUCTIVE = ["rm -rf", "dd if=", "mkfs", "shred"]
+RECON       = ["whoami", "id", "cat /etc/passwd", "cat /etc/shadow",
+               "netstat", "ps aux", "ls /home", "find /"]
+EXFIL       = ["scp ", "rsync ", "curl ", "wget ", "nc "]
 
-def extract_features(user_sessions: dict) -> tuple[list, list]:
+
+# ── User-level model (existing — unchanged) ───────────────────────────────────
+
+def extract_features(user_sessions: dict) -> tuple:
     X, users = [], []
     for user, actions in user_sessions.items():
-        session_duration = len(actions)  # proxy until real timestamps added
+        session_duration = len(actions)
         features = [
             actions.count("sudo"),
-            sum(1 for a in actions if any(kw in a for kw in ["rm -rf", "dd if=", "shred"])),
+            sum(1 for a in actions if any(kw in a for kw in DESTRUCTIVE)),
             actions.count("login_failed"),
             actions.count("login_success"),
             session_duration,
-            # ratio of failed to total logins (avoids penalizing active users unfairly)
             actions.count("login_failed") / max(session_duration, 1),
         ]
         X.append(features)
@@ -35,18 +40,16 @@ def extract_features(user_sessions: dict) -> tuple[list, list]:
 
 def train_and_save(user_sessions: dict) -> IsolationForest:
     X, _ = extract_features(user_sessions)
-    # contamination=0.05 means we expect ~5% of users to be anomalous — realistic
     model = IsolationForest(contamination=0.05, random_state=42)
     model.fit(X)
     joblib.dump(model, MODEL_PATH)
-    print(f"[ML] Model trained on {len(X)} users and saved to {MODEL_PATH}")
+    print(f"[ML] User model trained on {len(X)} users → {MODEL_PATH}")
     return model
 
 
 def load_or_train(user_sessions: dict) -> IsolationForest:
-    """Load saved model if it exists, otherwise train fresh."""
     if os.path.exists(MODEL_PATH):
-        print(f"[ML] Loading saved model from {MODEL_PATH}")
+        print(f"[ML] Loading saved user model from {MODEL_PATH}")
         return joblib.load(MODEL_PATH)
     return train_and_save(user_sessions)
 
@@ -57,53 +60,151 @@ def run_anomaly_detection(user_sessions: dict, retrain: bool = False) -> dict:
     else:
         model = load_or_train(user_sessions)
 
-    X, users = extract_features(user_sessions)
-    predictions = model.predict(X)
-    scores = model.decision_function(X)  # negative = more anomalous
+    X, users     = extract_features(user_sessions)
+    predictions  = model.predict(X)
+    scores       = model.decision_function(X)
 
     results = {}
     for i, user in enumerate(users):
         results[user] = {
-            "ml_flag": "ANOMALY" if predictions[i] == -1 else "NORMAL",
-            "anomaly_score": round(float(scores[i]), 4),  # for dashboard display
+            "ml_flag"      : "ANOMALY" if predictions[i] == -1 else "NORMAL",
+            "anomaly_score": round(float(scores[i]), 4),
         }
 
     evaluate(results)
     return results
 
 
+# ── Action-level model (new) ──────────────────────────────────────────────────
+
+def extract_action_features(action: str, context: list) -> list:
+    """
+    Extracts features for a SINGLE action given the context
+    of what the user has done so far in their session.
+
+    Features:
+      1. Is this action a sudo command
+      2. Is this a destructive command
+      3. Is this a recon command
+      4. Is this a failed login
+      5. Is this an exfiltration command
+      6. How many failed logins have happened before this action
+      7. How many sudo uses before this action
+      8. Position of action in session (normalized 0-1)
+      9. Failed login ratio in context so far
+      10. Did a failed login happen in the last 3 actions
+    """
+    recent = context[-3:] if len(context) >= 3 else context
+
+    return [
+        1 if action == "sudo" or action.startswith("sudo ") else 0,
+        1 if any(kw in action for kw in DESTRUCTIVE) else 0,
+        1 if any(kw in action for kw in RECON) else 0,
+        1 if action == "login_failed" else 0,
+        1 if any(kw in action for kw in EXFIL) else 0,
+        context.count("login_failed"),
+        context.count("sudo"),
+        min(len(context) / 50.0, 1.0),
+        context.count("login_failed") / max(len(context), 1),
+        1 if "login_failed" in recent else 0,
+    ]
+
+
+def build_action_training_data(user_sessions: dict) -> list:
+    """
+    Builds a training set where each row is one action
+    with its session context at that point in time.
+    """
+    X = []
+    for user, actions in user_sessions.items():
+        for i, action in enumerate(actions):
+            context = actions[:i]   # everything before this action
+            X.append(extract_action_features(action, context))
+    return X
+
+
+def train_action_model(user_sessions: dict) -> IsolationForest:
+    X = build_action_training_data(user_sessions)
+    if len(X) < 5:
+        print("[ML] Not enough actions to train action model — need at least 5")
+        return None
+
+    model = IsolationForest(contamination=0.05, random_state=42)
+    model.fit(X)
+    joblib.dump(model, ACTION_MODEL_PATH)
+    print(f"[ML] Action model trained on {len(X)} action samples → {ACTION_MODEL_PATH}")
+    return model
+
+
+def load_action_model() -> IsolationForest:
+    if os.path.exists(ACTION_MODEL_PATH):
+        return joblib.load(ACTION_MODEL_PATH)
+    return None
+
+
+def score_action(action: str, context: list) -> dict:
+    """
+    Scores a single action against the action-level model.
+    This is called by monitor.py for every new log line.
+
+    Returns:
+        {
+          "action"       : str,
+          "ml_flag"      : "ANOMALY" or "NORMAL",
+          "anomaly_score": float,   # negative = more anomalous
+          "confidence"   : str,     # HIGH / MEDIUM / LOW
+        }
+    """
+    model = load_action_model()
+    if model is None:
+        return {
+            "action"       : action,
+            "ml_flag"      : "UNKNOWN",
+            "anomaly_score": 0.0,
+            "confidence"   : "LOW",
+        }
+
+    features    = extract_action_features(action, context)
+    prediction  = model.predict([features])[0]
+    anom_score  = round(float(model.decision_function([features])[0]), 4)
+
+    # Confidence based on how far from the decision boundary
+    abs_score = abs(anom_score)
+    if abs_score > 0.15:
+        confidence = "HIGH"
+    elif abs_score > 0.07:
+        confidence = "MEDIUM"
+    else:
+        confidence = "LOW"
+
+    return {
+        "action"       : action,
+        "ml_flag"      : "ANOMALY" if prediction == -1 else "NORMAL",
+        "anomaly_score": anom_score,
+        "confidence"   : confidence,
+    }
+
+
+# ── Evaluation (unchanged) ────────────────────────────────────────────────────
+
 def evaluate(results: dict):
-    """
-    Compares ML predictions against hand-labeled ground truth.
-    Only runs if GROUND_TRUTH has entries.
-    """
     labeled = {u: v for u, v in GROUND_TRUTH.items() if v is not None}
     if not labeled:
-        print("[Eval] No ground truth labels set — skipping evaluation.")
-        print("[Eval] Add labels to GROUND_TRUTH in ml_model.py to enable metrics.")
+        print("[Eval] No ground truth labels — skipping evaluation.")
         return
 
     tp = fp = tn = fn = 0
     for user, true_label in labeled.items():
         pred = results.get(user, {}).get("ml_flag", "NORMAL")
-        if true_label == "ANOMALY" and pred == "ANOMALY":
-            tp += 1
-        elif true_label == "NORMAL" and pred == "ANOMALY":
-            fp += 1
-        elif true_label == "NORMAL" and pred == "NORMAL":
-            tn += 1
-        elif true_label == "ANOMALY" and pred == "NORMAL":
-            fn += 1
+        if true_label == "ANOMALY" and pred == "ANOMALY": tp += 1
+        elif true_label == "NORMAL"  and pred == "ANOMALY": fp += 1
+        elif true_label == "NORMAL"  and pred == "NORMAL":  tn += 1
+        elif true_label == "ANOMALY" and pred == "NORMAL":  fn += 1
 
     precision = tp / (tp + fp) if (tp + fp) > 0 else 0
     recall    = tp / (tp + fn) if (tp + fn) > 0 else 0
-    f1        = 2 * precision * recall / (precision + recall) if (precision + recall) > 0 else 0
+    f1        = (2 * precision * recall / (precision + recall)
+                 if (precision + recall) > 0 else 0)
 
-    print("\n[Eval] === ML Evaluation ===")
-    print(f"  Labeled users : {len(labeled)}")
-    print(f"  True Positives: {tp}  False Positives: {fp}")
-    print(f"  True Negatives: {tn}  False Negatives: {fn}")
-    print(f"  Precision : {precision:.2f}")
-    print(f"  Recall    : {recall:.2f}")
-    print(f"  F1 Score  : {f1:.2f}")
-    print("=" * 30)
+    print(f"\n[Eval] Precision: {precision:.2f}  "
+          f"Recall: {recall:.2f}  F1: {f1:.2f}")

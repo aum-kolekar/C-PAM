@@ -79,6 +79,9 @@ def run_pipeline():
 
     # 3. ML detection (separate from rule flags)
     ml_results = run_anomaly_detection(user_sessions)
+    # Train action-level model
+    from ml_model import train_action_model
+    train_action_model(user_sessions)
 
     # 4. Rule-based risk scoring
     raw_scores = {}

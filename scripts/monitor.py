@@ -1,8 +1,5 @@
-# monitor.py
 # Real-time C-PAM monitor.
 # Run with: python monitor.py
-# Watches auth.log continuously, scores every new event,
-# triggers AI summary instantly for suspicious actions.
 
 import os
 import sys
@@ -17,92 +14,109 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 from log_parser   import parse_auth_log
 from risk_engine  import get_privilege, calculate_risk, sequence_risk, normalize_score, risk_level
 from db           import get_connection, init_db
+from ml_model     import score_action
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-LOG_PATH = os.path.join(BASE_DIR, "logs", "auth.log")
+LOG_PATH = "/var/log/auth.log"
 
-# Actions that trigger an immediate Ollama summary
-ALERT_TRIGGERS = {
-    "sudo", "session_open", "session_close"
-}
+ALERT_TRIGGERS = {"sudo", "session_open", "session_close"}
 DESTRUCTIVE = ["rm -rf", "dd if=", "mkfs", "shred"]
 
-# In-memory session state — rebuilt from DB on startup
-user_sessions  = defaultdict(list)   # user -> [actions]
-user_raw_score = defaultdict(int)    # user -> cumulative raw score
+user_sessions  = defaultdict(list)
+user_raw_score = defaultdict(int)
 
 
-# ── Ollama call (non-blocking, inline) ────────────────────────────────────────
+# ── Ollama ─────────────────────────────────────────────
 
 def get_ai_summary(user: str, action: str, recent_actions: list, score: float) -> str:
-    import urllib.request, urllib.error
+    import urllib.request
 
     recent_str = " → ".join(recent_actions[-10:])
     prompt = (
         f"User '{user}' just performed '{action}'. "
         f"Their recent actions: {recent_str}. "
         f"Current risk score: {score}%. "
-        f"In 2 sentences max, tell a SOC analyst what is happening and what to watch for. "
-        f"No headers. No bullet points. Be direct."
+        f"In 2 sentences max, tell a SOC analyst what is happening."
     )
+
     payload = json.dumps({
-        "model" : "mistral",
+        "model": "mistral",
         "prompt": prompt,
-        "stream": False,
-        "options": {"temperature": 0.1, "num_predict": 120}
+        "stream": False
     }).encode()
 
-    req = urllib.request.Request(
-        "http://localhost:11434/api/generate",
-        data=payload,
-        headers={"Content-Type": "application/json"},
-        method="POST",
-    )
     try:
+        req = urllib.request.Request(
+            "http://localhost:11434/api/generate",
+            data=payload,
+            headers={"Content-Type": "application/json"},
+            method="POST",
+        )
         with urllib.request.urlopen(req, timeout=30) as r:
             return json.loads(r.read())["response"].strip()
     except Exception as e:
         return f"[Ollama unavailable: {e}]"
 
 
-# ── DB helpers ────────────────────────────────────────────────────────────────
+# ── UPDATED DB FUNCTION ────────────────────────────────
 
 def store_realtime_event(log: dict, privilege: str, raw_score: int,
-                          norm: float, level_str: str):
+                          norm: float, level_str: str, action_ml: dict = None):
     conn = get_connection()
+
+    # Add ML columns if not present
+    try:
+        conn.execute("ALTER TABLE events ADD COLUMN action_ml_flag TEXT")
+        conn.execute("ALTER TABLE events ADD COLUMN action_ml_score REAL")
+        conn.commit()
+    except Exception:
+        pass
+
     conn.execute("""
-        INSERT INTO events (user, action, timestamp, source, privilege)
-        VALUES (?, ?, ?, ?, ?)
-    """, (log["user"], log["action"], log["timestamp"], log["source"], privilege))
+        INSERT INTO events (user, action, timestamp, source, privilege,
+                           action_ml_flag, action_ml_score)
+        VALUES (?, ?, ?, ?, ?, ?, ?)
+    """, (
+        log["user"], log["action"], log["timestamp"],
+        log["source"], privilege,
+        action_ml.get("ml_flag") if action_ml else None,
+        action_ml.get("anomaly_score") if action_ml else None,
+    ))
+
     conn.execute("""
         INSERT OR REPLACE INTO risk_scores
           (user, run_timestamp, raw_score, normalized_risk, risk_level,
            ml_flag, ml_anomaly_score, rule_flag, final_verdict)
         VALUES (?, ?, ?, ?, ?, 'REALTIME', 0.0, 'REALTIME', ?)
         ON CONFLICT(user) DO UPDATE SET
-          raw_score        = excluded.raw_score,
-          normalized_risk  = excluded.normalized_risk,
-          risk_level       = excluded.risk_level,
-          run_timestamp    = excluded.run_timestamp,
-          final_verdict    = excluded.final_verdict
-    """, (log["user"], datetime.now().isoformat(),
-          raw_score, norm, level_str,
-          level_str if norm >= 50 else "NORMAL"))
+          raw_score       = excluded.raw_score,
+          normalized_risk = excluded.normalized_risk,
+          risk_level      = excluded.risk_level,
+          run_timestamp   = excluded.run_timestamp,
+          final_verdict   = excluded.final_verdict
+    """, (
+        log["user"], datetime.now().isoformat(),
+        raw_score, norm, level_str,
+        level_str if norm >= 50 else "NORMAL"
+    ))
+
     conn.commit()
     conn.close()
 
 
-def store_alert(user: str, action: str, summary: str, norm: float, level_str: str):
+# ── Alerts ─────────────────────────────────────────────
+
+def store_alert(user, action, summary, norm, level_str):
     conn = get_connection()
     conn.execute("""
         CREATE TABLE IF NOT EXISTS realtime_alerts (
-            id          INTEGER PRIMARY KEY AUTOINCREMENT,
-            user        TEXT,
-            action      TEXT,
-            summary     TEXT,
-            risk_score  REAL,
-            risk_level  TEXT,
-            timestamp   TEXT
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user TEXT,
+            action TEXT,
+            summary TEXT,
+            risk_score REAL,
+            risk_level TEXT,
+            timestamp TEXT
         )
     """)
     conn.execute("""
@@ -113,25 +127,20 @@ def store_alert(user: str, action: str, summary: str, norm: float, level_str: st
     conn.close()
 
 
-def update_realtime_insight(user: str, summary: str, norm: float):
-    """Updates the insights table so the dashboard shows the latest summary."""
+def update_realtime_insight(user, summary, norm):
     conn = get_connection()
     conn.execute("""
         INSERT INTO insights (user, run_timestamp, insight, pattern_count, highest_severity, patterns_json)
         VALUES (?, ?, ?, 0, 'REALTIME', '[]')
         ON CONFLICT(user) DO UPDATE SET
-          insight       = excluded.insight,
-          run_timestamp = excluded.run_timestamp,
-          highest_severity = CASE
-            WHEN excluded.insight != '' THEN 'REALTIME' ELSE highest_severity
-          END
+          insight = excluded.insight,
+          run_timestamp = excluded.run_timestamp
     """, (user, datetime.now().isoformat(), summary))
     conn.commit()
     conn.close()
 
 
-def should_alert(action: str, actions: list) -> bool:
-    """Returns True if this action warrants an immediate AI summary."""
+def should_alert(action, actions):
     if action in ALERT_TRIGGERS:
         return True
     if any(kw in action for kw in DESTRUCTIVE):
@@ -143,106 +152,77 @@ def should_alert(action: str, actions: list) -> bool:
     return False
 
 
-# ── Startup: rebuild state from existing DB ───────────────────────────────────
-
-def rebuild_state_from_db():
-    """Load existing user sessions from DB so we don't lose context on restart."""
-    conn = get_connection()
-    rows = conn.execute(
-        "SELECT user, action FROM events ORDER BY timestamp ASC"
-    ).fetchall()
-    conn.close()
-
-    for row in rows:
-        user_sessions[row["user"]].append(row["action"])
-
-    score_rows = conn.execute(
-        "SELECT user, raw_score FROM risk_scores"
-    ) if False else []  # skip — recalc live
-
-    print(f"[Monitor] Rebuilt state: {len(user_sessions)} users from DB")
-
-
-# ── Main watch loop ───────────────────────────────────────────────────────────
+# ── WATCH LOOP (UPDATED) ───────────────────────────────
 
 def watch(log_path: str):
-    print(f"[Monitor] Watching {log_path}")
-    print(f"[Monitor] Suspicious actions trigger instant AI summary via Ollama")
-    print(f"[Monitor] Dashboard auto-updates at http://localhost:5000\n")
+    print(f"[Monitor] Watching {log_path}\n")
 
-    # Seek to end of file — only process NEW lines
     with open(log_path, "r") as f:
-        f.seek(0, 2)   # jump to end
+        f.seek(0, 2)
 
         while True:
             line = f.readline()
-
             if not line:
-                time.sleep(0.5)   # no new line — wait half a second
+                time.sleep(0.5)
                 continue
 
             log = parse_auth_log(line)
             if not log:
                 continue
 
-            user    = log["user"]
-            action  = log["action"]
-            ts      = log["timestamp"]
+            user   = log["user"]
+            action = log["action"]
+            ts     = log["timestamp"]
 
-            # Update in-memory session
             user_sessions[user].append(action)
             actions = user_sessions[user]
 
-            # Score this event
-            privilege     = get_privilege(action)
-            event_score   = calculate_risk(action, user, privilege)
-            seq_score     = sequence_risk(actions)
+            privilege   = get_privilege(action)
+            event_score = calculate_risk(action, user, privilege)
+            seq_score   = sequence_risk(actions)
+
             user_raw_score[user] += event_score
-            total_raw     = user_raw_score[user] + seq_score
-            norm          = normalize_score(total_raw)
-            level_str     = risk_level(norm)
+            total_raw = user_raw_score[user] + seq_score
+            norm      = normalize_score(total_raw)
+            level_str = risk_level(norm)
 
-            # Store event + updated risk score
-            store_realtime_event(log, privilege, total_raw, norm, level_str)
+            # 🔥 NEW: Action-level ML
+            action_ml = score_action(action, list(actions[:-1]))
 
-            # Print to terminal
-            flag = "⚠ " if should_alert(action, actions) else "  "
+            # Store with ML
+            store_realtime_event(log, privilege, total_raw, norm, level_str, action_ml)
+
+            # Terminal output
+            ml_tag = f"[ML:{action_ml['ml_flag']}:{action_ml['confidence']}]" \
+                     if action_ml['ml_flag'] == "ANOMALY" else ""
+
+            flag = "⚠ " if (
+                should_alert(action, actions) or
+                action_ml['ml_flag'] == "ANOMALY"
+            ) else "  "
+
             print(f"{flag}[{ts}] {user:<15} {action:<35} "
-                  f"risk: {norm:>5.1f}% [{level_str}]")
+                  f"risk: {norm:>5.1f}% [{level_str}] {ml_tag}")
 
-            # Trigger AI summary for suspicious actions
-            if should_alert(action, actions):
+            # 🚨 ALERT condition (rule OR ML)
+            if should_alert(action, actions) or (
+                action_ml['ml_flag'] == "ANOMALY" and
+                action_ml['confidence'] in ("HIGH", "MEDIUM")
+            ):
                 print(f"   → Generating AI summary for {user}...")
                 summary = get_ai_summary(user, action, actions, norm)
                 print(f"   → {summary}\n")
+
                 store_alert(user, action, summary, norm, level_str)
                 update_realtime_insight(user, summary, norm)
 
 
+# ── MAIN ──────────────────────────────────────────────
+
 def main():
     init_db()
-
-    # Create alerts table on startup
-    conn = get_connection()
-    conn.execute("""
-        CREATE TABLE IF NOT EXISTS realtime_alerts (
-            id          INTEGER PRIMARY KEY AUTOINCREMENT,
-            user        TEXT,
-            action      TEXT,
-            summary     TEXT,
-            risk_score  REAL,
-            risk_level  TEXT,
-            timestamp   TEXT
-        )
-    """)
-    conn.commit()
-    conn.close()
-
-    rebuild_state_from_db()
-
     if not os.path.exists(LOG_PATH):
         print(f"[ERROR] auth.log not found at {LOG_PATH}")
-        print("Set LOG_PATH in monitor.py to point to your auth.log")
         sys.exit(1)
 
     watch(LOG_PATH)
