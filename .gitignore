@@ -52,7 +52,6 @@ coverage.xml
 # Log files
 normalise_log.json
 riskscore_log.json
-auth.log
 .pytest_cache/
 cover/
 
