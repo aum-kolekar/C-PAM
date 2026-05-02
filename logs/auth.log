@@ -833,3 +833,11 @@
 2026-05-02T09:35:01.763202+00:00 main CRON[5990]: pam_unix(cron:session): session closed for user root
 2026-05-02T09:37:30.530162+00:00 main sudo:     main : TTY=pts/0 ; PWD=/home/main/cpam/C-PAM ; USER=root ; COMMAND=/usr/bin/cp /var/log/auth.log ./logs/auth.log
 2026-05-02T09:37:30.570501+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-05-02T09:37:30.592946+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-05-02T09:45:01.855368+00:00 main CRON[6137]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-05-02T09:45:01.917053+00:00 main CRON[6137]: pam_unix(cron:session): session closed for user root
+2026-05-02T09:47:39.176932+00:00 main sudo:     main : TTY=pts/0 ; PWD=/home/main/cpam/C-PAM ; USER=root ; COMMAND=/usr/bin/cat /etc/passwd
+2026-05-02T09:47:39.211377+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-05-02T09:47:39.235214+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-05-02T09:48:03.463685+00:00 main sudo:     main : TTY=pts/0 ; PWD=/home/main/cpam/C-PAM ; USER=root ; COMMAND=/usr/bin/cp /var/log/auth.log ./logs/auth.log
+2026-05-02T09:48:03.466348+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
