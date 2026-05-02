@@ -17,7 +17,7 @@ from db           import get_connection, init_db
 from ml_model     import score_action
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-LOG_PATH = os.path.join(BASE_DIR, "logs", "auth.log")
+LOG_PATH = "/var/log/auth.log"
 
 ALERT_TRIGGERS = {"sudo", "session_open", "session_close"}
 DESTRUCTIVE = ["rm -rf", "dd if=", "mkfs", "shred"]
@@ -64,7 +64,7 @@ def store_realtime_event(log: dict, privilege: str, raw_score: int,
                           norm: float, level_str: str, action_ml: dict = None):
     conn = get_connection()
 
-    # Add ML columns if not present
+    # Add action ML columns if they don't exist yet
     try:
         conn.execute("ALTER TABLE events ADD COLUMN action_ml_flag TEXT")
         conn.execute("ALTER TABLE events ADD COLUMN action_ml_score REAL")
@@ -72,9 +72,10 @@ def store_realtime_event(log: dict, privilege: str, raw_score: int,
     except Exception:
         pass
 
+    # Insert the event
     conn.execute("""
         INSERT INTO events (user, action, timestamp, source, privilege,
-                           action_ml_flag, action_ml_score)
+                            action_ml_flag, action_ml_score)
         VALUES (?, ?, ?, ?, ?, ?, ?)
     """, (
         log["user"], log["action"], log["timestamp"],
@@ -83,26 +84,22 @@ def store_realtime_event(log: dict, privilege: str, raw_score: int,
         action_ml.get("anomaly_score") if action_ml else None,
     ))
 
+    # Update risk score — delete old row then insert fresh
+    conn.execute("DELETE FROM risk_scores WHERE user = ?", (log["user"],))
     conn.execute("""
-        INSERT OR REPLACE INTO risk_scores
+        INSERT INTO risk_scores
           (user, run_timestamp, raw_score, normalized_risk, risk_level,
            ml_flag, ml_anomaly_score, rule_flag, final_verdict)
         VALUES (?, ?, ?, ?, ?, 'REALTIME', 0.0, 'REALTIME', ?)
-        ON CONFLICT(user) DO UPDATE SET
-          raw_score       = excluded.raw_score,
-          normalized_risk = excluded.normalized_risk,
-          risk_level      = excluded.risk_level,
-          run_timestamp   = excluded.run_timestamp,
-          final_verdict   = excluded.final_verdict
     """, (
-        log["user"], datetime.now().isoformat(),
+        log["user"],
+        datetime.now().isoformat(),
         raw_score, norm, level_str,
         level_str if norm >= 50 else "NORMAL"
     ))
 
     conn.commit()
     conn.close()
-
 
 # ── Alerts ─────────────────────────────────────────────
 
@@ -127,14 +124,14 @@ def store_alert(user, action, summary, norm, level_str):
     conn.close()
 
 
-def update_realtime_insight(user, summary, norm):
+def update_realtime_insight(user: str, summary: str, norm: float):
     conn = get_connection()
+    # Delete old insight then insert fresh
+    conn.execute("DELETE FROM insights WHERE user = ?", (user,))
     conn.execute("""
-        INSERT INTO insights (user, run_timestamp, insight, pattern_count, highest_severity, patterns_json)
+        INSERT INTO insights (user, run_timestamp, insight, pattern_count, 
+                              highest_severity, patterns_json)
         VALUES (?, ?, ?, 0, 'REALTIME', '[]')
-        ON CONFLICT(user) DO UPDATE SET
-          insight = excluded.insight,
-          run_timestamp = excluded.run_timestamp
     """, (user, datetime.now().isoformat(), summary))
     conn.commit()
     conn.close()
