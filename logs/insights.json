@@ -19,20 +19,44 @@
     },
     "admin1": {
         "user": "admin1",
-        "insight": " The user admin1 shows high normalized risk (65%) due to privilege escalation and destructive command execution detected in the last session. Specifically, they used sudo once and executed the command 'rm -rf /tmp' which can be harmful. Immediate investigation is required to understand the intent and potential impact of these actions.",
+        "insight": " Admin1's risk score is high due to privilege escalation and destructive command execution detected in the last session. The user executed a 'rm -rf /tmp' command, which can be harmful if not intended. Investigate immediately, review logs, and verify if this was an accident or intentional malicious activity. Temporarily restrict admin1's privileges as a precautionary measure.",
         "pattern_count": 2,
         "highest_severity": "CRITICAL"
     },
     "user1": {
         "user": "user1",
-        "insight": " User1's risk score is low, but there's an anomaly detected due to two consecutive login attempts, one successful and one unsuccessful. It could be a simple mistake or a brute force attack attempt. Monitor user1 closely for any further suspicious activity. Consider sending a security awareness message about secure password practices.",
+        "insight": " User1's risk profile shows a low normalized score, but there's an anomaly detected due to a failed login attempt following a successful one. While the overall risk remains low, it's advisable to send a security notification to user1 about the unusual activity and recommend enabling multi-factor authentication for added security.",
         "pattern_count": 0,
         "highest_severity": "NONE"
     },
     "admin2": {
         "user": "admin2",
-        "insight": " The user admin2 shows signs of a potential privilege escalation attempt, as indicated by the use of sudo once in their session. However, the overall risk score is low and the system verdict is normal. It's recommended to monitor admin2 closely for further suspicious activities, especially around privilege escalation attempts. Additionally, consider implementing stricter access controls for administrative tasks.",
+        "insight": " The user admin2 shows low risk, but there's an anomaly with a privilege escalation attempt via sudo. This was observed in a single session (admin2_1). It's recommended to investigate the sudo usage and ensure proper access controls are in place to prevent unauthorized privilege escalations.",
         "pattern_count": 1,
+        "highest_severity": "HIGH"
+    },
+    "c1": {
+        "user": "c1",
+        "insight": " User c1's risk score is low, but they have consistently logged in outside of business hours, which triggers a medium-level off_hours_access alert. Recently, during one of these sessions, they accessed sensitive files such as /etc/passwd and /var/log/auth.log before closing the session. It's recommended to investigate this user further for potential security concerns.",
+        "pattern_count": 4,
+        "highest_severity": "MEDIUM"
+    },
+    "gdm": {
+        "user": "gdm",
+        "insight": " The user gdm shows normal risk behavior with a low normalized score and no signs of malicious intent. However, there are two instances of off-hours access at 05:58 and one instance of high action rate (60 actions/min), indicating possible automated or scripted behavior. Monitor this user closely for further anomalies during off-hours and investigate the session with abnormal action rate (gdm_13).",
+        "pattern_count": 3,
+        "highest_severity": "HIGH"
+    },
+    "main": {
+        "user": "main",
+        "insight": " The user's risk score is low, but there are some concerning behaviors detected. An off-hours login and multiple instances of automated or scripted behavior indicate potential unauthorized access attempts. The user has been modifying Elasticsearch configuration files and restarting the service, which could be signs of an attacker attempting to optimize the system for malicious activities. It's recommended to investigate further and monitor this user closely.",
+        "pattern_count": 4,
+        "highest_severity": "HIGH"
+    },
+    "root": {
+        "user": "root",
+        "insight": " The user 'root' exhibits signs of automated or scripted behavior with abnormally high action rates in multiple sessions, indicating potential scripting activity. Investigate these sessions (root_2, root_11, root_18-66) further to confirm if they pose a threat. Monitor the user closely for any unusual patterns or escalation of activities.",
+        "pattern_count": 21,
         "highest_severity": "HIGH"
     }
 }

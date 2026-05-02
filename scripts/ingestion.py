@@ -22,4 +22,5 @@ def read_auth_logs(baseDIR: str) -> list:
     except Exception as e:
         print(f"[ERROR] Failed to read auth.log: {e}")
 
+    print(f"[INFO] Total logs loaded: {len(real_logs)}")
     return real_logs

@@ -1,26 +1,42 @@
 {
     "admin1": {
         "ml_flag": "NORMAL",
-        "anomaly_score": 0.0533
+        "anomaly_score": 0.0388
     },
     "user1": {
         "ml_flag": "ANOMALY",
-        "anomaly_score": -0.0178
+        "anomaly_score": -0.0318
     },
     "dev1": {
         "ml_flag": "NORMAL",
-        "anomaly_score": 0.2447
+        "anomaly_score": 0.2571
     },
     "user2": {
         "ml_flag": "NORMAL",
-        "anomaly_score": 0.1111
+        "anomaly_score": 0.2115
     },
     "admin2": {
         "ml_flag": "NORMAL",
-        "anomaly_score": 0.1328
+        "anomaly_score": 0.139
     },
     "dev2": {
         "ml_flag": "NORMAL",
-        "anomaly_score": 0.2447
+        "anomaly_score": 0.2571
+    },
+    "c1": {
+        "ml_flag": "NORMAL",
+        "anomaly_score": 0.1933
+    },
+    "gdm": {
+        "ml_flag": "NORMAL",
+        "anomaly_score": 0.1891
+    },
+    "main": {
+        "ml_flag": "NORMAL",
+        "anomaly_score": 0.1582
+    },
+    "root": {
+        "ml_flag": "NORMAL",
+        "anomaly_score": 0.0715
     }
 }

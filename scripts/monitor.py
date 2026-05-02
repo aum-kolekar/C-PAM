@@ -17,7 +17,7 @@ from db           import get_connection, init_db
 from ml_model     import score_action
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-LOG_PATH = "/var/log/auth.log"
+LOG_PATH = os.path.join(BASE_DIR, "logs", "auth.log")
 
 ALERT_TRIGGERS = {"sudo", "session_open", "session_close"}
 DESTRUCTIVE = ["rm -rf", "dd if=", "mkfs", "shred"]

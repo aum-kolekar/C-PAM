@@ -8,7 +8,7 @@
         "normalized_risk": 65.0,
         "risk_level": "HIGH",
         "ml_flag": "NORMAL",
-        "ml_anomaly_score": 0.0533,
+        "ml_anomaly_score": 0.0388,
         "rule_flag": "NORMAL",
         "session_data": {
             "total_sessions": 1,
@@ -30,7 +30,7 @@
         "normalized_risk": 3.3,
         "risk_level": "LOW",
         "ml_flag": "ANOMALY",
-        "ml_anomaly_score": -0.0178,
+        "ml_anomaly_score": -0.0318,
         "rule_flag": "NORMAL",
         "session_data": {
             "total_sessions": 1,
@@ -52,7 +52,7 @@
         "normalized_risk": 0.0,
         "risk_level": "LOW",
         "ml_flag": "NORMAL",
-        "ml_anomaly_score": 0.2447,
+        "ml_anomaly_score": 0.2571,
         "rule_flag": "NORMAL",
         "session_data": {
             "total_sessions": 1,
@@ -74,7 +74,7 @@
         "normalized_risk": 0.0,
         "risk_level": "LOW",
         "ml_flag": "NORMAL",
-        "ml_anomaly_score": 0.1111,
+        "ml_anomaly_score": 0.2115,
         "rule_flag": "NORMAL",
         "session_data": {
             "total_sessions": 1,
@@ -96,7 +96,7 @@
         "normalized_risk": 23.3,
         "risk_level": "LOW",
         "ml_flag": "NORMAL",
-        "ml_anomaly_score": 0.1328,
+        "ml_anomaly_score": 0.139,
         "rule_flag": "NORMAL",
         "session_data": {
             "total_sessions": 1,
@@ -118,7 +118,7 @@
         "normalized_risk": 0.0,
         "risk_level": "LOW",
         "ml_flag": "NORMAL",
-        "ml_anomaly_score": 0.2447,
+        "ml_anomaly_score": 0.2571,
         "rule_flag": "NORMAL",
         "session_data": {
             "total_sessions": 1,
@@ -127,6 +127,94 @@
             "total_failed_logins": 0,
             "total_destructive": 0,
             "avg_session_duration": null,
+            "any_suspicious_seq": false
+        },
+        "final_verdict": "NORMAL"
+    },
+    "c1": {
+        "total_actions": 9,
+        "failed_logins": 0,
+        "sudo_count": 0,
+        "destructive_commands": 0,
+        "raw_risk_score": 0,
+        "normalized_risk": 0.0,
+        "risk_level": "LOW",
+        "ml_flag": "NORMAL",
+        "ml_anomaly_score": 0.1933,
+        "rule_flag": "NORMAL",
+        "session_data": {
+            "total_sessions": 5,
+            "total_actions": 8,
+            "total_sudo": 0,
+            "total_failed_logins": 0,
+            "total_destructive": 0,
+            "avg_session_duration": 15024.3,
+            "any_suspicious_seq": false
+        },
+        "final_verdict": "NORMAL"
+    },
+    "gdm": {
+        "total_actions": 37,
+        "failed_logins": 0,
+        "sudo_count": 0,
+        "destructive_commands": 0,
+        "raw_risk_score": 0,
+        "normalized_risk": 0.0,
+        "risk_level": "LOW",
+        "ml_flag": "NORMAL",
+        "ml_anomaly_score": 0.1891,
+        "rule_flag": "NORMAL",
+        "session_data": {
+            "total_sessions": 20,
+            "total_actions": 30,
+            "total_sudo": 0,
+            "total_failed_logins": 0,
+            "total_destructive": 0,
+            "avg_session_duration": 153.8,
+            "any_suspicious_seq": false
+        },
+        "final_verdict": "NORMAL"
+    },
+    "main": {
+        "total_actions": 81,
+        "failed_logins": 0,
+        "sudo_count": 0,
+        "destructive_commands": 0,
+        "raw_risk_score": 0,
+        "normalized_risk": 0.0,
+        "risk_level": "LOW",
+        "ml_flag": "NORMAL",
+        "ml_anomaly_score": 0.1582,
+        "rule_flag": "NORMAL",
+        "session_data": {
+            "total_sessions": 18,
+            "total_actions": 81,
+            "total_sudo": 0,
+            "total_failed_logins": 0,
+            "total_destructive": 0,
+            "avg_session_duration": 26397.1,
+            "any_suspicious_seq": false
+        },
+        "final_verdict": "NORMAL"
+    },
+    "root": {
+        "total_actions": 126,
+        "failed_logins": 0,
+        "sudo_count": 0,
+        "destructive_commands": 0,
+        "raw_risk_score": 0,
+        "normalized_risk": 0.0,
+        "risk_level": "LOW",
+        "ml_flag": "NORMAL",
+        "ml_anomaly_score": 0.0715,
+        "rule_flag": "NORMAL",
+        "session_data": {
+            "total_sessions": 69,
+            "total_actions": 126,
+            "total_sudo": 0,
+            "total_failed_logins": 0,
+            "total_destructive": 0,
+            "avg_session_duration": 925.1,
             "any_suspicious_seq": false
         },
         "final_verdict": "NORMAL"

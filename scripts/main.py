@@ -18,8 +18,8 @@ from threat_patterns import detect_patterns
 from insight_engine import run_insights
 from db import insert_insights, get_user_insight
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-LOG_DIR  = os.path.join(BASE_DIR, "logs")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+LOG_DIR  = os.path.join(BASE_DIR, "..", "logs")
 
 
 def load_logs(log_dir: str) -> list:

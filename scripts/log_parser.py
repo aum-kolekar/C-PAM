@@ -1,118 +1,82 @@
-import re
-
-def parse_auth_log(line):
-    if "Accepted password" in line:
-        user = re.search(r"for (\w+)", line)
-        if user:
-            return {
-                "user": user.group(1),
-                "action": "login_success",
-                "timestamp": line[:15],
-                "source": "auth_log"
-            }
-
-    if "Failed password" in line:
-        user = re.search(r"for (\w+)", line)
-        if user:
-            return {
-                "user": user.group(1),
-                "action": "login_failed",
-                "timestamp": line[:15],
-                "source": "auth_log"
-            }
-
-    if "sudo:" in line:
-        user = re.search(r"sudo:\s+(\w+)", line)
-        cmd = re.search(r"COMMAND=(.*)", line)
-        if user and cmd:
-            return {
-                "user": user.group(1),
-                "action": cmd.group(1).strip(),
-                "timestamp": line[:15],
-                "source": "auth_log"
-            }
-
-    return None
-
-
-
 # log_parser.py
 
 import re
 from datetime import datetime
 
-# auth.log has no year — we assume current year.
-# In production you'd infer year from log rotation.
-CURRENT_YEAR = datetime.now().year
-
 
 def _parse_timestamp(line: str) -> str:
     """
-    Converts 'Apr 30 14:23:01' → ISO format '2025-04-30T14:23:01'
-    Returns None if parsing fails.
+    Handles modern ISO format: 2026-04-26T05:29:41.267782+00:00
     """
-    raw = line[:15].strip()
-    try:
-        dt = datetime.strptime(f"{CURRENT_YEAR} {raw}", "%Y %b %d %H:%M:%S")
-        return dt.isoformat()
-    except ValueError:
-        return None
+    match = re.match(r'^(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2})', line)
+    if match:
+        try:
+            dt = datetime.fromisoformat(match.group(1))
+            return dt.isoformat()
+        except ValueError:
+            pass
+    return datetime.now().isoformat()
 
 
 def parse_auth_log(line: str) -> dict | None:
     ts = _parse_timestamp(line)
-    if not ts:
-        return None
 
+    # SSH successful login
     if "Accepted password" in line or "Accepted publickey" in line:
-        user = re.search(r"for (\w+) from", line)
+        user = re.search(r'for (\w+) from', line)
         if user:
-            return {
-                "user"     : user.group(1),
-                "action"   : "login_success",
-                "timestamp": ts,
-                "source"   : "auth_log",
-            }
+            return {"user": user.group(1), "action": "login_success",
+                    "timestamp": ts, "source": "auth_log"}
 
+    # SSH failed login
     if "Failed password" in line:
-        user = re.search(r"for (?:invalid user )?(\w+) from", line)
+        user = re.search(r'for (?:invalid user )?(\w+) from', line)
         if user:
-            return {
-                "user"     : user.group(1),
-                "action"   : "login_failed",
-                "timestamp": ts,
-                "source"   : "auth_log",
-            }
+            return {"user": user.group(1), "action": "login_failed",
+                    "timestamp": ts, "source": "auth_log"}
 
+    # sudo command
     if "sudo:" in line and "COMMAND=" in line:
-        user = re.search(r"sudo:\s+(\w+)\s*:", line)
-        cmd  = re.search(r"COMMAND=(.*)", line)
+        user = re.search(r'sudo:\s+(\w+)\s*:', line)
+        cmd  = re.search(r'COMMAND=(.*)', line)
         if user and cmd:
-            return {
-                "user"     : user.group(1),
-                "action"   : cmd.group(1).strip(),
-                "timestamp": ts,
-                "source"   : "auth_log",
-            }
+            return {"user": user.group(1), "action": cmd.group(1).strip(),
+                    "timestamp": ts, "source": "auth_log"}
 
-    if "session opened" in line:
-        user = re.search(r"for user (\w+)", line)
-        if user:
-            return {
-                "user"     : user.group(1),
-                "action"   : "session_open",
-                "timestamp": ts,
-                "source"   : "auth_log",
-            }
+    # session opened — covers gdm, sshd, cron, su
+    if "session opened for user" in line:
+        user = re.search(r'session opened for user (\w+)', line)
+        # skip CRON root sessions — noise
+        if user and not ("CRON" in line and user.group(1) == "root"):
+            return {"user": user.group(1), "action": "session_open",
+                    "timestamp": ts, "source": "auth_log"}
 
-    if "session closed" in line:
-        user = re.search(r"for user (\w+)", line)
+    # session closed
+    if "session closed for user" in line:
+        user = re.search(r'session closed for user (\w+)', line)
+        if user and not ("CRON" in line and user.group(1) == "root"):
+            return {"user": user.group(1), "action": "session_close",
+                    "timestamp": ts, "source": "auth_log"}
+
+    # su authentication
+    if "su:" in line and "Successful su" in line:
+        user = re.search(r'for (\w+) by', line)
         if user:
-            return {
-                "user"     : user.group(1),
-                "action"   : "session_close",
-                "timestamp": ts,
-                "source"   : "auth_log",
-            }
+            return {"user": user.group(1), "action": "su_success",
+                    "timestamp": ts, "source": "auth_log"}
+
+    # GDM / PAM login
+    if "gdm-password" in line and "session opened" in line:
+        user = re.search(r'session opened for user (\w+)', line)
+        if user:
+            return {"user": user.group(1), "action": "login_success",
+                    "timestamp": ts, "source": "auth_log"}
+
+    # pam authentication failure
+    if "pam_unix" in line and "authentication failure" in line:
+        user = re.search(r'user=(\w+)', line)
+        if user:
+            return {"user": user.group(1), "action": "login_failed",
+                    "timestamp": ts, "source": "auth_log"}
 
     return None
