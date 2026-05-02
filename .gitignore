@@ -49,9 +49,7 @@ coverage.xml
 *.py.cover
 .hypothesis/
 
-# Log files
-normalise_log.json
-riskscore_log.json
+# Log file
 .pytest_cache/
 cover/
 
@@ -60,7 +58,6 @@ cover/
 *.pot
 
 # Django stuff:
-*.log
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
@@ -210,5 +207,3 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
-./logs/normalized_logs.json 
-./logs/risk_scores.json

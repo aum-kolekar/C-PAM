@@ -1,0 +1,835 @@
+2026-04-26T05:29:41.267782+00:00 main polkitd[781]: Registered Authentication Agent for unix-session:c1 (system bus name :1.37 [/usr/bin/gnome-shell], object path /org/freedesktop/PolicyKit1/AuthenticationAgent, locale en_US.UTF-8)
+2026-04-26T05:35:02.752176+00:00 main CRON[2235]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T05:35:02.767068+00:00 main CRON[2235]: pam_unix(cron:session): session closed for user root
+2026-04-26T05:45:01.455262+00:00 main CRON[2251]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T05:45:01.471219+00:00 main CRON[2251]: pam_unix(cron:session): session closed for user root
+2026-04-26T05:55:01.169573+00:00 main CRON[2282]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T05:55:01.184463+00:00 main CRON[2282]: pam_unix(cron:session): session closed for user root
+2026-04-26T05:55:18.286670+00:00 main dbus-daemon[764]: [system] Failed to activate service 'org.bluez': timed out (service_start_timeout=25000ms)
+2026-04-26T05:58:02.578211+00:00 main gdm-password]: gkr-pam: unable to locate daemon control file
+2026-04-26T05:58:02.579008+00:00 main gdm-password]: gkr-pam: stashed password to try later in open session
+2026-04-26T05:58:02.628819+00:00 main gdm-password]: pam_unix(gdm-password:session): session opened for user c1(uid=1001) by c1(uid=0)
+2026-04-26T05:58:02.728484+00:00 main systemd-logind[803]: New session 5 of user c1.
+2026-04-26T05:58:02.872375+00:00 main (systemd): pam_unix(systemd-user:session): session opened for user c1(uid=1001) by c1(uid=0)
+2026-04-26T05:58:03.499118+00:00 main gdm-password]: gkr-pam: unlocked login keyring
+2026-04-26T05:58:04.276347+00:00 main gnome-keyring-daemon[2339]: The PKCS#11 component was already initialized
+2026-04-26T05:58:04.277013+00:00 main gnome-keyring-daemon[2533]: discover_other_daemon: 1
+2026-04-26T05:58:04.285507+00:00 main gnome-keyring-daemon[2339]: The Secret Service was already initialized
+2026-04-26T05:58:04.287339+00:00 main gnome-keyring-daemon[2541]: discover_other_daemon: 1
+2026-04-26T05:58:04.302322+00:00 main gnome-keyring-daemon[2545]: discover_other_daemon: 1
+2026-04-26T05:58:07.533387+00:00 main polkitd[781]: Registered Authentication Agent for unix-session:5 (system bus name :1.85 [/usr/bin/gnome-shell], object path /org/freedesktop/PolicyKit1/AuthenticationAgent, locale en_US.UTF-8)
+2026-04-26T05:58:08.331360+00:00 main gdm-launch-environment]: pam_unix(gdm-launch-environment:session): session closed for user gdm
+2026-04-26T05:58:08.374013+00:00 main systemd-logind[803]: Session c1 logged out. Waiting for processes to exit.
+2026-04-26T05:58:08.399591+00:00 main polkitd[781]: Unregistered Authentication Agent for unix-session:c1 (system bus name :1.37, object path /org/freedesktop/PolicyKit1/AuthenticationAgent, locale en_US.UTF-8) (disconnected from bus)
+2026-04-26T05:58:08.426064+00:00 main systemd-logind[803]: Removed session c1.
+2026-04-26T05:58:45.369271+00:00 main systemd-logind[894]: New seat seat0.
+2026-04-26T05:58:45.369273+00:00 main systemd-logind[894]: Watching system buttons on /dev/input/event0 (Power Button)
+2026-04-26T05:58:45.369275+00:00 main systemd-logind[894]: Watching system buttons on /dev/input/event1 (Sleep Button)
+2026-04-26T05:58:45.369277+00:00 main systemd-logind[894]: Watching system buttons on /dev/input/event2 (AT Translated Set 2 keyboard)
+2026-04-26T05:58:45.369370+00:00 main polkitd[875]: Loading rules from directory /etc/polkit-1/rules.d
+2026-04-26T05:58:45.369371+00:00 main polkitd[875]: Loading rules from directory /usr/share/polkit-1/rules.d
+2026-04-26T05:58:45.369389+00:00 main polkitd[875]: Finished loading, compiling and executing 16 rules
+2026-04-26T05:58:45.369399+00:00 main polkitd[875]: Acquired the name org.freedesktop.PolicyKit1 on the system bus
+2026-04-26T05:58:47.057438+00:00 main gdm-launch-environment]: pam_unix(gdm-launch-environment:session): session opened for user gdm(uid=120) by (uid=0)
+2026-04-26T05:58:47.084367+00:00 main systemd-logind[894]: New session c1 of user gdm.
+2026-04-26T05:58:47.126346+00:00 main (systemd): pam_unix(systemd-user:session): session opened for user gdm(uid=120) by gdm(uid=0)
+2026-04-26T05:58:51.175739+00:00 main polkitd[875]: Registered Authentication Agent for unix-session:c1 (system bus name :1.38 [/usr/bin/gnome-shell], object path /org/freedesktop/PolicyKit1/AuthenticationAgent, locale en_US.UTF-8)
+2026-04-26T05:58:58.368969+00:00 main gdm-password]: gkr-pam: unable to locate daemon control file
+2026-04-26T05:58:58.369054+00:00 main gdm-password]: gkr-pam: stashed password to try later in open session
+2026-04-26T05:58:58.434953+00:00 main gdm-password]: pam_unix(gdm-password:session): session opened for user c1(uid=1001) by c1(uid=0)
+2026-04-26T05:58:58.468018+00:00 main systemd-logind[894]: New session 2 of user c1.
+2026-04-26T05:58:58.509543+00:00 main (systemd): pam_unix(systemd-user:session): session opened for user c1(uid=1001) by c1(uid=0)
+2026-04-26T05:58:59.366097+00:00 main gdm-password]: gkr-pam: unlocked login keyring
+2026-04-26T05:59:00.240752+00:00 main gnome-keyring-daemon[1845]: The Secret Service was already initialized
+2026-04-26T05:59:00.242036+00:00 main gnome-keyring-daemon[1845]: The PKCS#11 component was already initialized
+2026-04-26T05:59:00.242257+00:00 main gnome-keyring-daemon[2065]: discover_other_daemon: 1
+2026-04-26T05:59:00.244250+00:00 main gnome-keyring-daemon[2066]: discover_other_daemon: 1
+2026-04-26T05:59:00.251677+00:00 main gnome-keyring-daemon[2069]: discover_other_daemon: 1
+2026-04-26T05:59:01.634586+00:00 main polkitd[875]: Registered Authentication Agent for unix-session:2 (system bus name :1.75 [/usr/bin/gnome-shell], object path /org/freedesktop/PolicyKit1/AuthenticationAgent, locale en_US.UTF-8)
+2026-04-26T05:59:03.159898+00:00 main gdm-launch-environment]: pam_unix(gdm-launch-environment:session): session closed for user gdm
+2026-04-26T05:59:03.221093+00:00 main systemd-logind[894]: Session c1 logged out. Waiting for processes to exit.
+2026-04-26T05:59:03.244523+00:00 main polkitd[875]: Unregistered Authentication Agent for unix-session:c1 (system bus name :1.38, object path /org/freedesktop/PolicyKit1/AuthenticationAgent, locale en_US.UTF-8) (disconnected from bus)
+2026-04-26T05:59:03.257127+00:00 main systemd-logind[894]: Removed session c1.
+2026-04-26T06:00:12.113000+00:00 main (sd-pam): pam_unix(systemd-user:session): session closed for user gdm
+2026-04-26T06:00:38.364341+00:00 main dbus-daemon[859]: [system] Failed to activate service 'org.bluez': timed out (service_start_timeout=25000ms)
+2026-04-26T06:00:58.910104+00:00 main su[3281]: (to main) c1 on pts/0
+2026-04-26T06:00:58.937786+00:00 main su[3281]: pam_unix(su-l:session): session opened for user main(uid=1000) by c1(uid=1001)
+2026-04-26T06:05:02.200744+00:00 main CRON[3334]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T06:05:02.213404+00:00 main CRON[3334]: pam_unix(cron:session): session closed for user root
+2026-04-26T06:15:04.110481+00:00 main CRON[3382]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T06:15:04.126225+00:00 main CRON[3382]: pam_unix(cron:session): session closed for user root
+2026-04-26T06:17:01.173582+00:00 main CRON[3391]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T06:17:01.202484+00:00 main CRON[3391]: pam_unix(cron:session): session closed for user root
+2026-04-26T06:25:01.564264+00:00 main CRON[3426]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T06:25:01.564972+00:00 main CRON[3425]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T06:25:01.572408+00:00 main CRON[3425]: pam_unix(cron:session): session closed for user root
+2026-04-26T06:25:01.575119+00:00 main CRON[3426]: pam_unix(cron:session): session closed for user root
+2026-04-26T07:50:29.199416+00:00 main CRON[3493]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T07:50:29.202989+00:00 main CRON[3493]: pam_unix(cron:session): session closed for user root
+2026-04-26T07:50:29.214347+00:00 main CRON[3495]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T07:50:29.219024+00:00 main CRON[3495]: pam_unix(cron:session): session closed for user root
+2026-04-26T07:55:01.975775+00:00 main CRON[3511]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T07:55:01.999176+00:00 main CRON[3511]: pam_unix(cron:session): session closed for user root
+2026-04-26T08:05:01.733558+00:00 main CRON[3545]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T08:05:01.754923+00:00 main CRON[3545]: pam_unix(cron:session): session closed for user root
+2026-04-26T08:15:01.418569+00:00 main CRON[3593]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T08:15:01.439413+00:00 main CRON[3593]: pam_unix(cron:session): session closed for user root
+2026-04-26T08:17:01.663213+00:00 main CRON[3616]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T08:17:01.688623+00:00 main CRON[3616]: pam_unix(cron:session): session closed for user root
+2026-04-26T08:25:01.261474+00:00 main CRON[3645]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T08:25:01.283305+00:00 main CRON[3645]: pam_unix(cron:session): session closed for user root
+2026-04-26T08:30:01.808237+00:00 main CRON[3666]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T08:30:01.821154+00:00 main CRON[3666]: pam_unix(cron:session): session closed for user root
+2026-04-26T08:35:01.135777+00:00 main CRON[3689]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T08:35:01.225398+00:00 main CRON[3689]: pam_unix(cron:session): session closed for user root
+2026-04-26T08:45:01.787477+00:00 main CRON[3724]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T08:45:01.811338+00:00 main CRON[3724]: pam_unix(cron:session): session closed for user root
+2026-04-26T08:55:01.566102+00:00 main CRON[3766]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T08:55:01.584858+00:00 main CRON[3766]: pam_unix(cron:session): session closed for user root
+2026-04-26T09:05:01.851492+00:00 main CRON[3883]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T09:05:01.868525+00:00 main CRON[3883]: pam_unix(cron:session): session closed for user root
+2026-04-26T09:15:01.665363+00:00 main CRON[3914]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T09:15:01.712483+00:00 main CRON[3914]: pam_unix(cron:session): session closed for user root
+2026-04-26T09:17:02.061957+00:00 main CRON[3918]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T09:17:02.080455+00:00 main CRON[3918]: pam_unix(cron:session): session closed for user root
+2026-04-26T09:25:01.815444+00:00 main CRON[3945]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T09:25:01.835547+00:00 main CRON[3945]: pam_unix(cron:session): session closed for user root
+2026-04-26T09:30:01.889332+00:00 main CRON[3970]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T09:30:01.900706+00:00 main CRON[3970]: pam_unix(cron:session): session closed for user root
+2026-04-26T09:35:02.025220+00:00 main CRON[3991]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T09:35:02.045759+00:00 main CRON[3991]: pam_unix(cron:session): session closed for user root
+2026-04-26T09:45:02.140723+00:00 main CRON[4028]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T09:45:02.157558+00:00 main CRON[4028]: pam_unix(cron:session): session closed for user root
+2026-04-26T09:55:01.661296+00:00 main CRON[4057]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T09:55:01.680485+00:00 main CRON[4057]: pam_unix(cron:session): session closed for user root
+2026-04-26T10:05:02.065291+00:00 main CRON[4093]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T10:05:02.084138+00:00 main CRON[4093]: pam_unix(cron:session): session closed for user root
+2026-04-26T10:15:01.975193+00:00 main CRON[4128]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T10:15:01.991646+00:00 main CRON[4128]: pam_unix(cron:session): session closed for user root
+2026-04-26T10:17:02.008958+00:00 main CRON[4145]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T10:17:02.025894+00:00 main CRON[4145]: pam_unix(cron:session): session closed for user root
+2026-04-26T10:25:01.117263+00:00 main CRON[4166]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T10:25:01.131378+00:00 main CRON[4166]: pam_unix(cron:session): session closed for user root
+2026-04-26T10:30:01.191619+00:00 main CRON[4174]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T10:30:01.199989+00:00 main CRON[4174]: pam_unix(cron:session): session closed for user root
+2026-04-26T10:35:01.227911+00:00 main CRON[4200]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T10:35:01.243062+00:00 main CRON[4200]: pam_unix(cron:session): session closed for user root
+2026-04-26T10:45:01.284392+00:00 main CRON[4228]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T10:45:01.296854+00:00 main CRON[4228]: pam_unix(cron:session): session closed for user root
+2026-04-26T10:55:01.377906+00:00 main CRON[4264]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T10:55:01.390323+00:00 main CRON[4264]: pam_unix(cron:session): session closed for user root
+2026-04-26T11:05:01.457640+00:00 main CRON[4304]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T11:05:01.466657+00:00 main CRON[4304]: pam_unix(cron:session): session closed for user root
+2026-04-26T11:15:01.944999+00:00 main CRON[4333]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T11:15:01.961274+00:00 main CRON[4333]: pam_unix(cron:session): session closed for user root
+2026-04-26T11:17:01.072148+00:00 main CRON[4341]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T11:17:01.085712+00:00 main CRON[4341]: pam_unix(cron:session): session closed for user root
+2026-04-26T11:25:01.876694+00:00 main CRON[4368]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T11:25:01.891539+00:00 main CRON[4368]: pam_unix(cron:session): session closed for user root
+2026-04-26T11:30:01.791416+00:00 main CRON[4391]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T11:30:01.797533+00:00 main CRON[4391]: pam_unix(cron:session): session closed for user root
+2026-04-26T11:35:01.704283+00:00 main CRON[4405]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T11:35:01.714755+00:00 main CRON[4405]: pam_unix(cron:session): session closed for user root
+2026-04-26T11:45:01.953272+00:00 main CRON[4437]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T11:45:01.963831+00:00 main CRON[4437]: pam_unix(cron:session): session closed for user root
+2026-04-26T11:48:47.770576+00:00 main gdm-password]: gkr-pam: unlocked login keyring
+2026-04-26T11:50:00.927111+00:00 main gdm-launch-environment]: pam_unix(gdm-launch-environment:session): session opened for user gdm(uid=120) by (uid=0)
+2026-04-26T11:50:00.942806+00:00 main systemd-logind[894]: New session c2 of user gdm.
+2026-04-26T11:50:00.989718+00:00 main (systemd): pam_unix(systemd-user:session): session opened for user gdm(uid=120) by gdm(uid=0)
+2026-04-26T11:50:02.844280+00:00 main polkitd[875]: Registered Authentication Agent for unix-session:c2 (system bus name :1.137 [/usr/bin/gnome-shell], object path /org/freedesktop/PolicyKit1/AuthenticationAgent, locale en_US.UTF-8)
+2026-04-26T11:55:01.137770+00:00 main CRON[5156]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T11:55:01.160949+00:00 main CRON[5156]: pam_unix(cron:session): session closed for user root
+2026-04-26T12:05:01.177291+00:00 main CRON[5410]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T12:05:01.194348+00:00 main CRON[5410]: pam_unix(cron:session): session closed for user root
+2026-04-26T12:08:34.704753+00:00 main gdm-password]: gkr-pam: unable to locate daemon control file
+2026-04-26T12:08:34.705002+00:00 main gdm-password]: gkr-pam: stashed password to try later in open session
+2026-04-26T12:08:34.795476+00:00 main gdm-password]: pam_unix(gdm-password:session): session opened for user main(uid=1000) by main(uid=0)
+2026-04-26T12:08:34.878089+00:00 main systemd-logind[894]: New session 46 of user main.
+2026-04-26T12:08:35.012969+00:00 main (systemd): pam_unix(systemd-user:session): session opened for user main(uid=1000) by main(uid=0)
+2026-04-26T12:08:35.841799+00:00 main gdm-password]: gkr-pam: unlocked login keyring
+2026-04-26T12:08:36.519830+00:00 main gnome-keyring-daemon[5469]: The PKCS#11 component was already initialized
+2026-04-26T12:08:36.520713+00:00 main gnome-keyring-daemon[5715]: discover_other_daemon: 1
+2026-04-26T12:08:36.530142+00:00 main gnome-keyring-daemon[5469]: The Secret Service was already initialized
+2026-04-26T12:08:36.533098+00:00 main gnome-keyring-daemon[5721]: discover_other_daemon: 1
+2026-04-26T12:08:36.545310+00:00 main gnome-keyring-daemon[5722]: discover_other_daemon: 1
+2026-04-26T12:08:39.619307+00:00 main polkitd[875]: Registered Authentication Agent for unix-session:46 (system bus name :1.171 [/usr/bin/gnome-shell], object path /org/freedesktop/PolicyKit1/AuthenticationAgent, locale en_US.UTF-8)
+2026-04-26T12:08:40.630388+00:00 main gdm-launch-environment]: pam_unix(gdm-launch-environment:session): session closed for user gdm
+2026-04-26T12:08:40.656582+00:00 main systemd-logind[894]: Session c2 logged out. Waiting for processes to exit.
+2026-04-26T12:08:40.682340+00:00 main systemd-logind[894]: Removed session c2.
+2026-04-26T12:08:40.734189+00:00 main polkitd[875]: Unregistered Authentication Agent for unix-session:c2 (system bus name :1.137, object path /org/freedesktop/PolicyKit1/AuthenticationAgent, locale en_US.UTF-8) (disconnected from bus)
+2026-04-26T12:08:51.468257+00:00 main (sd-pam): pam_unix(systemd-user:session): session closed for user gdm
+2026-04-26T12:09:25.206161+00:00 main gnome-keyring-daemon[5469]: asked to register item /org/freedesktop/secrets/collection/login/1, but it's already registered
+2026-04-26T12:09:31.443866+00:00 main dbus-daemon[859]: [system] Failed to activate service 'org.bluez': timed out (service_start_timeout=25000ms)
+2026-04-26T12:09:54.965102+00:00 main pkexec: pam_unix(polkit-1:session): session opened for user root(uid=0) by main(uid=1000)
+2026-04-26T12:09:55.031961+00:00 main pkexec[7785]: main: Executing command [USER=root] [TTY=unknown] [CWD=/home/main] [COMMAND=/usr/lib/update-notifier/package-system-locked]
+2026-04-26T12:15:01.289923+00:00 main CRON[9246]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T12:15:01.416458+00:00 main CRON[9246]: pam_unix(cron:session): session closed for user root
+2026-04-26T12:17:01.430889+00:00 main CRON[9283]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T12:17:01.449636+00:00 main CRON[9283]: pam_unix(cron:session): session closed for user root
+2026-04-26T14:03:39.946035+00:00 main CRON[9356]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T14:03:40.037409+00:00 main CRON[9356]: pam_unix(cron:session): session closed for user root
+2026-04-26T14:03:40.047658+00:00 main CRON[9358]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T14:03:40.061888+00:00 main CRON[9358]: pam_unix(cron:session): session closed for user root
+2026-04-26T14:05:01.073160+00:00 main CRON[9373]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T14:05:01.087245+00:00 main CRON[9373]: pam_unix(cron:session): session closed for user root
+2026-04-26T14:15:01.128615+00:00 main CRON[9466]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T14:15:01.150774+00:00 main CRON[9466]: pam_unix(cron:session): session closed for user root
+2026-04-26T14:17:01.168404+00:00 main CRON[9483]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T14:17:01.184918+00:00 main CRON[9483]: pam_unix(cron:session): session closed for user root
+2026-04-26T14:25:01.201701+00:00 main CRON[9558]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T14:25:01.220886+00:00 main CRON[9558]: pam_unix(cron:session): session closed for user root
+2026-04-26T14:30:01.283823+00:00 main CRON[9615]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T14:30:01.362914+00:00 main CRON[9615]: pam_unix(cron:session): session closed for user root
+2026-04-26T14:35:01.373371+00:00 main CRON[9664]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T14:35:01.389494+00:00 main CRON[9664]: pam_unix(cron:session): session closed for user root
+2026-04-26T14:45:01.483419+00:00 main CRON[9767]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T14:45:01.499638+00:00 main CRON[9767]: pam_unix(cron:session): session closed for user root
+2026-04-26T14:55:01.542481+00:00 main CRON[9877]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T14:55:01.564845+00:00 main CRON[9877]: pam_unix(cron:session): session closed for user root
+2026-04-26T15:05:01.625177+00:00 main CRON[10116]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T15:05:01.645241+00:00 main CRON[10116]: pam_unix(cron:session): session closed for user root
+2026-04-26T15:15:01.788794+00:00 main CRON[10233]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T15:15:01.865721+00:00 main CRON[10233]: pam_unix(cron:session): session closed for user root
+2026-04-26T15:17:01.900447+00:00 main CRON[10263]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T15:17:01.925398+00:00 main CRON[10263]: pam_unix(cron:session): session closed for user root
+2026-04-26T15:25:01.963051+00:00 main CRON[10345]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T15:25:01.986986+00:00 main CRON[10345]: pam_unix(cron:session): session closed for user root
+2026-04-26T15:30:02.030120+00:00 main CRON[10384]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T15:30:02.119257+00:00 main CRON[10384]: pam_unix(cron:session): session closed for user root
+2026-04-26T15:35:01.109430+00:00 main CRON[10445]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T15:35:01.387727+00:00 main CRON[10445]: pam_unix(cron:session): session closed for user root
+2026-04-26T15:45:01.571355+00:00 main CRON[10533]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T15:45:01.597003+00:00 main CRON[10533]: pam_unix(cron:session): session closed for user root
+2026-04-26T15:55:01.700860+00:00 main CRON[10640]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T15:55:01.765527+00:00 main CRON[10640]: pam_unix(cron:session): session closed for user root
+2026-04-26T16:05:01.834339+00:00 main CRON[10764]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T16:05:01.857027+00:00 main CRON[10764]: pam_unix(cron:session): session closed for user root
+2026-04-26T16:15:01.890122+00:00 main CRON[10861]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T16:15:01.937434+00:00 main CRON[10861]: pam_unix(cron:session): session closed for user root
+2026-04-26T16:17:01.975941+00:00 main CRON[10875]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T16:17:02.020278+00:00 main CRON[10875]: pam_unix(cron:session): session closed for user root
+2026-04-26T16:25:01.050757+00:00 main CRON[10952]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T16:25:01.077121+00:00 main CRON[10952]: pam_unix(cron:session): session closed for user root
+2026-04-26T16:30:01.106744+00:00 main CRON[11010]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T16:30:01.126373+00:00 main CRON[11010]: pam_unix(cron:session): session closed for user root
+2026-04-26T16:35:01.184098+00:00 main CRON[11059]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T16:35:01.257779+00:00 main CRON[11059]: pam_unix(cron:session): session closed for user root
+2026-04-26T16:45:01.335499+00:00 main CRON[11166]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T16:45:01.419274+00:00 main CRON[11166]: pam_unix(cron:session): session closed for user root
+2026-04-26T16:55:01.492103+00:00 main CRON[11263]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T16:55:01.520843+00:00 main CRON[11263]: pam_unix(cron:session): session closed for user root
+2026-04-26T17:05:01.599849+00:00 main CRON[11355]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T17:05:01.654934+00:00 main CRON[11355]: pam_unix(cron:session): session closed for user root
+2026-04-26T17:15:01.710477+00:00 main CRON[11455]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T17:15:01.802618+00:00 main CRON[11455]: pam_unix(cron:session): session closed for user root
+2026-04-26T17:15:21.167260+00:00 main gdm-password]: gkr-pam: unlocked login keyring
+2026-04-26T17:17:01.887588+00:00 main CRON[11582]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T17:17:01.910095+00:00 main CRON[11582]: pam_unix(cron:session): session closed for user root
+2026-04-26T17:25:01.972326+00:00 main CRON[11678]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T17:25:02.108390+00:00 main CRON[11678]: pam_unix(cron:session): session closed for user root
+2026-04-26T17:30:01.382418+00:00 main CRON[11718]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T17:30:01.415174+00:00 main CRON[11718]: pam_unix(cron:session): session closed for user root
+2026-04-26T17:35:01.581190+00:00 main CRON[11786]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T17:35:01.774883+00:00 main CRON[11786]: pam_unix(cron:session): session closed for user root
+2026-04-26T17:45:01.237439+00:00 main CRON[11882]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T17:45:01.399245+00:00 main CRON[11882]: pam_unix(cron:session): session closed for user root
+2026-04-26T17:55:01.600382+00:00 main CRON[11975]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T17:55:01.683770+00:00 main CRON[11975]: pam_unix(cron:session): session closed for user root
+2026-04-26T18:05:01.753482+00:00 main CRON[12261]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T18:05:01.917657+00:00 main CRON[12261]: pam_unix(cron:session): session closed for user root
+2026-04-26T18:14:07.612834+00:00 main gdm-password]: gkr-pam: unlocked login keyring
+2026-04-26T18:15:01.037004+00:00 main CRON[12580]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T18:15:01.134983+00:00 main CRON[12580]: pam_unix(cron:session): session closed for user root
+2026-04-26T18:17:01.166298+00:00 main CRON[12683]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T18:17:01.177964+00:00 main CRON[12683]: pam_unix(cron:session): session closed for user root
+2026-04-26T18:23:34.941641+00:00 main sudo:     main : TTY=pts/1 ; PWD=/home/main/cpam/C-PAM ; USER=root ; COMMAND=/usr/bin/ls /usr/bin/
+2026-04-26T18:23:34.944270+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-04-26T18:23:35.005785+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-04-26T18:25:01.208262+00:00 main CRON[13200]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T18:25:01.220250+00:00 main CRON[13200]: pam_unix(cron:session): session closed for user root
+2026-04-26T18:28:31.311440+00:00 main su[13296]: (to c1) main on pts/1
+2026-04-26T18:28:31.317212+00:00 main su[13296]: pam_unix(su-l:session): session opened for user c1(uid=1001) by main(uid=1000)
+2026-04-26T18:28:49.689921+00:00 main sudo:       c1 : user NOT in sudoers ; TTY=pts/1 ; PWD=/home/c1 ; USER=root ; COMMAND=/usr/bin/cat /etc/passwd
+2026-04-26T18:29:11.489959+00:00 main sudo:       c1 : user NOT in sudoers ; TTY=pts/1 ; PWD=/home/c1 ; USER=root ; COMMAND=/usr/bin/cat /var/log/auth.log
+2026-04-26T18:29:15.749999+00:00 main su[13296]: pam_unix(su-l:session): session closed for user c1
+2026-04-26T18:29:37.401530+00:00 main sudo:     main : TTY=pts/1 ; PWD=/home/main/cpam/C-PAM ; USER=root ; COMMAND=/usr/bin/cat /var/log/auth.log
+2026-04-26T18:29:37.415195+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-04-26T18:29:37.438935+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-04-26T18:30:01.247638+00:00 main CRON[13361]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T18:30:01.335552+00:00 main CRON[13361]: pam_unix(cron:session): session closed for user root
+2026-04-26T18:35:01.393841+00:00 main CRON[14031]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T18:35:01.404104+00:00 main CRON[14031]: pam_unix(cron:session): session closed for user root
+2026-04-26T18:45:01.581218+00:00 main CRON[15127]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-26T18:45:01.675039+00:00 main CRON[15127]: pam_unix(cron:session): session closed for user root
+2026-04-26T18:48:44.897397+00:00 main gdm-password]: gkr-pam: unlocked login keyring
+2026-04-26T18:49:18.926886+00:00 main systemd-logind[894]: The system will power off at Sun 2026-04-26 18:50:18 UTC!
+2026-04-26T18:49:18.930961+00:00 main systemd-logind[894]: Creating /run/nologin, blocking further logins...
+2026-04-26T18:50:19.304458+00:00 main systemd-logind[894]: The system will power off now!
+2026-04-26T18:50:19.436039+00:00 main systemd-logind[894]: System is powering down.
+2026-04-26T18:50:19.482175+00:00 main gdm-password]: pam_unix(gdm-password:session): session closed for user main
+2026-04-26T18:50:19.483430+00:00 main gdm-password]: pam_unix(gdm-password:session): session closed for user c1
+2026-04-27T12:00:07.295226+00:00 main systemd-logind[787]: New seat seat0.
+2026-04-27T12:00:07.295253+00:00 main systemd-logind[787]: Watching system buttons on /dev/input/event0 (Power Button)
+2026-04-27T12:00:07.295263+00:00 main systemd-logind[787]: Watching system buttons on /dev/input/event1 (Sleep Button)
+2026-04-27T12:00:07.295292+00:00 main systemd-logind[787]: Watching system buttons on /dev/input/event2 (AT Translated Set 2 keyboard)
+2026-04-27T12:00:07.296480+00:00 main polkitd[775]: Loading rules from directory /etc/polkit-1/rules.d
+2026-04-27T12:00:07.296494+00:00 main polkitd[775]: Loading rules from directory /usr/share/polkit-1/rules.d
+2026-04-27T12:00:07.297000+00:00 main polkitd[775]: Finished loading, compiling and executing 16 rules
+2026-04-27T12:00:07.297000+00:00 main polkitd[775]: Acquired the name org.freedesktop.PolicyKit1 on the system bus
+2026-04-27T12:00:38.740501+00:00 main gdm-launch-environment]: pam_unix(gdm-launch-environment:session): session opened for user gdm(uid=120) by (uid=0)
+2026-04-27T12:00:38.797293+00:00 main systemd-logind[787]: New session c1 of user gdm.
+2026-04-27T12:00:38.975197+00:00 main (systemd): pam_unix(systemd-user:session): session opened for user gdm(uid=120) by gdm(uid=0)
+2026-04-27T12:00:52.291756+00:00 main polkitd[775]: Registered Authentication Agent for unix-session:c1 (system bus name :1.36 [/usr/bin/gnome-shell], object path /org/freedesktop/PolicyKit1/AuthenticationAgent, locale en_US.UTF-8)
+2026-04-27T12:01:40.686676+00:00 main gdm-password]: gkr-pam: unable to locate daemon control file
+2026-04-27T12:01:40.686764+00:00 main gdm-password]: gkr-pam: stashed password to try later in open session
+2026-04-27T12:01:40.746714+00:00 main gdm-password]: pam_unix(gdm-password:session): session opened for user main(uid=1000) by main(uid=0)
+2026-04-27T12:01:40.800279+00:00 main systemd-logind[787]: New session 2 of user main.
+2026-04-27T12:01:40.890587+00:00 main (systemd): pam_unix(systemd-user:session): session opened for user main(uid=1000) by main(uid=0)
+2026-04-27T12:01:41.741818+00:00 main gdm-password]: gkr-pam: unlocked login keyring
+2026-04-27T12:01:42.712961+00:00 main gnome-keyring-daemon[2010]: The PKCS#11 component was already initialized
+2026-04-27T12:01:42.713515+00:00 main gnome-keyring-daemon[2363]: discover_other_daemon: 1
+2026-04-27T12:01:42.726527+00:00 main gnome-keyring-daemon[2010]: The Secret Service was already initialized
+2026-04-27T12:01:42.727237+00:00 main gnome-keyring-daemon[2371]: discover_other_daemon: 1
+2026-04-27T12:01:42.755138+00:00 main gnome-keyring-daemon[2374]: discover_other_daemon: 1
+2026-04-27T12:02:13.190348+00:00 main polkitd[775]: Registered Authentication Agent for unix-session:2 (system bus name :1.80 [/usr/bin/gnome-shell], object path /org/freedesktop/PolicyKit1/AuthenticationAgent, locale en_US.UTF-8)
+2026-04-27T12:02:28.293190+00:00 main gdm-launch-environment]: pam_unix(gdm-launch-environment:session): session closed for user gdm
+2026-04-27T12:02:28.747735+00:00 main systemd-logind[787]: Session c1 logged out. Waiting for processes to exit.
+2026-04-27T12:02:29.074431+00:00 main polkitd[775]: Unregistered Authentication Agent for unix-session:c1 (system bus name :1.36, object path /org/freedesktop/PolicyKit1/AuthenticationAgent, locale en_US.UTF-8) (disconnected from bus)
+2026-04-27T12:02:29.235508+00:00 main systemd-logind[787]: Removed session c1.
+2026-04-27T12:02:34.856995+00:00 main polkitd[775]: Unregistered Authentication Agent for unix-session:2 (system bus name :1.80, object path /org/freedesktop/PolicyKit1/AuthenticationAgent, locale en_US.UTF-8) (disconnected from bus)
+2026-04-27T12:02:40.363856+00:00 main (sd-pam): pam_unix(systemd-user:session): session closed for user gdm
+2026-04-27T12:02:40.593363+00:00 main gdm-password]: pam_unix(gdm-password:session): session closed for user main
+2026-04-27T12:02:41.180067+00:00 main systemd-logind[787]: Session 2 logged out. Waiting for processes to exit.
+2026-04-27T12:02:41.185571+00:00 main systemd-logind[787]: Removed session 2.
+2026-04-27T12:02:41.305050+00:00 main gdm-launch-environment]: pam_unix(gdm-launch-environment:session): session opened for user gdm(uid=120) by (uid=0)
+2026-04-27T12:02:41.336171+00:00 main systemd-logind[787]: New session c2 of user gdm.
+2026-04-27T12:02:41.382096+00:00 main (systemd): pam_unix(systemd-user:session): session opened for user gdm(uid=120) by gdm(uid=0)
+2026-04-27T12:02:43.532017+00:00 main polkitd[775]: Registered Authentication Agent for unix-session:c2 (system bus name :1.121 [/usr/bin/gnome-shell], object path /org/freedesktop/PolicyKit1/AuthenticationAgent, locale en_US.UTF-8)
+2026-04-27T12:02:49.639533+00:00 main gdm-password]: gkr-pam: unable to locate daemon control file
+2026-04-27T12:02:49.640671+00:00 main gdm-password]: gkr-pam: stashed password to try later in open session
+2026-04-27T12:02:49.690560+00:00 main gdm-password]: pam_unix(gdm-password:session): session opened for user main(uid=1000) by main(uid=0)
+2026-04-27T12:02:49.709773+00:00 main systemd-logind[787]: New session 5 of user main.
+2026-04-27T12:02:49.913619+00:00 main gdm-password]: gkr-pam: unlocked login keyring
+2026-04-27T12:02:50.377738+00:00 main gnome-keyring-daemon[3841]: The PKCS#11 component was already initialized
+2026-04-27T12:02:50.378048+00:00 main gnome-keyring-daemon[3841]: The Secret Service was already initialized
+2026-04-27T12:02:50.378424+00:00 main gnome-keyring-daemon[3970]: discover_other_daemon: 1
+2026-04-27T12:02:50.378945+00:00 main gnome-keyring-daemon[3972]: discover_other_daemon: 1
+2026-04-27T12:02:50.398632+00:00 main gnome-keyring-daemon[3977]: discover_other_daemon: 1
+2026-04-27T12:02:52.466828+00:00 main polkitd[775]: Registered Authentication Agent for unix-session:5 (system bus name :1.142 [/usr/bin/gnome-shell], object path /org/freedesktop/PolicyKit1/AuthenticationAgent, locale en_US.UTF-8)
+2026-04-27T12:02:53.432656+00:00 main gdm-launch-environment]: pam_unix(gdm-launch-environment:session): session closed for user gdm
+2026-04-27T12:02:53.465276+00:00 main systemd-logind[787]: Session c2 logged out. Waiting for processes to exit.
+2026-04-27T12:02:53.490798+00:00 main polkitd[775]: Unregistered Authentication Agent for unix-session:c2 (system bus name :1.121, object path /org/freedesktop/PolicyKit1/AuthenticationAgent, locale en_US.UTF-8) (disconnected from bus)
+2026-04-27T12:02:53.502009+00:00 main systemd-logind[787]: Removed session c2.
+2026-04-27T12:03:03.994164+00:00 main (sd-pam): pam_unix(systemd-user:session): session closed for user gdm
+2026-04-27T12:04:21.683943+00:00 main pkexec: pam_unix(polkit-1:session): session opened for user root(uid=0) by main(uid=1000)
+2026-04-27T12:04:21.686817+00:00 main pkexec[4841]: main: Executing command [USER=root] [TTY=unknown] [CWD=/home/main] [COMMAND=/usr/lib/update-notifier/package-system-locked]
+2026-04-27T12:05:01.751923+00:00 main CRON[4885]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-27T12:05:01.773549+00:00 main CRON[4885]: pam_unix(cron:session): session closed for user root
+2026-04-27T12:15:02.156346+00:00 main CRON[5542]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-27T12:15:02.203895+00:00 main CRON[5542]: pam_unix(cron:session): session closed for user root
+2026-04-27T12:17:01.413182+00:00 main CRON[5600]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-27T12:17:01.433661+00:00 main CRON[5600]: pam_unix(cron:session): session closed for user root
+2026-04-27T12:25:01.986874+00:00 main CRON[5833]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-27T12:25:02.016411+00:00 main CRON[5833]: pam_unix(cron:session): session closed for user root
+2026-04-27T12:29:27.247266+00:00 main gdm-password]: gkr-pam: unlocked login keyring
+2026-04-27T12:30:01.933367+00:00 main CRON[5974]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-27T12:30:01.933576+00:00 main CRON[5974]: pam_unix(cron:session): session closed for user root
+2026-04-27T12:33:36.816576+00:00 main polkitd[775]: Reloading rules
+2026-04-27T12:33:36.818579+00:00 main polkitd[775]: Collecting garbage unconditionally...
+2026-04-27T12:33:36.820332+00:00 main polkitd[775]: Loading rules from directory /etc/polkit-1/rules.d
+2026-04-27T12:33:36.820780+00:00 main polkitd[775]: Loading rules from directory /usr/share/polkit-1/rules.d
+2026-04-27T12:33:36.833540+00:00 main polkitd[775]: Finished loading, compiling and executing 16 rules
+2026-04-27T12:33:36.834595+00:00 main polkitd[775]: Reloading rules
+2026-04-27T12:33:36.835332+00:00 main polkitd[775]: Collecting garbage unconditionally...
+2026-04-27T12:33:36.835332+00:00 main polkitd[775]: Loading rules from directory /etc/polkit-1/rules.d
+2026-04-27T12:33:36.835332+00:00 main polkitd[775]: Loading rules from directory /usr/share/polkit-1/rules.d
+2026-04-27T12:33:36.843765+00:00 main polkitd[775]: Finished loading, compiling and executing 16 rules
+2026-04-27T12:34:05.763048+00:00 main pkexec: pam_unix(polkit-1:session): session opened for user root(uid=0) by main(uid=1000)
+2026-04-27T12:34:05.774983+00:00 main pkexec[16071]: main: Executing command [USER=root] [TTY=unknown] [CWD=/home/main] [COMMAND=/usr/lib/update-notifier/package-system-locked]
+2026-04-27T12:35:01.700351+00:00 main CRON[16167]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-27T12:35:01.717718+00:00 main CRON[16167]: pam_unix(cron:session): session closed for user root
+2026-04-27T12:37:09.517798+00:00 main pkexec: pam_unix(polkit-1:session): session opened for user root(uid=0) by main(uid=1000)
+2026-04-27T12:37:09.556352+00:00 main pkexec[16205]: main: Executing command [USER=root] [TTY=unknown] [CWD=/home/main] [COMMAND=/usr/lib/update-notifier/package-system-locked]
+2026-04-27T12:39:30.899498+00:00 main dbus-daemon[763]: [system] Failed to activate service 'org.bluez': timed out (service_start_timeout=25000ms)
+2026-04-27T12:43:03.115761+00:00 main gdm-password]: gkr-pam: unlocked login keyring
+2026-04-27T12:45:02.712023+00:00 main CRON[16417]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-27T12:45:02.762111+00:00 main CRON[16417]: pam_unix(cron:session): session closed for user root
+2026-04-27T12:55:01.441346+00:00 main CRON[18340]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-27T12:55:01.462817+00:00 main CRON[18340]: pam_unix(cron:session): session closed for user root
+2026-04-27T12:58:07.911919+00:00 main pkexec: pam_unix(polkit-1:session): session opened for user root(uid=0) by main(uid=1000)
+2026-04-27T12:58:07.917172+00:00 main pkexec[18730]: main: Executing command [USER=root] [TTY=unknown] [CWD=/home/main] [COMMAND=/usr/lib/update-notifier/package-system-locked]
+2026-04-27T13:05:01.589604+00:00 main CRON[19057]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-27T13:05:01.761444+00:00 main CRON[19057]: pam_unix(cron:session): session closed for user root
+2026-04-27T13:15:01.822105+00:00 main CRON[19165]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-27T13:15:01.849924+00:00 main CRON[19165]: pam_unix(cron:session): session closed for user root
+2026-04-27T13:15:42.872159+00:00 main gdm-password]: gkr-pam: unlocked login keyring
+2026-04-27T13:17:01.876911+00:00 main CRON[19319]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-27T13:17:01.934560+00:00 main CRON[19319]: pam_unix(cron:session): session closed for user root
+2026-04-27T13:25:02.081650+00:00 main CRON[19390]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-27T13:25:02.193015+00:00 main CRON[19390]: pam_unix(cron:session): session closed for user root
+2026-04-27T13:30:01.222839+00:00 main CRON[19421]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-27T13:30:01.243851+00:00 main CRON[19421]: pam_unix(cron:session): session closed for user root
+2026-04-27T13:33:20.108780+00:00 main systemd-logind[787]: Power key pressed short.
+2026-04-27T13:33:20.157216+00:00 main systemd-logind[787]: The system will power off now!
+2026-04-27T13:33:20.336254+00:00 main systemd-logind[787]: System is powering down.
+2026-04-27T13:33:20.394194+00:00 main gdm-password]: pam_unix(gdm-password:session): session closed for user main
+2026-04-27T15:28:58.967523+00:00 main systemd-logind[774]: New seat seat0.
+2026-04-27T15:28:58.968413+00:00 main systemd-logind[774]: Watching system buttons on /dev/input/event0 (Power Button)
+2026-04-27T15:28:58.968682+00:00 main systemd-logind[774]: Watching system buttons on /dev/input/event1 (Sleep Button)
+2026-04-27T15:28:58.968934+00:00 main systemd-logind[774]: Watching system buttons on /dev/input/event2 (AT Translated Set 2 keyboard)
+2026-04-27T15:28:58.969159+00:00 main polkitd[754]: Loading rules from directory /etc/polkit-1/rules.d
+2026-04-27T15:28:58.969172+00:00 main polkitd[754]: Loading rules from directory /usr/share/polkit-1/rules.d
+2026-04-27T15:28:58.969189+00:00 main polkitd[754]: Finished loading, compiling and executing 16 rules
+2026-04-27T15:28:58.969213+00:00 main polkitd[754]: Acquired the name org.freedesktop.PolicyKit1 on the system bus
+2026-04-27T15:29:37.626643+00:00 main gdm-launch-environment]: pam_unix(gdm-launch-environment:session): session opened for user gdm(uid=120) by (uid=0)
+2026-04-27T15:29:37.679498+00:00 main systemd-logind[774]: New session c1 of user gdm.
+2026-04-27T15:29:37.769877+00:00 main (systemd): pam_unix(systemd-user:session): session opened for user gdm(uid=120) by gdm(uid=0)
+2026-04-27T15:29:43.934781+00:00 main polkitd[754]: Registered Authentication Agent for unix-session:c1 (system bus name :1.35 [/usr/bin/gnome-shell], object path /org/freedesktop/PolicyKit1/AuthenticationAgent, locale en_US.UTF-8)
+2026-04-27T15:29:48.779899+00:00 main gdm-password]: gkr-pam: unable to locate daemon control file
+2026-04-27T15:29:48.809110+00:00 main gdm-password]: gkr-pam: stashed password to try later in open session
+2026-04-27T15:29:48.902603+00:00 main gdm-password]: pam_unix(gdm-password:session): session opened for user main(uid=1000) by main(uid=0)
+2026-04-27T15:29:48.928990+00:00 main systemd-logind[774]: New session 2 of user main.
+2026-04-27T15:29:49.003261+00:00 main (systemd): pam_unix(systemd-user:session): session opened for user main(uid=1000) by main(uid=0)
+2026-04-27T15:29:50.014152+00:00 main gdm-password]: gkr-pam: unlocked login keyring
+2026-04-27T15:29:50.923329+00:00 main gnome-keyring-daemon[1850]: The PKCS#11 component was already initialized
+2026-04-27T15:29:50.923756+00:00 main gnome-keyring-daemon[2057]: discover_other_daemon: 1
+2026-04-27T15:29:50.927578+00:00 main gnome-keyring-daemon[1850]: The Secret Service was already initialized
+2026-04-27T15:29:50.930139+00:00 main gnome-keyring-daemon[2059]: discover_other_daemon: 1
+2026-04-27T15:29:50.952505+00:00 main gnome-keyring-daemon[2064]: discover_other_daemon: 1
+2026-04-27T15:30:02.278936+00:00 main CRON[2197]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-27T15:30:02.713163+00:00 main CRON[2197]: pam_unix(cron:session): session closed for user root
+2026-04-27T15:30:46.831063+00:00 main polkitd[754]: Registered Authentication Agent for unix-session:2 (system bus name :1.73 [/usr/bin/gnome-shell], object path /org/freedesktop/PolicyKit1/AuthenticationAgent, locale en_US.UTF-8)
+2026-04-27T15:31:04.933000+00:00 main gdm-launch-environment]: pam_unix(gdm-launch-environment:session): session closed for user gdm
+2026-04-27T15:31:05.028771+00:00 main systemd-logind[774]: Session c1 logged out. Waiting for processes to exit.
+2026-04-27T15:31:05.076173+00:00 main polkitd[754]: Unregistered Authentication Agent for unix-session:c1 (system bus name :1.35, object path /org/freedesktop/PolicyKit1/AuthenticationAgent, locale en_US.UTF-8) (disconnected from bus)
+2026-04-27T15:31:05.144806+00:00 main systemd-logind[774]: Removed session c1.
+2026-04-27T15:31:14.434830+00:00 main pkexec: pam_unix(polkit-1:session): session opened for user root(uid=0) by main(uid=1000)
+2026-04-27T15:31:14.450530+00:00 main pkexec[3222]: main: Executing command [USER=root] [TTY=unknown] [CWD=/home/main] [COMMAND=/usr/lib/update-notifier/package-system-locked]
+2026-04-27T15:33:20.832909+00:00 main systemd-logind[768]: New seat seat0.
+2026-04-27T15:33:20.832913+00:00 main systemd-logind[768]: Watching system buttons on /dev/input/event0 (Power Button)
+2026-04-27T15:33:20.832916+00:00 main systemd-logind[768]: Watching system buttons on /dev/input/event1 (Sleep Button)
+2026-04-27T15:33:20.832921+00:00 main systemd-logind[768]: Watching system buttons on /dev/input/event2 (AT Translated Set 2 keyboard)
+2026-04-27T15:33:20.833318+00:00 main polkitd[755]: Loading rules from directory /etc/polkit-1/rules.d
+2026-04-27T15:33:20.833323+00:00 main polkitd[755]: Loading rules from directory /usr/share/polkit-1/rules.d
+2026-04-27T15:33:20.833380+00:00 main polkitd[755]: Finished loading, compiling and executing 16 rules
+2026-04-27T15:33:20.833400+00:00 main polkitd[755]: Acquired the name org.freedesktop.PolicyKit1 on the system bus
+2026-04-27T15:33:23.528796+00:00 main gdm-launch-environment]: pam_unix(gdm-launch-environment:session): session opened for user gdm(uid=120) by (uid=0)
+2026-04-27T15:33:23.720542+00:00 main systemd-logind[768]: New session c1 of user gdm.
+2026-04-27T15:33:23.986591+00:00 main (systemd): pam_unix(systemd-user:session): session opened for user gdm(uid=120) by gdm(uid=0)
+2026-04-27T15:33:29.555367+00:00 main polkitd[755]: Registered Authentication Agent for unix-session:c1 (system bus name :1.35 [/usr/bin/gnome-shell], object path /org/freedesktop/PolicyKit1/AuthenticationAgent, locale en_US.UTF-8)
+2026-04-27T15:33:36.640017+00:00 main gdm-password]: gkr-pam: unable to locate daemon control file
+2026-04-27T15:33:36.640129+00:00 main gdm-password]: gkr-pam: stashed password to try later in open session
+2026-04-27T15:33:36.821211+00:00 main gdm-password]: pam_unix(gdm-password:session): session opened for user main(uid=1000) by main(uid=0)
+2026-04-27T15:33:36.939576+00:00 main systemd-logind[768]: New session 2 of user main.
+2026-04-27T15:33:37.157512+00:00 main (systemd): pam_unix(systemd-user:session): session opened for user main(uid=1000) by main(uid=0)
+2026-04-27T15:33:38.380248+00:00 main gdm-password]: gkr-pam: unlocked login keyring
+2026-04-27T15:33:39.294731+00:00 main gnome-keyring-daemon[1867]: The PKCS#11 component was already initialized
+2026-04-27T15:33:39.295793+00:00 main gnome-keyring-daemon[2071]: discover_other_daemon: 1
+2026-04-27T15:33:39.303622+00:00 main gnome-keyring-daemon[1867]: The Secret Service was already initialized
+2026-04-27T15:33:39.304968+00:00 main gnome-keyring-daemon[2073]: discover_other_daemon: 1
+2026-04-27T15:33:39.317519+00:00 main gnome-keyring-daemon[2077]: discover_other_daemon: 1
+2026-04-27T15:33:42.475624+00:00 main polkitd[755]: Registered Authentication Agent for unix-session:2 (system bus name :1.70 [/usr/bin/gnome-shell], object path /org/freedesktop/PolicyKit1/AuthenticationAgent, locale en_US.UTF-8)
+2026-04-27T15:33:43.646090+00:00 main gdm-launch-environment]: pam_unix(gdm-launch-environment:session): session closed for user gdm
+2026-04-27T15:33:43.681592+00:00 main systemd-logind[768]: Session c1 logged out. Waiting for processes to exit.
+2026-04-27T15:33:43.736088+00:00 main systemd-logind[768]: Removed session c1.
+2026-04-27T15:33:43.743478+00:00 main polkitd[755]: Unregistered Authentication Agent for unix-session:c1 (system bus name :1.35, object path /org/freedesktop/PolicyKit1/AuthenticationAgent, locale en_US.UTF-8) (disconnected from bus)
+2026-04-27T15:33:54.512088+00:00 main (sd-pam): pam_unix(systemd-user:session): session closed for user gdm
+2026-04-27T15:34:25.288991+00:00 main dbus-daemon[739]: [system] Failed to activate service 'org.bluez': timed out (service_start_timeout=25000ms)
+2026-04-27T15:34:36.601573+00:00 main gnome-keyring-daemon[1867]: asked to register item /org/freedesktop/secrets/collection/login/1, but it's already registered
+2026-04-27T15:35:01.157113+00:00 main CRON[3699]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-27T15:35:01.174355+00:00 main CRON[3699]: pam_unix(cron:session): session closed for user root
+2026-04-27T15:35:17.281358+00:00 main pkexec: pam_unix(polkit-1:session): session opened for user root(uid=0) by main(uid=1000)
+2026-04-27T15:35:17.286777+00:00 main pkexec[3762]: main: Executing command [USER=root] [TTY=unknown] [CWD=/home/main] [COMMAND=/usr/lib/update-notifier/package-system-locked]
+2026-04-27T15:45:01.317343+00:00 main CRON[4869]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-27T15:45:01.343295+00:00 main CRON[4869]: pam_unix(cron:session): session closed for user root
+2026-04-27T15:46:04.066490+00:00 main sudo:     main : TTY=pts/0 ; PWD=/home/main/cpam/C-PAM ; USER=root ; COMMAND=/usr/bin/ls /etc/passwd
+2026-04-27T15:46:04.138482+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-04-27T15:46:04.148937+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-04-27T15:46:22.928523+00:00 main sudo:     main : TTY=pts/0 ; PWD=/home/main/cpam/C-PAM ; USER=root ; COMMAND=/usr/bin/cat /etc/passwd
+2026-04-27T15:46:22.930146+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-04-27T15:46:23.040771+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-04-27T15:47:30.733984+00:00 main sudo:     main : TTY=pts/0 ; PWD=/home/main/cpam/C-PAM ; USER=root ; COMMAND=/usr/bin/cp /var/log/auth.log ./auth.log
+2026-04-27T15:47:30.738743+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-04-27T15:47:30.755005+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-04-27T15:52:36.662697+00:00 main dbus-daemon[739]: [system] Failed to activate service 'org.bluez': timed out (service_start_timeout=25000ms)
+2026-04-27T15:52:44.254577+00:00 main gnome-keyring-daemon[1867]: asked to register item /org/freedesktop/secrets/collection/login/1, but it's already registered
+2026-04-27T15:55:01.427596+00:00 main CRON[6587]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-27T15:55:01.577103+00:00 main CRON[6587]: pam_unix(cron:session): session closed for user root
+2026-04-27T16:05:01.698348+00:00 main CRON[6663]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-27T16:05:01.805393+00:00 main CRON[6663]: pam_unix(cron:session): session closed for user root
+2026-04-30T11:12:47.535271+00:00 main systemd-logind[770]: New seat seat0.
+2026-04-30T11:12:47.535281+00:00 main systemd-logind[770]: Watching system buttons on /dev/input/event0 (Power Button)
+2026-04-30T11:12:47.535286+00:00 main systemd-logind[770]: Watching system buttons on /dev/input/event1 (Sleep Button)
+2026-04-30T11:12:47.535351+00:00 main systemd-logind[770]: Watching system buttons on /dev/input/event2 (AT Translated Set 2 keyboard)
+2026-04-30T11:12:47.535765+00:00 main polkitd[756]: Loading rules from directory /etc/polkit-1/rules.d
+2026-04-30T11:12:47.555610+00:00 main polkitd[756]: Loading rules from directory /usr/share/polkit-1/rules.d
+2026-04-30T11:12:48.090488+00:00 main polkitd[756]: Finished loading, compiling and executing 16 rules
+2026-04-30T11:12:48.125919+00:00 main polkitd[756]: Acquired the name org.freedesktop.PolicyKit1 on the system bus
+2026-04-30T11:12:56.953509+00:00 main gdm-launch-environment]: pam_unix(gdm-launch-environment:session): session opened for user gdm(uid=120) by (uid=0)
+2026-04-30T11:12:57.390183+00:00 main systemd-logind[770]: New session c1 of user gdm.
+2026-04-30T11:12:57.837647+00:00 main (systemd): pam_unix(systemd-user:session): session opened for user gdm(uid=120) by gdm(uid=0)
+2026-04-30T11:13:23.099995+00:00 main polkitd[756]: Registered Authentication Agent for unix-session:c1 (system bus name :1.36 [/usr/bin/gnome-shell], object path /org/freedesktop/PolicyKit1/AuthenticationAgent, locale en_US.UTF-8)
+2026-04-30T11:14:04.330361+00:00 main gdm-password]: gkr-pam: unable to locate daemon control file
+2026-04-30T11:14:04.331571+00:00 main gdm-password]: gkr-pam: stashed password to try later in open session
+2026-04-30T11:14:04.357060+00:00 main gdm-password]: pam_unix(gdm-password:session): session opened for user main(uid=1000) by main(uid=0)
+2026-04-30T11:14:04.375471+00:00 main systemd-logind[770]: New session 2 of user main.
+2026-04-30T11:14:04.432974+00:00 main (systemd): pam_unix(systemd-user:session): session opened for user main(uid=1000) by main(uid=0)
+2026-04-30T11:14:04.841443+00:00 main gdm-password]: gkr-pam: unlocked login keyring
+2026-04-30T11:14:05.508325+00:00 main gnome-keyring-daemon[2284]: The PKCS#11 component was already initialized
+2026-04-30T11:14:05.508859+00:00 main gnome-keyring-daemon[2475]: discover_other_daemon: 1
+2026-04-30T11:14:05.516260+00:00 main gnome-keyring-daemon[2284]: The Secret Service was already initialized
+2026-04-30T11:14:05.518679+00:00 main gnome-keyring-daemon[2484]: discover_other_daemon: 1
+2026-04-30T11:14:05.524309+00:00 main gnome-keyring-daemon[2485]: discover_other_daemon: 1
+2026-04-30T11:14:10.495252+00:00 main polkitd[756]: Registered Authentication Agent for unix-session:2 (system bus name :1.81 [/usr/bin/gnome-shell], object path /org/freedesktop/PolicyKit1/AuthenticationAgent, locale en_US.UTF-8)
+2026-04-30T11:14:14.995834+00:00 main gdm-launch-environment]: pam_unix(gdm-launch-environment:session): session closed for user gdm
+2026-04-30T11:14:15.286085+00:00 main systemd-logind[770]: Session c1 logged out. Waiting for processes to exit.
+2026-04-30T11:14:15.359237+00:00 main polkitd[756]: Unregistered Authentication Agent for unix-session:c1 (system bus name :1.36, object path /org/freedesktop/PolicyKit1/AuthenticationAgent, locale en_US.UTF-8) (disconnected from bus)
+2026-04-30T11:14:15.519986+00:00 main systemd-logind[770]: Removed session c1.
+2026-04-30T11:14:26.282279+00:00 main (sd-pam): pam_unix(systemd-user:session): session closed for user gdm
+2026-04-30T11:14:56.867993+00:00 main gnome-keyring-daemon[2284]: asked to register item /org/freedesktop/secrets/collection/login/1, but it's already registered
+2026-04-30T11:15:01.312924+00:00 main CRON[3650]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-30T11:15:01.353194+00:00 main CRON[3650]: pam_unix(cron:session): session closed for user root
+2026-04-30T11:15:05.562880+00:00 main dbus-daemon[743]: [system] Failed to activate service 'org.bluez': timed out (service_start_timeout=25000ms)
+2026-04-30T11:15:22.566899+00:00 main pkexec: pam_unix(polkit-1:session): session opened for user root(uid=0) by main(uid=1000)
+2026-04-30T11:15:22.613874+00:00 main pkexec[4113]: main: Executing command [USER=root] [TTY=unknown] [CWD=/home/main] [COMMAND=/usr/lib/update-notifier/package-system-locked]
+2026-04-30T11:17:01.409637+00:00 main CRON[5789]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-30T11:17:01.528254+00:00 main CRON[5789]: pam_unix(cron:session): session closed for user root
+2026-04-30T11:25:01.897905+00:00 main CRON[6320]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-30T11:25:01.959394+00:00 main CRON[6320]: pam_unix(cron:session): session closed for user root
+2026-04-30T11:30:01.995975+00:00 main CRON[7057]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-30T11:30:02.014614+00:00 main CRON[7057]: pam_unix(cron:session): session closed for user root
+2026-04-30T11:35:01.034918+00:00 main CRON[7872]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-30T11:35:01.046900+00:00 main CRON[7872]: pam_unix(cron:session): session closed for user root
+2026-04-30T11:45:01.360381+00:00 main CRON[8663]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-30T11:45:01.391921+00:00 main CRON[8663]: pam_unix(cron:session): session closed for user root
+2026-04-30T11:46:23.008810+00:00 main dbus-daemon[743]: [system] Failed to activate service 'org.bluez': timed out (service_start_timeout=25000ms)
+2026-04-30T12:15:01.759047+00:00 main CRON[9044]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-30T12:15:01.767533+00:00 main CRON[9044]: pam_unix(cron:session): session closed for user root
+2026-04-30T12:17:01.901363+00:00 main CRON[9090]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-30T12:17:01.942315+00:00 main CRON[9090]: pam_unix(cron:session): session closed for user root
+2026-04-30T12:25:01.046874+00:00 main CRON[9339]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-30T12:25:01.190819+00:00 main CRON[9339]: pam_unix(cron:session): session closed for user root
+2026-04-30T12:30:01.274228+00:00 main CRON[9379]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-30T12:30:01.306167+00:00 main CRON[9379]: pam_unix(cron:session): session closed for user root
+2026-04-30T12:35:01.402671+00:00 main CRON[9418]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-30T12:35:01.416607+00:00 main CRON[9418]: pam_unix(cron:session): session closed for user root
+2026-04-30T12:45:01.526300+00:00 main CRON[9797]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-30T12:45:01.536036+00:00 main CRON[9797]: pam_unix(cron:session): session closed for user root
+2026-04-30T12:52:41.805007+00:00 main systemd-logind[770]: Power key pressed short.
+2026-04-30T12:52:41.833378+00:00 main systemd-logind[770]: The system will power off now!
+2026-04-30T12:52:41.944350+00:00 main systemd-logind[770]: System is powering down.
+2026-04-30T12:52:41.986163+00:00 main gdm-password]: pam_unix(gdm-password:session): session closed for user main
+2026-04-30T12:53:39.322495+00:00 main systemd-logind[824]: New seat seat0.
+2026-04-30T12:53:39.322661+00:00 main systemd-logind[824]: Watching system buttons on /dev/input/event0 (Power Button)
+2026-04-30T12:53:39.322666+00:00 main systemd-logind[824]: Watching system buttons on /dev/input/event1 (Sleep Button)
+2026-04-30T12:53:39.322668+00:00 main systemd-logind[824]: Watching system buttons on /dev/input/event2 (AT Translated Set 2 keyboard)
+2026-04-30T12:53:39.322723+00:00 main polkitd[811]: Loading rules from directory /etc/polkit-1/rules.d
+2026-04-30T12:53:39.322725+00:00 main polkitd[811]: Loading rules from directory /usr/share/polkit-1/rules.d
+2026-04-30T12:53:39.322743+00:00 main polkitd[811]: Finished loading, compiling and executing 16 rules
+2026-04-30T12:53:39.322746+00:00 main polkitd[811]: Acquired the name org.freedesktop.PolicyKit1 on the system bus
+2026-04-30T12:53:40.835209+00:00 main gdm-launch-environment]: pam_unix(gdm-launch-environment:session): session opened for user gdm(uid=120) by (uid=0)
+2026-04-30T12:53:40.856465+00:00 main systemd-logind[824]: New session c1 of user gdm.
+2026-04-30T12:53:40.911059+00:00 main (systemd): pam_unix(systemd-user:session): session opened for user gdm(uid=120) by gdm(uid=0)
+2026-04-30T12:53:44.333477+00:00 main polkitd[811]: Registered Authentication Agent for unix-session:c1 (system bus name :1.34 [/usr/bin/gnome-shell], object path /org/freedesktop/PolicyKit1/AuthenticationAgent, locale en_US.UTF-8)
+2026-04-30T12:53:55.346287+00:00 main gdm-password]: gkr-pam: unable to locate daemon control file
+2026-04-30T12:53:55.352407+00:00 main gdm-password]: gkr-pam: stashed password to try later in open session
+2026-04-30T12:53:55.415686+00:00 main gdm-password]: pam_unix(gdm-password:session): session opened for user main(uid=1000) by main(uid=0)
+2026-04-30T12:53:55.468462+00:00 main systemd-logind[824]: New session 2 of user main.
+2026-04-30T12:53:55.544426+00:00 main (systemd): pam_unix(systemd-user:session): session opened for user main(uid=1000) by main(uid=0)
+2026-04-30T12:53:56.159341+00:00 main gdm-password]: gkr-pam: unlocked login keyring
+2026-04-30T12:53:56.764292+00:00 main gnome-keyring-daemon[1862]: The PKCS#11 component was already initialized
+2026-04-30T12:53:56.765259+00:00 main gnome-keyring-daemon[2055]: discover_other_daemon: 1
+2026-04-30T12:53:56.772877+00:00 main gnome-keyring-daemon[1862]: The Secret Service was already initialized
+2026-04-30T12:53:56.773243+00:00 main gnome-keyring-daemon[2062]: discover_other_daemon: 1
+2026-04-30T12:53:56.781198+00:00 main gnome-keyring-daemon[2065]: discover_other_daemon: 1
+2026-04-30T12:53:59.145894+00:00 main polkitd[811]: Registered Authentication Agent for unix-session:2 (system bus name :1.71 [/usr/bin/gnome-shell], object path /org/freedesktop/PolicyKit1/AuthenticationAgent, locale en_US.UTF-8)
+2026-04-30T12:54:00.056885+00:00 main gdm-launch-environment]: pam_unix(gdm-launch-environment:session): session closed for user gdm
+2026-04-30T12:54:00.115579+00:00 main polkitd[811]: Unregistered Authentication Agent for unix-session:c1 (system bus name :1.34, object path /org/freedesktop/PolicyKit1/AuthenticationAgent, locale en_US.UTF-8) (disconnected from bus)
+2026-04-30T12:54:00.132294+00:00 main systemd-logind[824]: Session c1 logged out. Waiting for processes to exit.
+2026-04-30T12:54:00.143063+00:00 main systemd-logind[824]: Removed session c1.
+2026-04-30T12:55:00.784545+00:00 main CRON[4315]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-30T12:55:00.792955+00:00 main CRON[4315]: pam_unix(cron:session): session closed for user root
+2026-04-30T12:55:01.161003+00:00 main pkexec: pam_unix(polkit-1:session): session opened for user root(uid=0) by main(uid=1000)
+2026-04-30T12:55:01.164591+00:00 main pkexec[4319]: main: Executing command [USER=root] [TTY=unknown] [CWD=/home/main] [COMMAND=/usr/lib/update-notifier/package-system-locked]
+2026-04-30T12:55:53.086492+00:00 main sudo:     main : TTY=pts/0 ; PWD=/home/main ; USER=root ; COMMAND=/usr/bin/nano /etc/filebeat/filebeat.yml
+2026-04-30T12:55:53.088995+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-04-30T13:01:50.704042+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-04-30T13:02:01.247930+00:00 main sudo:     main : TTY=pts/0 ; PWD=/home/main ; USER=root ; COMMAND=/usr/bin/systemctl start filebeat.service
+2026-04-30T13:02:01.251309+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-04-30T13:02:01.312862+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-04-30T13:02:06.742798+00:00 main sudo:     main : TTY=pts/0 ; PWD=/home/main ; USER=root ; COMMAND=/usr/bin/systemctl start elasticsearch.service
+2026-04-30T13:02:06.744403+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-04-30T13:02:41.521488+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-04-30T13:02:52.138540+00:00 main sudo:     main : TTY=pts/0 ; PWD=/home/main ; USER=root ; COMMAND=/usr/bin/systemctl status elasticsearch.service
+2026-04-30T13:02:52.143473+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-04-30T13:02:55.007165+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-04-30T13:03:03.680767+00:00 main sudo:     main : TTY=pts/0 ; PWD=/home/main ; USER=root ; COMMAND=/usr/bin/systemctl status filebeat.service
+2026-04-30T13:03:03.690645+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-04-30T13:03:06.138645+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-04-30T13:03:12.962509+00:00 main sudo:     main : TTY=pts/0 ; PWD=/home/main ; USER=root ; COMMAND=/usr/bin/systemctl restart filebeat.service
+2026-04-30T13:03:12.965294+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-04-30T13:03:13.029992+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-04-30T13:03:39.810918+00:00 main sudo:     main : TTY=pts/0 ; PWD=/home/main ; USER=root ; COMMAND=/usr/bin/systemctl status filebeat.service
+2026-04-30T13:03:39.817979+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-04-30T13:03:47.802637+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-04-30T13:03:55.330296+00:00 main sudo:     main : TTY=pts/0 ; PWD=/home/main ; USER=root ; COMMAND=/usr/bin/systemctl enable filebeat.service
+2026-04-30T13:03:55.331801+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-04-30T13:03:55.965746+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-04-30T13:04:01.406337+00:00 main sudo:     main : TTY=pts/0 ; PWD=/home/main ; USER=root ; COMMAND=/usr/bin/systemctl start filebeat.service
+2026-04-30T13:04:01.409335+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-04-30T13:04:01.486216+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-04-30T13:04:05.020504+00:00 main sudo:     main : TTY=pts/0 ; PWD=/home/main ; USER=root ; COMMAND=/usr/bin/systemctl status filebeat.service
+2026-04-30T13:04:05.020863+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-04-30T13:04:07.243802+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-04-30T13:04:10.500602+00:00 main sudo:     main : TTY=pts/0 ; PWD=/home/main ; USER=root ; COMMAND=/usr/bin/systemctl restart filebeat.service
+2026-04-30T13:04:10.503258+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-04-30T13:04:10.549282+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-04-30T13:04:19.944276+00:00 main sudo:     main : TTY=pts/0 ; PWD=/home/main ; USER=root ; COMMAND=/usr/bin/systemctl start filebeat.service
+2026-04-30T13:04:19.944773+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-04-30T13:04:20.008021+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-04-30T13:04:22.908620+00:00 main sudo:     main : TTY=pts/0 ; PWD=/home/main ; USER=root ; COMMAND=/usr/bin/systemctl status filebeat.service
+2026-04-30T13:04:22.909653+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-04-30T13:05:01.907962+00:00 main CRON[5073]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-30T13:05:01.937669+00:00 main CRON[5073]: pam_unix(cron:session): session closed for user root
+2026-04-30T13:05:12.473165+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-04-30T13:05:19.180426+00:00 main sudo:     main : TTY=pts/0 ; PWD=/home/main ; USER=root ; COMMAND=/usr/bin/journalctl -u filebeat.service -n 50 --no-pager
+2026-04-30T13:05:19.180717+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-04-30T13:05:19.592550+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-04-30T13:07:23.764255+00:00 main sudo:     main : TTY=pts/0 ; PWD=/etc/filebeat ; USER=root ; COMMAND=/usr/bin/mv filebeat.yml .filebeat.yml
+2026-04-30T13:07:23.765495+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-04-30T13:07:23.769308+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-04-30T13:07:40.426409+00:00 main sudo:     main : TTY=pts/0 ; PWD=/etc/filebeat ; USER=root ; COMMAND=/usr/bin/nano filebeat.yml
+2026-04-30T13:07:40.428324+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-04-30T13:07:49.557544+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-04-30T13:08:02.586915+00:00 main sudo:     main : TTY=pts/0 ; PWD=/etc/filebeat ; USER=root ; COMMAND=/usr/bin/systemctl start filebeat.service
+2026-04-30T13:08:02.589088+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-04-30T13:08:02.639848+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-04-30T13:08:09.227590+00:00 main sudo:     main : TTY=pts/0 ; PWD=/etc/filebeat ; USER=root ; COMMAND=/usr/bin/systemctl status filebeat.service
+2026-04-30T13:08:09.228971+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-04-30T13:08:12.710054+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-04-30T13:08:26.742307+00:00 main sudo:     main : TTY=pts/0 ; PWD=/etc/filebeat ; USER=root ; COMMAND=/usr/bin/filebeat test config
+2026-04-30T13:08:26.746482+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-04-30T13:08:26.890125+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-04-30T13:10:16.848880+00:00 main sudo:     main : TTY=pts/0 ; PWD=/etc/filebeat ; USER=root ; COMMAND=/usr/bin/systemctl status elasticsearch.service
+2026-04-30T13:10:16.877066+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-04-30T13:10:19.363723+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-04-30T13:10:28.095635+00:00 main sudo:     main : TTY=pts/0 ; PWD=/etc/filebeat ; USER=root ; COMMAND=/usr/bin/systemctl enable elasticsearch.service
+2026-04-30T13:10:28.096683+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-04-30T13:10:28.782347+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-04-30T13:10:39.662471+00:00 main sudo:     main : TTY=pts/0 ; PWD=/etc/filebeat ; USER=root ; COMMAND=/usr/bin/systemctl restart elasticsearch.service
+2026-04-30T13:10:39.663560+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-04-30T13:11:19.664623+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-04-30T13:11:42.087811+00:00 main sudo:     main : TTY=pts/0 ; PWD=/etc/filebeat ; USER=root ; COMMAND=/usr/bin/systemctl status elasticsearch.service
+2026-04-30T13:11:42.094483+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-04-30T13:11:44.124500+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-04-30T13:13:27.323827+00:00 main sudo:     main : TTY=pts/0 ; PWD=/etc/filebeat ; USER=root ; COMMAND=/usr/bin/nano /etc/elasticsearch/jvm.options
+2026-04-30T13:13:27.324896+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-04-30T13:15:01.969096+00:00 main CRON[5624]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-30T13:15:01.981499+00:00 main CRON[5624]: pam_unix(cron:session): session closed for user root
+2026-04-30T13:15:43.383164+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-04-30T13:16:15.570756+00:00 main sudo:     main : TTY=pts/0 ; PWD=/etc/filebeat ; USER=root ; COMMAND=/usr/bin/journalctl -u elasticsearch.service
+2026-04-30T13:16:15.576162+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-04-30T13:17:02.073926+00:00 main CRON[5671]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-30T13:17:02.165426+00:00 main CRON[5671]: pam_unix(cron:session): session closed for user root
+2026-04-30T13:19:40.908592+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-04-30T13:19:50.950509+00:00 main sudo:     main : TTY=pts/0 ; PWD=/etc/filebeat ; USER=root ; COMMAND=/usr/bin/grep -i xms /etc/elasticsearch/jvm.options
+2026-04-30T13:19:50.954198+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-04-30T13:19:50.958949+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-04-30T13:20:03.251995+00:00 main sudo:     main : TTY=pts/0 ; PWD=/etc/filebeat ; USER=root ; COMMAND=/usr/bin/nano /etc/elasticsearch/jvm.options
+2026-04-30T13:20:03.257126+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-04-30T13:21:29.481174+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-04-30T13:21:53.969753+00:00 main sudo:     main : TTY=pts/0 ; PWD=/etc/filebeat ; USER=root ; COMMAND=/usr/bin/systemctl restart elasticsearch
+2026-04-30T13:21:53.975449+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-04-30T13:21:59.634292+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-04-30T13:22:21.989925+00:00 main sudo:     main : TTY=pts/0 ; PWD=/etc/filebeat ; USER=root ; COMMAND=/usr/bin/journalctl -u elasticsearch.service
+2026-04-30T13:22:21.990600+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-04-30T13:23:04.551602+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-04-30T13:23:07.604660+00:00 main sudo:     main : TTY=pts/0 ; PWD=/etc/filebeat ; USER=root ; COMMAND=/usr/bin/cat /var/log/elasticsearch/elasticsearch.log
+2026-04-30T13:23:07.605882+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-04-30T13:23:07.636466+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-04-30T13:24:32.955377+00:00 main sudo:     main : TTY=pts/0 ; PWD=/etc/filebeat ; USER=root ; COMMAND=/usr/bin/nano /etc/elasticsearch/jvm.options
+2026-04-30T13:24:32.986869+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-04-30T13:24:48.558594+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-04-30T13:25:01.246793+00:00 main CRON[5998]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-30T13:25:01.263529+00:00 main CRON[5998]: pam_unix(cron:session): session closed for user root
+2026-04-30T13:25:04.132804+00:00 main sudo:     main : TTY=pts/0 ; PWD=/etc/filebeat ; USER=root ; COMMAND=/usr/bin/systemctl stop elasticsearch
+2026-04-30T13:25:04.149296+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-04-30T13:25:04.170303+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-04-30T13:25:09.161807+00:00 main sudo:     main : TTY=pts/0 ; PWD=/etc/filebeat ; USER=root ; COMMAND=/usr/bin/systemctl start elasticsearch
+2026-04-30T13:25:09.163373+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-04-30T13:25:42.099179+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-04-30T13:30:01.347888+00:00 main CRON[6260]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-30T13:30:01.376861+00:00 main CRON[6260]: pam_unix(cron:session): session closed for user root
+2026-04-30T13:31:52.413962+00:00 main dbus-daemon[801]: [system] Failed to activate service 'org.bluez': timed out (service_start_timeout=25000ms)
+2026-04-30T13:42:11.558195+00:00 main systemd-logind[842]: New seat seat0.
+2026-04-30T13:42:11.558199+00:00 main systemd-logind[842]: Watching system buttons on /dev/input/event0 (Power Button)
+2026-04-30T13:42:11.558201+00:00 main systemd-logind[842]: Watching system buttons on /dev/input/event1 (Sleep Button)
+2026-04-30T13:42:11.558203+00:00 main systemd-logind[842]: Watching system buttons on /dev/input/event2 (AT Translated Set 2 keyboard)
+2026-04-30T13:42:11.558316+00:00 main polkitd[827]: Loading rules from directory /etc/polkit-1/rules.d
+2026-04-30T13:42:11.558322+00:00 main polkitd[827]: Loading rules from directory /usr/share/polkit-1/rules.d
+2026-04-30T13:42:11.559837+00:00 main polkitd[827]: Finished loading, compiling and executing 16 rules
+2026-04-30T13:42:11.559847+00:00 main polkitd[827]: Acquired the name org.freedesktop.PolicyKit1 on the system bus
+2026-04-30T13:42:13.087171+00:00 main gdm-launch-environment]: pam_unix(gdm-launch-environment:session): session opened for user gdm(uid=120) by (uid=0)
+2026-04-30T13:42:13.123520+00:00 main systemd-logind[842]: New session c1 of user gdm.
+2026-04-30T13:42:13.171263+00:00 main (systemd): pam_unix(systemd-user:session): session opened for user gdm(uid=120) by gdm(uid=0)
+2026-04-30T13:42:16.683895+00:00 main polkitd[827]: Registered Authentication Agent for unix-session:c1 (system bus name :1.35 [/usr/bin/gnome-shell], object path /org/freedesktop/PolicyKit1/AuthenticationAgent, locale en_US.UTF-8)
+2026-04-30T13:42:21.651130+00:00 main gdm-password]: gkr-pam: unable to locate daemon control file
+2026-04-30T13:42:21.656846+00:00 main gdm-password]: gkr-pam: stashed password to try later in open session
+2026-04-30T13:42:21.731962+00:00 main gdm-password]: pam_unix(gdm-password:session): session opened for user main(uid=1000) by main(uid=0)
+2026-04-30T13:42:21.794042+00:00 main systemd-logind[842]: New session 2 of user main.
+2026-04-30T13:42:21.832774+00:00 main (systemd): pam_unix(systemd-user:session): session opened for user main(uid=1000) by main(uid=0)
+2026-04-30T13:42:22.368042+00:00 main gdm-password]: gkr-pam: unlocked login keyring
+2026-04-30T13:42:22.920328+00:00 main gnome-keyring-daemon[1844]: The PKCS#11 component was already initialized
+2026-04-30T13:42:22.920649+00:00 main gnome-keyring-daemon[2051]: discover_other_daemon: 1
+2026-04-30T13:42:22.927934+00:00 main gnome-keyring-daemon[1844]: The Secret Service was already initialized
+2026-04-30T13:42:22.929028+00:00 main gnome-keyring-daemon[2055]: discover_other_daemon: 1
+2026-04-30T13:42:22.938853+00:00 main gnome-keyring-daemon[2058]: discover_other_daemon: 1
+2026-04-30T13:42:25.499011+00:00 main polkitd[827]: Registered Authentication Agent for unix-session:2 (system bus name :1.72 [/usr/bin/gnome-shell], object path /org/freedesktop/PolicyKit1/AuthenticationAgent, locale en_US.UTF-8)
+2026-04-30T13:42:26.501718+00:00 main gdm-launch-environment]: pam_unix(gdm-launch-environment:session): session closed for user gdm
+2026-04-30T13:42:26.586590+00:00 main polkitd[827]: Unregistered Authentication Agent for unix-session:c1 (system bus name :1.35, object path /org/freedesktop/PolicyKit1/AuthenticationAgent, locale en_US.UTF-8) (disconnected from bus)
+2026-04-30T13:42:26.651121+00:00 main systemd-logind[842]: Session c1 logged out. Waiting for processes to exit.
+2026-04-30T13:42:26.653292+00:00 main systemd-logind[842]: Removed session c1.
+2026-04-30T13:43:09.328685+00:00 main sudo:     main : TTY=pts/1 ; PWD=/home/main ; USER=root ; COMMAND=/usr/bin/systemctl status filebeat.service
+2026-04-30T13:43:09.329107+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-04-30T13:43:13.007764+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-04-30T13:43:28.106092+00:00 main pkexec: pam_unix(polkit-1:session): session opened for user root(uid=0) by main(uid=1000)
+2026-04-30T13:43:28.108303+00:00 main pkexec[3289]: main: Executing command [USER=root] [TTY=unknown] [CWD=/home/main] [COMMAND=/usr/lib/update-notifier/package-system-locked]
+2026-04-30T13:43:30.684905+00:00 main sudo:     main : TTY=pts/1 ; PWD=/home/main ; USER=root ; COMMAND=/usr/bin/systemctl status elasticsearch.service
+2026-04-30T13:43:30.686138+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-04-30T13:43:41.411806+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-04-30T13:43:50.309567+00:00 main sudo:     main : TTY=pts/1 ; PWD=/home/main ; USER=root ; COMMAND=/usr/bin/systemctl start filebeat.service
+2026-04-30T13:43:50.314488+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-04-30T13:43:50.345413+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-04-30T13:43:56.254575+00:00 main sudo:     main : TTY=pts/1 ; PWD=/home/main ; USER=root ; COMMAND=/usr/bin/systemctl status filebeat.service
+2026-04-30T13:43:56.265928+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-04-30T13:43:58.325865+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-04-30T13:44:01.015257+00:00 main sudo:     main : TTY=pts/1 ; PWD=/home/main ; USER=root ; COMMAND=/usr/bin/systemctl status elasticsearch.service
+2026-04-30T13:44:01.016039+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-04-30T13:44:03.895941+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-04-30T13:44:16.823347+00:00 main sudo:     main : TTY=pts/1 ; PWD=/home/main ; USER=root ; COMMAND=/usr/bin/systemctl status kibana.service
+2026-04-30T13:44:16.824814+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-04-30T13:44:20.131534+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-04-30T13:44:28.966434+00:00 main sudo:     main : TTY=pts/1 ; PWD=/home/main ; USER=root ; COMMAND=/usr/bin/systemctl start kibana.service
+2026-04-30T13:44:28.970116+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-04-30T13:44:29.013674+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-04-30T13:45:01.972265+00:00 main CRON[3440]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-30T13:45:01.979076+00:00 main CRON[3440]: pam_unix(cron:session): session closed for user root
+2026-04-30T13:45:30.747997+00:00 main sudo:     main : TTY=pts/1 ; PWD=/home/main ; USER=root ; COMMAND=/usr/bin/systemctl status kibana.service
+2026-04-30T13:45:30.753392+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-04-30T13:45:33.143633+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-04-30T13:55:02.016932+00:00 main CRON[3538]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-30T13:55:02.036794+00:00 main CRON[3538]: pam_unix(cron:session): session closed for user root
+2026-04-30T13:55:46.035334+00:00 main gdm-password]: gkr-pam: unlocked login keyring
+2026-04-30T14:05:02.111664+00:00 main CRON[5031]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-30T14:05:02.604832+00:00 main CRON[5031]: pam_unix(cron:session): session closed for user root
+2026-04-30T15:54:17.324586+00:00 main CRON[5188]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-30T15:54:17.625384+00:00 main CRON[5188]: pam_unix(cron:session): session closed for user root
+2026-04-30T15:54:17.845938+00:00 main CRON[5190]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-30T15:54:18.230475+00:00 main CRON[5190]: pam_unix(cron:session): session closed for user root
+2026-04-30T15:54:52.107763+00:00 main dbus-daemon[815]: [system] Failed to activate service 'org.bluez': timed out (service_start_timeout=25000ms)
+2026-04-30T15:55:01.305878+00:00 main CRON[5217]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-30T15:55:01.315705+00:00 main CRON[5217]: pam_unix(cron:session): session closed for user root
+2026-04-30T16:05:01.610522+00:00 main CRON[5310]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-30T16:05:01.708529+00:00 main CRON[5310]: pam_unix(cron:session): session closed for user root
+2026-04-30T16:15:01.751485+00:00 main CRON[5407]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-30T16:15:01.776854+00:00 main CRON[5407]: pam_unix(cron:session): session closed for user root
+2026-04-30T16:17:01.796160+00:00 main CRON[5418]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-30T16:17:01.846326+00:00 main CRON[5418]: pam_unix(cron:session): session closed for user root
+2026-04-30T16:21:12.718387+00:00 main gdm-password]: gkr-pam: unlocked login keyring
+2026-04-30T16:25:01.868715+00:00 main CRON[5605]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-30T16:25:01.892423+00:00 main CRON[5605]: pam_unix(cron:session): session closed for user root
+2026-04-30T16:30:01.908548+00:00 main CRON[5655]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-30T16:30:01.921307+00:00 main CRON[5655]: pam_unix(cron:session): session closed for user root
+2026-04-30T16:35:01.941267+00:00 main CRON[5694]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-30T16:35:01.962447+00:00 main CRON[5694]: pam_unix(cron:session): session closed for user root
+2026-04-30T16:45:01.989999+00:00 main CRON[5790]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-30T16:45:02.108845+00:00 main CRON[5790]: pam_unix(cron:session): session closed for user root
+2026-04-30T16:55:01.152931+00:00 main CRON[5889]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-30T16:55:01.188674+00:00 main CRON[5889]: pam_unix(cron:session): session closed for user root
+2026-04-30T17:05:01.221510+00:00 main CRON[5969]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-04-30T17:05:01.290586+00:00 main CRON[5969]: pam_unix(cron:session): session closed for user root
+2026-04-30T17:09:18.923289+00:00 main gdm-password]: gkr-pam: unlocked login keyring
+2026-04-30T17:09:34.848779+00:00 main systemd-logind[842]: The system will power off now!
+2026-04-30T17:09:35.077097+00:00 main systemd-logind[842]: System is powering down.
+2026-04-30T17:09:35.201640+00:00 main gdm-password]: pam_unix(gdm-password:session): session closed for user main
+2026-05-02T08:26:50.876678+00:00 main systemd-logind[831]: New seat seat0.
+2026-05-02T08:26:50.876681+00:00 main systemd-logind[831]: Watching system buttons on /dev/input/event0 (Power Button)
+2026-05-02T08:26:50.876683+00:00 main systemd-logind[831]: Watching system buttons on /dev/input/event1 (Sleep Button)
+2026-05-02T08:26:50.876705+00:00 main systemd-logind[831]: Watching system buttons on /dev/input/event2 (AT Translated Set 2 keyboard)
+2026-05-02T08:26:50.876842+00:00 main polkitd[817]: Loading rules from directory /etc/polkit-1/rules.d
+2026-05-02T08:26:50.876847+00:00 main polkitd[817]: Loading rules from directory /usr/share/polkit-1/rules.d
+2026-05-02T08:26:50.908296+00:00 main polkitd[817]: Finished loading, compiling and executing 16 rules
+2026-05-02T08:26:50.911175+00:00 main polkitd[817]: Acquired the name org.freedesktop.PolicyKit1 on the system bus
+2026-05-02T08:26:53.551677+00:00 main gdm-launch-environment]: pam_unix(gdm-launch-environment:session): session opened for user gdm(uid=120) by (uid=0)
+2026-05-02T08:26:53.596905+00:00 main systemd-logind[831]: New session c1 of user gdm.
+2026-05-02T08:26:53.662096+00:00 main (systemd): pam_unix(systemd-user:session): session opened for user gdm(uid=120) by gdm(uid=0)
+2026-05-02T08:27:08.300091+00:00 main polkitd[817]: Registered Authentication Agent for unix-session:c1 (system bus name :1.35 [/usr/bin/gnome-shell], object path /org/freedesktop/PolicyKit1/AuthenticationAgent, locale en_US.UTF-8)
+2026-05-02T08:30:02.140974+00:00 main CRON[2376]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-05-02T08:30:02.157020+00:00 main CRON[2376]: pam_unix(cron:session): session closed for user root
+2026-05-02T08:30:24.287736+00:00 main gdm-password]: gkr-pam: unable to locate daemon control file
+2026-05-02T08:30:24.288345+00:00 main gdm-password]: gkr-pam: stashed password to try later in open session
+2026-05-02T08:30:24.400611+00:00 main gdm-password]: pam_unix(gdm-password:session): session opened for user main(uid=1000) by main(uid=0)
+2026-05-02T08:30:24.508197+00:00 main systemd-logind[831]: New session 3 of user main.
+2026-05-02T08:30:24.640863+00:00 main (systemd): pam_unix(systemd-user:session): session opened for user main(uid=1000) by main(uid=0)
+2026-05-02T08:30:25.302996+00:00 main gdm-password]: gkr-pam: unlocked login keyring
+2026-05-02T08:30:25.986346+00:00 main gnome-keyring-daemon[2425]: The PKCS#11 component was already initialized
+2026-05-02T08:30:25.988580+00:00 main gnome-keyring-daemon[2625]: discover_other_daemon: 1
+2026-05-02T08:30:25.993001+00:00 main gnome-keyring-daemon[2425]: The Secret Service was already initialized
+2026-05-02T08:30:25.994114+00:00 main gnome-keyring-daemon[2629]: discover_other_daemon: 1
+2026-05-02T08:30:26.004733+00:00 main gnome-keyring-daemon[2633]: discover_other_daemon: 1
+2026-05-02T08:30:28.885163+00:00 main polkitd[817]: Registered Authentication Agent for unix-session:3 (system bus name :1.80 [/usr/bin/gnome-shell], object path /org/freedesktop/PolicyKit1/AuthenticationAgent, locale en_US.UTF-8)
+2026-05-02T08:30:29.915417+00:00 main gdm-launch-environment]: pam_unix(gdm-launch-environment:session): session closed for user gdm
+2026-05-02T08:30:30.009682+00:00 main systemd-logind[831]: Session c1 logged out. Waiting for processes to exit.
+2026-05-02T08:30:30.017570+00:00 main polkitd[817]: Unregistered Authentication Agent for unix-session:c1 (system bus name :1.35, object path /org/freedesktop/PolicyKit1/AuthenticationAgent, locale en_US.UTF-8) (disconnected from bus)
+2026-05-02T08:30:30.062862+00:00 main systemd-logind[831]: Removed session c1.
+2026-05-02T08:31:30.859825+00:00 main pkexec: pam_unix(polkit-1:session): session opened for user root(uid=0) by main(uid=1000)
+2026-05-02T08:31:30.861844+00:00 main pkexec[3424]: main: Executing command [USER=root] [TTY=unknown] [CWD=/home/main] [COMMAND=/usr/lib/update-notifier/package-system-locked]
+2026-05-02T08:35:01.259569+00:00 main CRON[3663]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-05-02T08:35:01.291246+00:00 main CRON[3663]: pam_unix(cron:session): session closed for user root
+2026-05-02T08:45:01.366326+00:00 main CRON[3737]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-05-02T08:45:01.429154+00:00 main CRON[3737]: pam_unix(cron:session): session closed for user root
+2026-05-02T08:55:01.514280+00:00 main CRON[3784]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-05-02T08:55:01.538603+00:00 main CRON[3784]: pam_unix(cron:session): session closed for user root
+2026-05-02T09:01:22.410827+00:00 main dbus-daemon[805]: [system] Failed to activate service 'org.bluez': timed out (service_start_timeout=25000ms)
+2026-05-02T09:05:01.623583+00:00 main CRON[4051]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-05-02T09:05:01.674716+00:00 main CRON[4051]: pam_unix(cron:session): session closed for user root
+2026-05-02T09:15:02.367385+00:00 main CRON[4087]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-05-02T09:15:02.422962+00:00 main CRON[4087]: pam_unix(cron:session): session closed for user root
+2026-05-02T09:17:01.640400+00:00 main CRON[4100]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-05-02T09:17:01.701529+00:00 main CRON[4100]: pam_unix(cron:session): session closed for user root
+2026-05-02T09:25:01.784228+00:00 main CRON[4147]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-05-02T09:25:01.831307+00:00 main CRON[4147]: pam_unix(cron:session): session closed for user root
+2026-05-02T09:25:48.951797+00:00 main gdm-password]: gkr-pam: unlocked login keyring
+2026-05-02T09:28:10.957180+00:00 main sudo:     main : TTY=pts/0 ; PWD=/home/main/cpam/C-PAM ; USER=root ; COMMAND=/usr/bin/cp /var/log/auth.log ./logs/auth.log
+2026-05-02T09:28:10.988492+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-05-02T09:28:11.004448+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-05-02T09:30:01.699301+00:00 main CRON[4350]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-05-02T09:30:01.707399+00:00 main CRON[4350]: pam_unix(cron:session): session closed for user root
+2026-05-02T09:33:09.252063+00:00 main sudo:     main : TTY=pts/0 ; PWD=/home/main/cpam/C-PAM ; USER=root ; COMMAND=/usr/bin/systemctl status filebeat.service
+2026-05-02T09:33:09.259799+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-05-02T09:33:19.501569+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-05-02T09:33:26.183899+00:00 main sudo:     main : TTY=pts/0 ; PWD=/home/main/cpam/C-PAM ; USER=root ; COMMAND=/usr/bin/systemctl stop filebeat.service
+2026-05-02T09:33:26.213319+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-05-02T09:33:27.789367+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-05-02T09:33:34.414765+00:00 main sudo:     main : TTY=pts/0 ; PWD=/home/main/cpam/C-PAM ; USER=root ; COMMAND=/usr/bin/systemctl disable filebeat.service
+2026-05-02T09:33:34.424791+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-05-02T09:33:36.220272+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-05-02T09:33:45.953120+00:00 main sudo:     main : TTY=pts/0 ; PWD=/home/main/cpam/C-PAM ; USER=root ; COMMAND=/usr/bin/systemctl status elasticsearch.service
+2026-05-02T09:33:45.954011+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-05-02T09:33:47.730274+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-05-02T09:33:53.951134+00:00 main sudo:     main : TTY=pts/0 ; PWD=/home/main/cpam/C-PAM ; USER=root ; COMMAND=/usr/bin/systemctl stop elasticsearch.service
+2026-05-02T09:33:53.953114+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-05-02T09:33:57.491251+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-05-02T09:34:05.890602+00:00 main sudo:     main : TTY=pts/0 ; PWD=/home/main/cpam/C-PAM ; USER=root ; COMMAND=/usr/bin/systemctl disable elasticsearch.service
+2026-05-02T09:34:05.892401+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-05-02T09:34:06.629483+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-05-02T09:34:13.035336+00:00 main sudo:     main : TTY=pts/0 ; PWD=/home/main/cpam/C-PAM ; USER=root ; COMMAND=/usr/bin/systemctl status kibana.service
+2026-05-02T09:34:13.036347+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-05-02T09:34:16.152133+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-05-02T09:34:21.792636+00:00 main sudo:     main : TTY=pts/0 ; PWD=/home/main/cpam/C-PAM ; USER=root ; COMMAND=/usr/bin/systemctl status auditd.service
+2026-05-02T09:34:21.806490+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-05-02T09:34:24.074073+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-05-02T09:35:01.755920+00:00 main CRON[5990]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-05-02T09:35:01.763202+00:00 main CRON[5990]: pam_unix(cron:session): session closed for user root
+2026-05-02T09:37:30.530162+00:00 main sudo:     main : TTY=pts/0 ; PWD=/home/main/cpam/C-PAM ; USER=root ; COMMAND=/usr/bin/cp /var/log/auth.log ./logs/auth.log
+2026-05-02T09:37:30.570501+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
