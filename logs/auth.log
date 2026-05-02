@@ -841,3 +841,84 @@
 2026-05-02T09:47:39.235214+00:00 main sudo: pam_unix(sudo:session): session closed for user root
 2026-05-02T09:48:03.463685+00:00 main sudo:     main : TTY=pts/0 ; PWD=/home/main/cpam/C-PAM ; USER=root ; COMMAND=/usr/bin/cp /var/log/auth.log ./logs/auth.log
 2026-05-02T09:48:03.466348+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-05-02T09:48:03.473908+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-05-02T09:55:01.996140+00:00 main CRON[6275]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-05-02T09:55:02.070553+00:00 main CRON[6275]: pam_unix(cron:session): session closed for user root
+2026-05-02T09:58:24.217777+00:00 main gdm-password]: gkr-pam: unlocked login keyring
+2026-05-02T10:02:30.389253+00:00 main sudo:     main : TTY=pts/0 ; PWD=/home/main ; USER=root ; COMMAND=/usr/bin/find / -name main.py
+2026-05-02T10:02:30.401196+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-05-02T10:04:52.438961+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-05-02T10:05:01.118174+00:00 main CRON[6896]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-05-02T10:05:01.143233+00:00 main CRON[6896]: pam_unix(cron:session): session closed for user root
+2026-05-02T10:05:12.880169+00:00 main sudo:     main : TTY=pts/0 ; PWD=/home/main ; USER=root ; COMMAND=/usr/bin/find /home/main/ -name main.py
+2026-05-02T10:05:12.882647+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-05-02T10:05:26.011354+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-05-02T10:08:06.574796+00:00 main sudo:     main : TTY=pts/0 ; PWD=/home/main/cpam/C-PAM ; USER=root ; COMMAND=/usr/bin/install -o0 -g0 -m755 -d /usr/local/bin
+2026-05-02T10:08:06.580440+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-05-02T10:08:06.601446+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-05-02T10:08:06.636294+00:00 main sudo:     main : TTY=pts/0 ; PWD=/home/main/cpam/C-PAM ; USER=root ; COMMAND=/usr/bin/install -o0 -g0 -m755 -d /usr/local/lib/ollama
+2026-05-02T10:08:06.640666+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-05-02T10:08:06.646958+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-05-02T10:08:08.094674+00:00 main sudo:     main : TTY=pts/0 ; PWD=/home/main/cpam/C-PAM ; USER=root ; COMMAND=/usr/bin/tar -xf - -C /usr/local
+2026-05-02T10:08:08.110164+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-05-02T10:13:11.570172+00:00 main gdm-password]: gkr-pam: unlocked login keyring
+2026-05-02T10:13:12.925430+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-05-02T10:13:12.988356+00:00 main sudo:     main : TTY=pts/0 ; PWD=/home/main/cpam/C-PAM ; USER=root ; COMMAND=/usr/sbin/useradd -r -s /bin/false -U -m -d /usr/share/ollama ollama
+2026-05-02T10:13:12.995510+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-05-02T10:13:13.083405+00:00 main useradd[7130]: new group: name=ollama, GID=984
+2026-05-02T10:13:13.086002+00:00 main useradd[7130]: new user: name=ollama, UID=997, GID=984, home=/usr/share/ollama, shell=/bin/false, from=none
+2026-05-02T10:13:13.315729+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-05-02T10:13:13.398515+00:00 main sudo:     main : TTY=pts/0 ; PWD=/home/main/cpam/C-PAM ; USER=root ; COMMAND=/usr/sbin/usermod -a -G render ollama
+2026-05-02T10:13:13.430004+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-05-02T10:13:13.562937+00:00 main usermod[7143]: add 'ollama' to group 'render'
+2026-05-02T10:13:13.565238+00:00 main usermod[7143]: add 'ollama' to shadow group 'render'
+2026-05-02T10:13:13.671947+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-05-02T10:13:13.698207+00:00 main sudo:     main : TTY=pts/0 ; PWD=/home/main/cpam/C-PAM ; USER=root ; COMMAND=/usr/sbin/usermod -a -G video ollama
+2026-05-02T10:13:13.698832+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-05-02T10:13:13.796975+00:00 main usermod[7154]: add 'ollama' to group 'video'
+2026-05-02T10:13:13.797135+00:00 main usermod[7154]: add 'ollama' to shadow group 'video'
+2026-05-02T10:13:13.839493+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-05-02T10:13:13.895467+00:00 main sudo:     main : TTY=pts/0 ; PWD=/home/main/cpam/C-PAM ; USER=root ; COMMAND=/usr/sbin/usermod -a -G ollama main
+2026-05-02T10:13:13.897514+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-05-02T10:13:13.988845+00:00 main usermod[7168]: add 'main' to group 'ollama'
+2026-05-02T10:13:13.989763+00:00 main usermod[7168]: add 'main' to shadow group 'ollama'
+2026-05-02T10:13:14.016270+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-05-02T10:13:14.051339+00:00 main sudo:     main : TTY=pts/0 ; PWD=/home/main/cpam/C-PAM ; USER=root ; COMMAND=/usr/bin/tee /etc/systemd/system/ollama.service
+2026-05-02T10:13:14.053999+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-05-02T10:13:14.063180+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-05-02T10:13:14.102097+00:00 main sudo:     main : TTY=pts/0 ; PWD=/home/main/cpam/C-PAM ; USER=root ; COMMAND=/usr/bin/systemctl daemon-reload
+2026-05-02T10:13:14.133998+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-05-02T10:13:15.817009+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-05-02T10:13:15.843118+00:00 main sudo:     main : TTY=pts/0 ; PWD=/home/main/cpam/C-PAM ; USER=root ; COMMAND=/usr/bin/systemctl enable ollama
+2026-05-02T10:13:15.845294+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-05-02T10:13:16.981213+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-05-02T10:13:17.100737+00:00 main sudo:     main : TTY=pts/0 ; PWD=/home/main/cpam/C-PAM ; USER=root ; COMMAND=/usr/bin/lshw -c display -numeric -disable network
+2026-05-02T10:13:17.106398+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-05-02T10:13:19.648841+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-05-02T10:13:19.714745+00:00 main sudo:     main : TTY=pts/0 ; PWD=/home/main/cpam/C-PAM ; USER=root ; COMMAND=/usr/bin/lshw -c display -numeric -disable network
+2026-05-02T10:13:19.728261+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-05-02T10:13:23.205157+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-05-02T10:13:23.267780+00:00 main sudo:     main : TTY=pts/0 ; PWD=/home/main/cpam/C-PAM ; USER=root ; COMMAND=/usr/bin/systemctl restart ollama
+2026-05-02T10:13:23.281464+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-05-02T10:13:23.414075+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-05-02T10:15:01.211370+00:00 main CRON[7566]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-05-02T10:15:01.296733+00:00 main CRON[7566]: pam_unix(cron:session): session closed for user root
+2026-05-02T10:17:01.312195+00:00 main CRON[7589]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-05-02T10:17:01.399017+00:00 main CRON[7589]: pam_unix(cron:session): session closed for user root
+2026-05-02T10:18:19.798639+00:00 main gdm-password]: gkr-pam: unlocked login keyring
+2026-05-02T10:19:22.371519+00:00 main sudo:     main : TTY=pts/0 ; PWD=/home/main/cpam/C-PAM ; USER=root ; COMMAND=/usr/bin/chmod 644 /var/log/auth.log
+2026-05-02T10:19:22.385265+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
+2026-05-02T10:19:22.415292+00:00 main sudo: pam_unix(sudo:session): session closed for user root
+2026-05-02T10:20:27.987882+00:00 main dbus-daemon[805]: [system] Failed to activate service 'org.bluez': timed out (service_start_timeout=25000ms)
+2026-05-02T10:20:48.228984+00:00 main gnome-keyring-daemon[2425]: asked to register item /org/freedesktop/secrets/collection/login/1, but it's already registered
+2026-05-02T10:25:01.498176+00:00 main CRON[9027]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-05-02T10:25:01.608970+00:00 main CRON[9027]: pam_unix(cron:session): session closed for user root
+2026-05-02T10:30:01.464010+00:00 main CRON[9079]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-05-02T10:30:01.483370+00:00 main CRON[9079]: pam_unix(cron:session): session closed for user root
+2026-05-02T10:35:01.656676+00:00 main CRON[9100]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-05-02T10:35:01.692922+00:00 main CRON[9100]: pam_unix(cron:session): session closed for user root
+2026-05-02T10:45:02.044749+00:00 main CRON[9138]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-05-02T10:45:02.065487+00:00 main CRON[9138]: pam_unix(cron:session): session closed for user root
+2026-05-02T10:45:19.204585+00:00 main gdm-password]: gkr-pam: unlocked login keyring
+2026-05-02T10:49:20.101491+00:00 main sudo:     main : TTY=pts/0 ; PWD=/home/main/cpam/C-PAM ; USER=root ; COMMAND=/usr/bin/cp /var/log/auth.log ./logs/auth.log
+2026-05-02T10:49:20.109534+00:00 main sudo: pam_unix(sudo:session): session opened for user root(uid=0) by main(uid=1000)
