@@ -58,6 +58,88 @@ def get_ai_summary(user: str, action: str, recent_actions: list, score: float) -
         return f"[Ollama unavailable: {e}]"
 
 
+def update_realtime_session(user: str, action: str, ts: str,
+                             actions: list, session_counter: dict):
+    """
+    Maintains a live session in the sessions table.
+    Creates a new session on login, updates it on every action,
+    closes it on logout.
+    """
+    conn = get_connection()
+
+    SESSION_START = {"login_success", "session_open"}
+    SESSION_END   = {"session_close"}
+    DESTRUCTIVE   = ["rm -rf", "dd if=", "mkfs", "shred"]
+
+    # Get or create session ID for this user
+    if action in SESSION_START:
+        session_counter[user] = session_counter.get(user, 0) + 1
+
+    session_id = f"{user}_rt_{session_counter.get(user, 1)}"
+
+    # Compute session metrics from current actions
+    sudo_count        = actions.count("sudo")
+    failed_logins     = actions.count("login_failed")
+    destructive_count = sum(1 for a in actions if any(kw in a for kw in DESTRUCTIVE))
+    action_count      = len(actions)
+
+    # Detect suspicious sequence
+    suspicious = False
+    if failed_logins >= 2 and sudo_count > 0:
+        last_fail  = max((i for i, a in enumerate(actions) if a == "login_failed"), default=-1)
+        first_sudo = next((i for i, a in enumerate(actions) if a == "sudo"), -1)
+        if first_sudo > last_fail:
+            suspicious = True
+
+    # Check if session row exists
+    existing = conn.execute(
+        "SELECT id FROM sessions WHERE session_id = ?", (session_id,)
+    ).fetchone()
+
+    if existing:
+        # Update existing session
+        conn.execute("""
+            UPDATE sessions SET
+                action_count        = ?,
+                sudo_count          = ?,
+                failed_logins       = ?,
+                destructive_count   = ?,
+                suspicious_sequence = ?,
+                actions_json        = ?,
+                logout_time         = CASE WHEN ? = 'session_close' THEN ? ELSE logout_time END
+            WHERE session_id = ?
+        """, (
+            action_count, sudo_count, failed_logins,
+            destructive_count, int(suspicious),
+            json.dumps(actions),
+            action, ts,
+            session_id
+        ))
+    else:
+        # Insert new session
+        conn.execute("""
+            INSERT INTO sessions
+              (session_id, user, login_time, logout_time, duration_seconds,
+               action_count, sudo_count, failed_logins, destructive_count,
+               actions_per_minute, suspicious_sequence, actions_json)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        """, (
+            session_id, user, ts, None, None,
+            action_count, sudo_count, failed_logins,
+            destructive_count, None, int(suspicious),
+            json.dumps(actions),
+        ))
+
+    # Update duration if session is closing
+    if action in SESSION_END:
+        conn.execute("""
+            UPDATE sessions SET logout_time = ?
+            WHERE session_id = ?
+        """, (ts, session_id))
+
+    conn.commit()
+    conn.close()
+
 # ── UPDATED DB FUNCTION ────────────────────────────────
 
 def store_realtime_event(log: dict, privilege: str, raw_score: int,
@@ -153,6 +235,10 @@ def should_alert(action, actions):
 
 def watch(log_path: str):
     print(f"[Monitor] Watching {log_path}\n")
+    print(f"[Monitor] Suspicious actions trigger instant AI summary via Ollama")
+    print(f"[Monitor] Dashboard auto-updates at http://<vm_ip>:5000\n")
+
+    session_counter = {}   # tracks session number per user
 
     with open(log_path, "r") as f:
         f.seek(0, 2)
@@ -183,12 +269,15 @@ def watch(log_path: str):
             norm      = normalize_score(total_raw)
             level_str = risk_level(norm)
 
-            # 🔥 NEW: Action-level ML
+            #  NEW: Action-level ML
             action_ml = score_action(action, list(actions[:-1]))
 
             # Store with ML
             store_realtime_event(log, privilege, total_raw, norm, level_str, action_ml)
 
+            # Update live session in DB
+            update_realtime_session(user, action, ts, list(actions), session_counter)
+            
             # Terminal output
             ml_tag = f"[ML:{action_ml['ml_flag']}:{action_ml['confidence']}]" \
                      if action_ml['ml_flag'] == "ANOMALY" else ""
@@ -201,7 +290,7 @@ def watch(log_path: str):
             print(f"{flag}[{ts}] {user:<15} {action:<35} "
                   f"risk: {norm:>5.1f}% [{level_str}] {ml_tag}")
 
-            # 🚨 ALERT condition (rule OR ML)
+            #  ALERT condition (rule OR ML)
             if should_alert(action, actions) or (
                 action_ml['ml_flag'] == "ANOMALY" and
                 action_ml['confidence'] in ("HIGH", "MEDIUM")
