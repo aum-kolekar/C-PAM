@@ -277,7 +277,6 @@ def watch(log_path: str):
 
             # Update live session in DB
             update_realtime_session(user, action, ts, list(actions), session_counter)
-            
             # Terminal output
             ml_tag = f"[ML:{action_ml['ml_flag']}:{action_ml['confidence']}]" \
                      if action_ml['ml_flag'] == "ANOMALY" else ""
