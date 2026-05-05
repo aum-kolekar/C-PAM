@@ -502,6 +502,207 @@
             "destructive_count": 0,
             "actions_per_minute": 0.56,
             "suspicious_sequence": false
+        },
+        {
+            "session_id": "gdm_21",
+            "login_time": "2026-05-02T11:18:54",
+            "logout_time": "2026-05-02T11:18:54",
+            "duration_seconds": null,
+            "actions": [
+                "session_open"
+            ],
+            "action_count": 1,
+            "sudo_count": 0,
+            "failed_logins": 0,
+            "destructive_count": 0,
+            "actions_per_minute": null,
+            "suspicious_sequence": false
+        },
+        {
+            "session_id": "gdm_22",
+            "login_time": "2026-05-02T11:18:54",
+            "logout_time": "2026-05-02T11:19:16",
+            "duration_seconds": 22,
+            "actions": [
+                "session_open",
+                "session_close"
+            ],
+            "action_count": 2,
+            "sudo_count": 0,
+            "failed_logins": 0,
+            "destructive_count": 0,
+            "actions_per_minute": 5.45,
+            "suspicious_sequence": false
+        },
+        {
+            "session_id": "gdm_23",
+            "login_time": "2026-05-02T18:19:07",
+            "logout_time": "2026-05-02T18:19:11",
+            "duration_seconds": 4,
+            "actions": [
+                "session_open"
+            ],
+            "action_count": 1,
+            "sudo_count": 0,
+            "failed_logins": 0,
+            "destructive_count": 0,
+            "actions_per_minute": 15.0,
+            "suspicious_sequence": false
+        },
+        {
+            "session_id": "gdm_24",
+            "login_time": "2026-05-02T18:19:11",
+            "logout_time": "2026-05-02T18:33:42",
+            "duration_seconds": 871,
+            "actions": [
+                "session_open"
+            ],
+            "action_count": 1,
+            "sudo_count": 0,
+            "failed_logins": 0,
+            "destructive_count": 0,
+            "actions_per_minute": 0.07,
+            "suspicious_sequence": false
+        },
+        {
+            "session_id": "gdm_25",
+            "login_time": "2026-05-02T18:33:42",
+            "logout_time": "2026-05-02T18:33:43",
+            "duration_seconds": 1,
+            "actions": [
+                "session_open"
+            ],
+            "action_count": 1,
+            "sudo_count": 0,
+            "failed_logins": 0,
+            "destructive_count": 0,
+            "actions_per_minute": 60.0,
+            "suspicious_sequence": false
+        },
+        {
+            "session_id": "gdm_26",
+            "login_time": "2026-05-02T18:33:43",
+            "logout_time": "2026-05-02T18:34:16",
+            "duration_seconds": 33,
+            "actions": [
+                "session_open",
+                "session_close"
+            ],
+            "action_count": 2,
+            "sudo_count": 0,
+            "failed_logins": 0,
+            "destructive_count": 0,
+            "actions_per_minute": 3.64,
+            "suspicious_sequence": false
+        },
+        {
+            "session_id": "gdm_27",
+            "login_time": "2026-05-02T18:34:21",
+            "logout_time": "2026-05-02T18:34:34",
+            "duration_seconds": 13,
+            "actions": [
+                "session_open",
+                "session_close"
+            ],
+            "action_count": 2,
+            "sudo_count": 0,
+            "failed_logins": 0,
+            "destructive_count": 0,
+            "actions_per_minute": 9.23,
+            "suspicious_sequence": false
+        },
+        {
+            "session_id": "gdm_28",
+            "login_time": "2026-05-02T19:09:43",
+            "logout_time": "2026-05-02T19:09:43",
+            "duration_seconds": null,
+            "actions": [
+                "session_open"
+            ],
+            "action_count": 1,
+            "sudo_count": 0,
+            "failed_logins": 0,
+            "destructive_count": 0,
+            "actions_per_minute": null,
+            "suspicious_sequence": false
+        },
+        {
+            "session_id": "gdm_29",
+            "login_time": "2026-05-02T19:09:43",
+            "logout_time": "2026-05-02T19:10:47",
+            "duration_seconds": 64,
+            "actions": [
+                "session_open",
+                "session_close"
+            ],
+            "action_count": 2,
+            "sudo_count": 0,
+            "failed_logins": 0,
+            "destructive_count": 0,
+            "actions_per_minute": 1.88,
+            "suspicious_sequence": false
+        },
+        {
+            "session_id": "gdm_30",
+            "login_time": "2026-05-05T13:41:27",
+            "logout_time": "2026-05-05T13:41:27",
+            "duration_seconds": null,
+            "actions": [
+                "session_open"
+            ],
+            "action_count": 1,
+            "sudo_count": 0,
+            "failed_logins": 0,
+            "destructive_count": 0,
+            "actions_per_minute": null,
+            "suspicious_sequence": false
+        },
+        {
+            "session_id": "gdm_31",
+            "login_time": "2026-05-05T13:41:27",
+            "logout_time": "2026-05-05T13:44:06",
+            "duration_seconds": 159,
+            "actions": [
+                "session_open",
+                "session_close"
+            ],
+            "action_count": 2,
+            "sudo_count": 0,
+            "failed_logins": 0,
+            "destructive_count": 0,
+            "actions_per_minute": 0.75,
+            "suspicious_sequence": false
+        },
+        {
+            "session_id": "gdm_32",
+            "login_time": "2026-05-05T13:45:18",
+            "logout_time": "2026-05-05T13:45:18",
+            "duration_seconds": null,
+            "actions": [
+                "session_open"
+            ],
+            "action_count": 1,
+            "sudo_count": 0,
+            "failed_logins": 0,
+            "destructive_count": 0,
+            "actions_per_minute": null,
+            "suspicious_sequence": false
+        },
+        {
+            "session_id": "gdm_33",
+            "login_time": "2026-05-05T13:45:18",
+            "logout_time": "2026-05-05T13:45:36",
+            "duration_seconds": 18,
+            "actions": [
+                "session_open",
+                "session_close"
+            ],
+            "action_count": 2,
+            "sudo_count": 0,
+            "failed_logins": 0,
+            "destructive_count": 0,
+            "actions_per_minute": 6.67,
+            "suspicious_sequence": false
         }
     ],
     "main": [
@@ -814,8 +1015,8 @@
         {
             "session_id": "main_18",
             "login_time": "2026-05-02T08:30:24",
-            "logout_time": null,
-            "duration_seconds": null,
+            "logout_time": "2026-05-02T11:19:10",
+            "duration_seconds": 10126,
             "actions": [
                 "session_open",
                 "/usr/bin/cp /var/log/auth.log ./logs/auth.log",
@@ -829,9 +1030,189 @@
                 "/usr/bin/systemctl status auditd.service",
                 "/usr/bin/cp /var/log/auth.log ./logs/auth.log",
                 "/usr/bin/cat /etc/passwd",
+                "/usr/bin/cp /var/log/auth.log ./logs/auth.log",
+                "/usr/bin/find / -name main.py",
+                "/usr/bin/find /home/main/ -name main.py",
+                "/usr/bin/install -o0 -g0 -m755 -d /usr/local/bin",
+                "/usr/bin/install -o0 -g0 -m755 -d /usr/local/lib/ollama",
+                "/usr/bin/tar -xf - -C /usr/local",
+                "/usr/sbin/useradd -r -s /bin/false -U -m -d /usr/share/ollama ollama",
+                "/usr/sbin/usermod -a -G render ollama",
+                "/usr/sbin/usermod -a -G video ollama",
+                "/usr/sbin/usermod -a -G ollama main",
+                "/usr/bin/tee /etc/systemd/system/ollama.service",
+                "/usr/bin/systemctl daemon-reload",
+                "/usr/bin/systemctl enable ollama",
+                "/usr/bin/lshw -c display -numeric -disable network",
+                "/usr/bin/lshw -c display -numeric -disable network",
+                "/usr/bin/systemctl restart ollama",
+                "/usr/bin/chmod 644 /var/log/auth.log",
+                "/usr/bin/cp /var/log/auth.log ./logs/auth.log",
+                "/usr/bin/apt update",
+                "/usr/bin/ls",
+                "/usr/bin/apt lisit",
+                "/usr/bin/systemctl status ollama.service",
+                "/usr/bin/systemctl restart ollama.service",
+                "/usr/bin/cat /etc/passwd"
+            ],
+            "action_count": 36,
+            "sudo_count": 0,
+            "failed_logins": 0,
+            "destructive_count": 0,
+            "actions_per_minute": 0.21,
+            "suspicious_sequence": false
+        },
+        {
+            "session_id": "main_19",
+            "login_time": "2026-05-02T11:19:10",
+            "logout_time": "2026-05-02T11:19:10",
+            "duration_seconds": null,
+            "actions": [
+                "session_open"
+            ],
+            "action_count": 1,
+            "sudo_count": 0,
+            "failed_logins": 0,
+            "destructive_count": 0,
+            "actions_per_minute": null,
+            "suspicious_sequence": false
+        },
+        {
+            "session_id": "main_20",
+            "login_time": "2026-05-02T11:19:10",
+            "logout_time": "2026-05-02T11:21:09",
+            "duration_seconds": 119,
+            "actions": [
+                "session_open",
+                "session_close"
+            ],
+            "action_count": 2,
+            "sudo_count": 0,
+            "failed_logins": 0,
+            "destructive_count": 0,
+            "actions_per_minute": 1.01,
+            "suspicious_sequence": false
+        },
+        {
+            "session_id": "main_21",
+            "login_time": "2026-05-02T18:34:01",
+            "logout_time": "2026-05-02T18:34:02",
+            "duration_seconds": 1,
+            "actions": [
+                "session_open"
+            ],
+            "action_count": 1,
+            "sudo_count": 0,
+            "failed_logins": 0,
+            "destructive_count": 0,
+            "actions_per_minute": 60.0,
+            "suspicious_sequence": false
+        },
+        {
+            "session_id": "main_22",
+            "login_time": "2026-05-02T18:34:02",
+            "logout_time": "2026-05-02T18:34:20",
+            "duration_seconds": 18,
+            "actions": [
+                "session_open",
+                "session_close"
+            ],
+            "action_count": 2,
+            "sudo_count": 0,
+            "failed_logins": 0,
+            "destructive_count": 0,
+            "actions_per_minute": 6.67,
+            "suspicious_sequence": false
+        },
+        {
+            "session_id": "main_23",
+            "login_time": "2026-05-02T18:34:28",
+            "logout_time": "2026-05-02T19:07:38",
+            "duration_seconds": 1990,
+            "actions": [
+                "session_open",
+                "/usr/bin/systemctl status ollama.service",
+                "session_close"
+            ],
+            "action_count": 3,
+            "sudo_count": 0,
+            "failed_logins": 0,
+            "destructive_count": 0,
+            "actions_per_minute": 0.09,
+            "suspicious_sequence": false
+        },
+        {
+            "session_id": "main_24_implicit",
+            "login_time": "2026-05-02T19:10:36",
+            "logout_time": "2026-05-02T19:10:42",
+            "duration_seconds": 6,
+            "actions": [
+                "login_failed"
+            ],
+            "action_count": 1,
+            "sudo_count": 0,
+            "failed_logins": 1,
+            "destructive_count": 0,
+            "actions_per_minute": 10.0,
+            "suspicious_sequence": false
+        },
+        {
+            "session_id": "main_25",
+            "login_time": "2026-05-02T19:10:42",
+            "logout_time": "2026-05-02T19:10:42",
+            "duration_seconds": null,
+            "actions": [
+                "session_open"
+            ],
+            "action_count": 1,
+            "sudo_count": 0,
+            "failed_logins": 0,
+            "destructive_count": 0,
+            "actions_per_minute": null,
+            "suspicious_sequence": false
+        },
+        {
+            "session_id": "main_26",
+            "login_time": "2026-05-02T19:10:42",
+            "logout_time": "2026-05-02T19:34:25",
+            "duration_seconds": 1423,
+            "actions": [
+                "session_open",
+                "session_close"
+            ],
+            "action_count": 2,
+            "sudo_count": 0,
+            "failed_logins": 0,
+            "destructive_count": 0,
+            "actions_per_minute": 0.08,
+            "suspicious_sequence": false
+        },
+        {
+            "session_id": "main_27",
+            "login_time": "2026-05-05T13:45:30",
+            "logout_time": "2026-05-05T13:45:30",
+            "duration_seconds": null,
+            "actions": [
+                "session_open"
+            ],
+            "action_count": 1,
+            "sudo_count": 0,
+            "failed_logins": 0,
+            "destructive_count": 0,
+            "actions_per_minute": null,
+            "suspicious_sequence": false
+        },
+        {
+            "session_id": "main_28",
+            "login_time": "2026-05-05T13:45:30",
+            "logout_time": null,
+            "duration_seconds": null,
+            "actions": [
+                "session_open",
+                "/usr/bin/systemctl status ollama.service",
                 "/usr/bin/cp /var/log/auth.log ./logs/auth.log"
             ],
-            "action_count": 13,
+            "action_count": 3,
             "sudo_count": 0,
             "failed_logins": 0,
             "destructive_count": 0,
@@ -1920,6 +2301,496 @@
         {
             "session_id": "root_69",
             "login_time": "2026-05-02T09:48:03",
+            "logout_time": "2026-05-02T09:48:03",
+            "duration_seconds": null,
+            "actions": [
+                "session_open",
+                "session_close"
+            ],
+            "action_count": 2,
+            "sudo_count": 0,
+            "failed_logins": 0,
+            "destructive_count": 0,
+            "actions_per_minute": null,
+            "suspicious_sequence": false
+        },
+        {
+            "session_id": "root_70",
+            "login_time": "2026-05-02T10:02:30",
+            "logout_time": "2026-05-02T10:04:52",
+            "duration_seconds": 142,
+            "actions": [
+                "session_open",
+                "session_close"
+            ],
+            "action_count": 2,
+            "sudo_count": 0,
+            "failed_logins": 0,
+            "destructive_count": 0,
+            "actions_per_minute": 0.85,
+            "suspicious_sequence": false
+        },
+        {
+            "session_id": "root_71",
+            "login_time": "2026-05-02T10:05:12",
+            "logout_time": "2026-05-02T10:05:26",
+            "duration_seconds": 14,
+            "actions": [
+                "session_open",
+                "session_close"
+            ],
+            "action_count": 2,
+            "sudo_count": 0,
+            "failed_logins": 0,
+            "destructive_count": 0,
+            "actions_per_minute": 8.57,
+            "suspicious_sequence": false
+        },
+        {
+            "session_id": "root_72",
+            "login_time": "2026-05-02T10:08:06",
+            "logout_time": "2026-05-02T10:08:06",
+            "duration_seconds": null,
+            "actions": [
+                "session_open",
+                "session_close"
+            ],
+            "action_count": 2,
+            "sudo_count": 0,
+            "failed_logins": 0,
+            "destructive_count": 0,
+            "actions_per_minute": null,
+            "suspicious_sequence": false
+        },
+        {
+            "session_id": "root_73",
+            "login_time": "2026-05-02T10:08:06",
+            "logout_time": "2026-05-02T10:08:06",
+            "duration_seconds": null,
+            "actions": [
+                "session_open",
+                "session_close"
+            ],
+            "action_count": 2,
+            "sudo_count": 0,
+            "failed_logins": 0,
+            "destructive_count": 0,
+            "actions_per_minute": null,
+            "suspicious_sequence": false
+        },
+        {
+            "session_id": "root_74",
+            "login_time": "2026-05-02T10:08:08",
+            "logout_time": "2026-05-02T10:13:12",
+            "duration_seconds": 304,
+            "actions": [
+                "session_open",
+                "session_close"
+            ],
+            "action_count": 2,
+            "sudo_count": 0,
+            "failed_logins": 0,
+            "destructive_count": 0,
+            "actions_per_minute": 0.39,
+            "suspicious_sequence": false
+        },
+        {
+            "session_id": "root_75",
+            "login_time": "2026-05-02T10:13:12",
+            "logout_time": "2026-05-02T10:13:13",
+            "duration_seconds": 1,
+            "actions": [
+                "session_open",
+                "session_close"
+            ],
+            "action_count": 2,
+            "sudo_count": 0,
+            "failed_logins": 0,
+            "destructive_count": 0,
+            "actions_per_minute": 120.0,
+            "suspicious_sequence": false
+        },
+        {
+            "session_id": "root_76",
+            "login_time": "2026-05-02T10:13:13",
+            "logout_time": "2026-05-02T10:13:13",
+            "duration_seconds": null,
+            "actions": [
+                "session_open",
+                "session_close"
+            ],
+            "action_count": 2,
+            "sudo_count": 0,
+            "failed_logins": 0,
+            "destructive_count": 0,
+            "actions_per_minute": null,
+            "suspicious_sequence": false
+        },
+        {
+            "session_id": "root_77",
+            "login_time": "2026-05-02T10:13:13",
+            "logout_time": "2026-05-02T10:13:13",
+            "duration_seconds": null,
+            "actions": [
+                "session_open",
+                "session_close"
+            ],
+            "action_count": 2,
+            "sudo_count": 0,
+            "failed_logins": 0,
+            "destructive_count": 0,
+            "actions_per_minute": null,
+            "suspicious_sequence": false
+        },
+        {
+            "session_id": "root_78",
+            "login_time": "2026-05-02T10:13:13",
+            "logout_time": "2026-05-02T10:13:14",
+            "duration_seconds": 1,
+            "actions": [
+                "session_open",
+                "session_close"
+            ],
+            "action_count": 2,
+            "sudo_count": 0,
+            "failed_logins": 0,
+            "destructive_count": 0,
+            "actions_per_minute": 120.0,
+            "suspicious_sequence": false
+        },
+        {
+            "session_id": "root_79",
+            "login_time": "2026-05-02T10:13:14",
+            "logout_time": "2026-05-02T10:13:14",
+            "duration_seconds": null,
+            "actions": [
+                "session_open",
+                "session_close"
+            ],
+            "action_count": 2,
+            "sudo_count": 0,
+            "failed_logins": 0,
+            "destructive_count": 0,
+            "actions_per_minute": null,
+            "suspicious_sequence": false
+        },
+        {
+            "session_id": "root_80",
+            "login_time": "2026-05-02T10:13:14",
+            "logout_time": "2026-05-02T10:13:15",
+            "duration_seconds": 1,
+            "actions": [
+                "session_open",
+                "session_close"
+            ],
+            "action_count": 2,
+            "sudo_count": 0,
+            "failed_logins": 0,
+            "destructive_count": 0,
+            "actions_per_minute": 120.0,
+            "suspicious_sequence": false
+        },
+        {
+            "session_id": "root_81",
+            "login_time": "2026-05-02T10:13:15",
+            "logout_time": "2026-05-02T10:13:16",
+            "duration_seconds": 1,
+            "actions": [
+                "session_open",
+                "session_close"
+            ],
+            "action_count": 2,
+            "sudo_count": 0,
+            "failed_logins": 0,
+            "destructive_count": 0,
+            "actions_per_minute": 120.0,
+            "suspicious_sequence": false
+        },
+        {
+            "session_id": "root_82",
+            "login_time": "2026-05-02T10:13:17",
+            "logout_time": "2026-05-02T10:13:19",
+            "duration_seconds": 2,
+            "actions": [
+                "session_open",
+                "session_close"
+            ],
+            "action_count": 2,
+            "sudo_count": 0,
+            "failed_logins": 0,
+            "destructive_count": 0,
+            "actions_per_minute": 60.0,
+            "suspicious_sequence": false
+        },
+        {
+            "session_id": "root_83",
+            "login_time": "2026-05-02T10:13:19",
+            "logout_time": "2026-05-02T10:13:23",
+            "duration_seconds": 4,
+            "actions": [
+                "session_open",
+                "session_close"
+            ],
+            "action_count": 2,
+            "sudo_count": 0,
+            "failed_logins": 0,
+            "destructive_count": 0,
+            "actions_per_minute": 30.0,
+            "suspicious_sequence": false
+        },
+        {
+            "session_id": "root_84",
+            "login_time": "2026-05-02T10:13:23",
+            "logout_time": "2026-05-02T10:13:23",
+            "duration_seconds": null,
+            "actions": [
+                "session_open",
+                "session_close"
+            ],
+            "action_count": 2,
+            "sudo_count": 0,
+            "failed_logins": 0,
+            "destructive_count": 0,
+            "actions_per_minute": null,
+            "suspicious_sequence": false
+        },
+        {
+            "session_id": "root_85",
+            "login_time": "2026-05-02T10:19:22",
+            "logout_time": "2026-05-02T10:19:22",
+            "duration_seconds": null,
+            "actions": [
+                "session_open",
+                "session_close"
+            ],
+            "action_count": 2,
+            "sudo_count": 0,
+            "failed_logins": 0,
+            "destructive_count": 0,
+            "actions_per_minute": null,
+            "suspicious_sequence": false
+        },
+        {
+            "session_id": "root_86",
+            "login_time": "2026-05-02T10:49:20",
+            "logout_time": "2026-05-02T10:49:20",
+            "duration_seconds": null,
+            "actions": [
+                "session_open",
+                "session_close"
+            ],
+            "action_count": 2,
+            "sudo_count": 0,
+            "failed_logins": 0,
+            "destructive_count": 0,
+            "actions_per_minute": null,
+            "suspicious_sequence": false
+        },
+        {
+            "session_id": "root_87",
+            "login_time": "2026-05-02T11:02:04",
+            "logout_time": "2026-05-02T11:05:22",
+            "duration_seconds": 198,
+            "actions": [
+                "session_open"
+            ],
+            "action_count": 1,
+            "sudo_count": 0,
+            "failed_logins": 0,
+            "destructive_count": 0,
+            "actions_per_minute": 0.3,
+            "suspicious_sequence": false
+        },
+        {
+            "session_id": "root_88",
+            "login_time": "2026-05-02T11:05:22",
+            "logout_time": "2026-05-02T11:05:22",
+            "duration_seconds": null,
+            "actions": [
+                "session_open",
+                "session_close"
+            ],
+            "action_count": 2,
+            "sudo_count": 0,
+            "failed_logins": 0,
+            "destructive_count": 0,
+            "actions_per_minute": null,
+            "suspicious_sequence": false
+        },
+        {
+            "session_id": "root_89",
+            "login_time": "2026-05-02T11:07:47",
+            "logout_time": "2026-05-02T11:07:47",
+            "duration_seconds": null,
+            "actions": [
+                "session_open",
+                "session_close"
+            ],
+            "action_count": 2,
+            "sudo_count": 0,
+            "failed_logins": 0,
+            "destructive_count": 0,
+            "actions_per_minute": null,
+            "suspicious_sequence": false
+        },
+        {
+            "session_id": "root_90",
+            "login_time": "2026-05-02T11:07:49",
+            "logout_time": "2026-05-02T11:10:26",
+            "duration_seconds": 157,
+            "actions": [
+                "session_open"
+            ],
+            "action_count": 1,
+            "sudo_count": 0,
+            "failed_logins": 0,
+            "destructive_count": 0,
+            "actions_per_minute": 0.38,
+            "suspicious_sequence": false
+        },
+        {
+            "session_id": "root_91",
+            "login_time": "2026-05-02T11:10:26",
+            "logout_time": "2026-05-02T11:10:43",
+            "duration_seconds": 17,
+            "actions": [
+                "session_open",
+                "session_close"
+            ],
+            "action_count": 2,
+            "sudo_count": 0,
+            "failed_logins": 0,
+            "destructive_count": 0,
+            "actions_per_minute": 7.06,
+            "suspicious_sequence": false
+        },
+        {
+            "session_id": "root_92",
+            "login_time": "2026-05-02T11:11:04",
+            "logout_time": "2026-05-02T11:11:04",
+            "duration_seconds": null,
+            "actions": [
+                "session_open",
+                "session_close"
+            ],
+            "action_count": 2,
+            "sudo_count": 0,
+            "failed_logins": 0,
+            "destructive_count": 0,
+            "actions_per_minute": null,
+            "suspicious_sequence": false
+        },
+        {
+            "session_id": "root_93",
+            "login_time": "2026-05-02T11:14:31",
+            "logout_time": "2026-05-02T11:14:31",
+            "duration_seconds": null,
+            "actions": [
+                "session_open",
+                "session_close"
+            ],
+            "action_count": 2,
+            "sudo_count": 0,
+            "failed_logins": 0,
+            "destructive_count": 0,
+            "actions_per_minute": null,
+            "suspicious_sequence": false
+        },
+        {
+            "session_id": "root_94",
+            "login_time": "2026-05-02T11:20:24",
+            "logout_time": "2026-05-02T18:35:52",
+            "duration_seconds": 26128,
+            "actions": [
+                "session_open"
+            ],
+            "action_count": 1,
+            "sudo_count": 0,
+            "failed_logins": 0,
+            "destructive_count": 0,
+            "actions_per_minute": 0.0,
+            "suspicious_sequence": false
+        },
+        {
+            "session_id": "root_95",
+            "login_time": "2026-05-02T18:35:52",
+            "logout_time": "2026-05-02T18:40:34",
+            "duration_seconds": 282,
+            "actions": [
+                "session_open"
+            ],
+            "action_count": 1,
+            "sudo_count": 0,
+            "failed_logins": 0,
+            "destructive_count": 0,
+            "actions_per_minute": 0.21,
+            "suspicious_sequence": false
+        },
+        {
+            "session_id": "root_96",
+            "login_time": "2026-05-02T18:40:34",
+            "logout_time": "2026-05-02T18:43:10",
+            "duration_seconds": 156,
+            "actions": [
+                "session_open",
+                "session_close"
+            ],
+            "action_count": 2,
+            "sudo_count": 0,
+            "failed_logins": 0,
+            "destructive_count": 0,
+            "actions_per_minute": 0.77,
+            "suspicious_sequence": false
+        },
+        {
+            "session_id": "root_97",
+            "login_time": "2026-05-02T19:11:52",
+            "logout_time": "2026-05-05T13:46:04",
+            "duration_seconds": 239652,
+            "actions": [
+                "session_open"
+            ],
+            "action_count": 1,
+            "sudo_count": 0,
+            "failed_logins": 0,
+            "destructive_count": 0,
+            "actions_per_minute": 0.0,
+            "suspicious_sequence": false
+        },
+        {
+            "session_id": "root_98",
+            "login_time": "2026-05-05T13:46:04",
+            "logout_time": "2026-05-05T13:46:09",
+            "duration_seconds": 5,
+            "actions": [
+                "session_open",
+                "session_close"
+            ],
+            "action_count": 2,
+            "sudo_count": 0,
+            "failed_logins": 0,
+            "destructive_count": 0,
+            "actions_per_minute": 24.0,
+            "suspicious_sequence": false
+        },
+        {
+            "session_id": "root_99",
+            "login_time": "2026-05-05T13:46:44",
+            "logout_time": "2026-05-05T13:48:02",
+            "duration_seconds": 78,
+            "actions": [
+                "session_open"
+            ],
+            "action_count": 1,
+            "sudo_count": 0,
+            "failed_logins": 0,
+            "destructive_count": 0,
+            "actions_per_minute": 0.77,
+            "suspicious_sequence": false
+        },
+        {
+            "session_id": "root_100",
+            "login_time": "2026-05-05T13:48:02",
             "logout_time": null,
             "duration_seconds": null,
             "actions": [

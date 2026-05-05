@@ -1888,5 +1888,831 @@
         "timestamp": "2026-05-02T09:48:03",
         "source": "auth_log",
         "privilege": "normal"
+    },
+    {
+        "user": "root",
+        "action": "session_close",
+        "timestamp": "2026-05-02T09:48:03",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "main",
+        "action": "/usr/bin/find / -name main.py",
+        "timestamp": "2026-05-02T10:02:30",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "root",
+        "action": "session_open",
+        "timestamp": "2026-05-02T10:02:30",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "root",
+        "action": "session_close",
+        "timestamp": "2026-05-02T10:04:52",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "main",
+        "action": "/usr/bin/find /home/main/ -name main.py",
+        "timestamp": "2026-05-02T10:05:12",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "root",
+        "action": "session_open",
+        "timestamp": "2026-05-02T10:05:12",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "root",
+        "action": "session_close",
+        "timestamp": "2026-05-02T10:05:26",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "main",
+        "action": "/usr/bin/install -o0 -g0 -m755 -d /usr/local/bin",
+        "timestamp": "2026-05-02T10:08:06",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "root",
+        "action": "session_open",
+        "timestamp": "2026-05-02T10:08:06",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "root",
+        "action": "session_close",
+        "timestamp": "2026-05-02T10:08:06",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "main",
+        "action": "/usr/bin/install -o0 -g0 -m755 -d /usr/local/lib/ollama",
+        "timestamp": "2026-05-02T10:08:06",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "root",
+        "action": "session_open",
+        "timestamp": "2026-05-02T10:08:06",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "root",
+        "action": "session_close",
+        "timestamp": "2026-05-02T10:08:06",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "main",
+        "action": "/usr/bin/tar -xf - -C /usr/local",
+        "timestamp": "2026-05-02T10:08:08",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "root",
+        "action": "session_open",
+        "timestamp": "2026-05-02T10:08:08",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "root",
+        "action": "session_close",
+        "timestamp": "2026-05-02T10:13:12",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "main",
+        "action": "/usr/sbin/useradd -r -s /bin/false -U -m -d /usr/share/ollama ollama",
+        "timestamp": "2026-05-02T10:13:12",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "root",
+        "action": "session_open",
+        "timestamp": "2026-05-02T10:13:12",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "root",
+        "action": "session_close",
+        "timestamp": "2026-05-02T10:13:13",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "main",
+        "action": "/usr/sbin/usermod -a -G render ollama",
+        "timestamp": "2026-05-02T10:13:13",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "root",
+        "action": "session_open",
+        "timestamp": "2026-05-02T10:13:13",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "root",
+        "action": "session_close",
+        "timestamp": "2026-05-02T10:13:13",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "main",
+        "action": "/usr/sbin/usermod -a -G video ollama",
+        "timestamp": "2026-05-02T10:13:13",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "root",
+        "action": "session_open",
+        "timestamp": "2026-05-02T10:13:13",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "root",
+        "action": "session_close",
+        "timestamp": "2026-05-02T10:13:13",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "main",
+        "action": "/usr/sbin/usermod -a -G ollama main",
+        "timestamp": "2026-05-02T10:13:13",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "root",
+        "action": "session_open",
+        "timestamp": "2026-05-02T10:13:13",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "root",
+        "action": "session_close",
+        "timestamp": "2026-05-02T10:13:14",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "main",
+        "action": "/usr/bin/tee /etc/systemd/system/ollama.service",
+        "timestamp": "2026-05-02T10:13:14",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "root",
+        "action": "session_open",
+        "timestamp": "2026-05-02T10:13:14",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "root",
+        "action": "session_close",
+        "timestamp": "2026-05-02T10:13:14",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "main",
+        "action": "/usr/bin/systemctl daemon-reload",
+        "timestamp": "2026-05-02T10:13:14",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "root",
+        "action": "session_open",
+        "timestamp": "2026-05-02T10:13:14",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "root",
+        "action": "session_close",
+        "timestamp": "2026-05-02T10:13:15",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "main",
+        "action": "/usr/bin/systemctl enable ollama",
+        "timestamp": "2026-05-02T10:13:15",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "root",
+        "action": "session_open",
+        "timestamp": "2026-05-02T10:13:15",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "root",
+        "action": "session_close",
+        "timestamp": "2026-05-02T10:13:16",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "main",
+        "action": "/usr/bin/lshw -c display -numeric -disable network",
+        "timestamp": "2026-05-02T10:13:17",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "root",
+        "action": "session_open",
+        "timestamp": "2026-05-02T10:13:17",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "root",
+        "action": "session_close",
+        "timestamp": "2026-05-02T10:13:19",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "main",
+        "action": "/usr/bin/lshw -c display -numeric -disable network",
+        "timestamp": "2026-05-02T10:13:19",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "root",
+        "action": "session_open",
+        "timestamp": "2026-05-02T10:13:19",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "root",
+        "action": "session_close",
+        "timestamp": "2026-05-02T10:13:23",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "main",
+        "action": "/usr/bin/systemctl restart ollama",
+        "timestamp": "2026-05-02T10:13:23",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "root",
+        "action": "session_open",
+        "timestamp": "2026-05-02T10:13:23",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "root",
+        "action": "session_close",
+        "timestamp": "2026-05-02T10:13:23",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "main",
+        "action": "/usr/bin/chmod 644 /var/log/auth.log",
+        "timestamp": "2026-05-02T10:19:22",
+        "source": "auth_log",
+        "privilege": "elevated"
+    },
+    {
+        "user": "root",
+        "action": "session_open",
+        "timestamp": "2026-05-02T10:19:22",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "root",
+        "action": "session_close",
+        "timestamp": "2026-05-02T10:19:22",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "main",
+        "action": "/usr/bin/cp /var/log/auth.log ./logs/auth.log",
+        "timestamp": "2026-05-02T10:49:20",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "root",
+        "action": "session_open",
+        "timestamp": "2026-05-02T10:49:20",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "root",
+        "action": "session_close",
+        "timestamp": "2026-05-02T10:49:20",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "main",
+        "action": "/usr/bin/apt update",
+        "timestamp": "2026-05-02T11:02:04",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "root",
+        "action": "session_open",
+        "timestamp": "2026-05-02T11:02:04",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "main",
+        "action": "/usr/bin/ls",
+        "timestamp": "2026-05-02T11:05:22",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "root",
+        "action": "session_open",
+        "timestamp": "2026-05-02T11:05:22",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "root",
+        "action": "session_close",
+        "timestamp": "2026-05-02T11:05:22",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "root",
+        "action": "session_close",
+        "timestamp": "2026-05-02T11:06:58",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "main",
+        "action": "/usr/bin/apt lisit",
+        "timestamp": "2026-05-02T11:07:47",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "root",
+        "action": "session_open",
+        "timestamp": "2026-05-02T11:07:47",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "root",
+        "action": "session_close",
+        "timestamp": "2026-05-02T11:07:47",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "root",
+        "action": "session_open",
+        "timestamp": "2026-05-02T11:07:49",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "main",
+        "action": "/usr/bin/systemctl status ollama.service",
+        "timestamp": "2026-05-02T11:10:26",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "root",
+        "action": "session_open",
+        "timestamp": "2026-05-02T11:10:26",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "root",
+        "action": "session_close",
+        "timestamp": "2026-05-02T11:10:43",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "main",
+        "action": "/usr/bin/systemctl restart ollama.service",
+        "timestamp": "2026-05-02T11:11:04",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "root",
+        "action": "session_open",
+        "timestamp": "2026-05-02T11:11:04",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "root",
+        "action": "session_close",
+        "timestamp": "2026-05-02T11:11:04",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "main",
+        "action": "/usr/bin/cat /etc/passwd",
+        "timestamp": "2026-05-02T11:14:31",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "root",
+        "action": "session_open",
+        "timestamp": "2026-05-02T11:14:31",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "root",
+        "action": "session_close",
+        "timestamp": "2026-05-02T11:14:31",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "gdm",
+        "action": "session_open",
+        "timestamp": "2026-05-02T11:18:54",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "gdm",
+        "action": "session_open",
+        "timestamp": "2026-05-02T11:18:54",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "main",
+        "action": "session_open",
+        "timestamp": "2026-05-02T11:19:10",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "main",
+        "action": "session_open",
+        "timestamp": "2026-05-02T11:19:10",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "gdm",
+        "action": "session_close",
+        "timestamp": "2026-05-02T11:19:16",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "root",
+        "action": "session_open",
+        "timestamp": "2026-05-02T11:20:24",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "main",
+        "action": "session_close",
+        "timestamp": "2026-05-02T11:21:09",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "gdm",
+        "action": "session_open",
+        "timestamp": "2026-05-02T18:19:07",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "gdm",
+        "action": "session_open",
+        "timestamp": "2026-05-02T18:19:11",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "gdm",
+        "action": "session_open",
+        "timestamp": "2026-05-02T18:33:42",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "gdm",
+        "action": "session_open",
+        "timestamp": "2026-05-02T18:33:43",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "main",
+        "action": "session_open",
+        "timestamp": "2026-05-02T18:34:01",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "main",
+        "action": "session_open",
+        "timestamp": "2026-05-02T18:34:02",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "gdm",
+        "action": "session_close",
+        "timestamp": "2026-05-02T18:34:16",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "main",
+        "action": "session_close",
+        "timestamp": "2026-05-02T18:34:20",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "gdm",
+        "action": "session_open",
+        "timestamp": "2026-05-02T18:34:21",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "main",
+        "action": "session_open",
+        "timestamp": "2026-05-02T18:34:28",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "gdm",
+        "action": "session_close",
+        "timestamp": "2026-05-02T18:34:34",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "gdm",
+        "action": "session_close",
+        "timestamp": "2026-05-02T18:34:45",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "root",
+        "action": "session_open",
+        "timestamp": "2026-05-02T18:35:52",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "main",
+        "action": "/usr/bin/systemctl status ollama.service",
+        "timestamp": "2026-05-02T18:40:34",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "root",
+        "action": "session_open",
+        "timestamp": "2026-05-02T18:40:34",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "root",
+        "action": "session_close",
+        "timestamp": "2026-05-02T18:43:10",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "main",
+        "action": "session_close",
+        "timestamp": "2026-05-02T19:07:38",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "gdm",
+        "action": "session_open",
+        "timestamp": "2026-05-02T19:09:43",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "gdm",
+        "action": "session_open",
+        "timestamp": "2026-05-02T19:09:43",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "main",
+        "action": "login_failed",
+        "timestamp": "2026-05-02T19:10:36",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "main",
+        "action": "session_open",
+        "timestamp": "2026-05-02T19:10:42",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "main",
+        "action": "session_open",
+        "timestamp": "2026-05-02T19:10:42",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "gdm",
+        "action": "session_close",
+        "timestamp": "2026-05-02T19:10:47",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "root",
+        "action": "session_open",
+        "timestamp": "2026-05-02T19:11:52",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "main",
+        "action": "session_close",
+        "timestamp": "2026-05-02T19:34:25",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "gdm",
+        "action": "session_open",
+        "timestamp": "2026-05-05T13:41:27",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "gdm",
+        "action": "session_open",
+        "timestamp": "2026-05-05T13:41:27",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "gdm",
+        "action": "session_close",
+        "timestamp": "2026-05-05T13:44:06",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "gdm",
+        "action": "session_open",
+        "timestamp": "2026-05-05T13:45:18",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "gdm",
+        "action": "session_open",
+        "timestamp": "2026-05-05T13:45:18",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "main",
+        "action": "session_open",
+        "timestamp": "2026-05-05T13:45:30",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "main",
+        "action": "session_open",
+        "timestamp": "2026-05-05T13:45:30",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "gdm",
+        "action": "session_close",
+        "timestamp": "2026-05-05T13:45:36",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "gdm",
+        "action": "session_close",
+        "timestamp": "2026-05-05T13:45:46",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "main",
+        "action": "/usr/bin/systemctl status ollama.service",
+        "timestamp": "2026-05-05T13:46:04",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "root",
+        "action": "session_open",
+        "timestamp": "2026-05-05T13:46:04",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "root",
+        "action": "session_close",
+        "timestamp": "2026-05-05T13:46:09",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "root",
+        "action": "session_open",
+        "timestamp": "2026-05-05T13:46:44",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "main",
+        "action": "/usr/bin/cp /var/log/auth.log ./logs/auth.log",
+        "timestamp": "2026-05-05T13:48:02",
+        "source": "auth_log",
+        "privilege": "normal"
+    },
+    {
+        "user": "root",
+        "action": "session_open",
+        "timestamp": "2026-05-05T13:48:02",
+        "source": "auth_log",
+        "privilege": "normal"
     }
 ]
