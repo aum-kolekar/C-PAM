@@ -47,7 +47,7 @@ def get_ai_summary(user: str, action: str, recent_actions: list, score: float) -
 
     try:
         req = urllib.request.Request(
-            "http://localhost:11434/api/generate",
+            "http://192.168.56.1:11434/api/generate",
             data=payload,
             headers={"Content-Type": "application/json"},
             method="POST",

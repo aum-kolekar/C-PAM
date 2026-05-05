@@ -7,7 +7,7 @@ import json
 import urllib.request
 
 
-OLLAMA_URL = "http://localhost:11434/api/generate"
+OLLAMA_URL = "http://192.168.56.1:11434/api/generate"
 MODEL      = "mistral"
 
 SYSTEM_PROMPT = (
