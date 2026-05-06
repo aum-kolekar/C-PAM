@@ -540,7 +540,7 @@ async function loadUserDetail(user) {
   }, 100);
 }
 
-  detail.innerHTML = html;
+ /*   detail.innerHTML = html;
 
   // Load session insights async
   sessions.forEach((s, i) => {
@@ -556,7 +556,7 @@ async function loadUserDetail(user) {
                 : '';
         });
   });
-}
+}*/
 
 function switchSession(idx) {
   document.querySelectorAll('.sess-tab').forEach((t,i) => t.classList.toggle('active', i===idx));
