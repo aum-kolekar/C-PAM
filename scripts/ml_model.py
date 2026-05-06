@@ -78,35 +78,30 @@ def run_anomaly_detection(user_sessions: dict, retrain: bool = False) -> dict:
 # ── Action-level model (new) ──────────────────────────────────────────────────
 
 def extract_action_features(action: str, context: list) -> list:
-    """
-    Extracts features for a SINGLE action given the context
-    of what the user has done so far in their session.
+    is_sudo        = 1 if action == "sudo" or action.startswith("sudo ") else 0
+    is_destructive = 1 if any(kw in action for kw in DESTRUCTIVE) else 0
+    is_recon       = 1 if any(kw in action for kw in RECON) else 0
+    is_failed      = 1 if action == "login_failed" else 0
+    is_exfil       = 1 if any(kw in action for kw in EXFIL) else 0
 
-    Features:
-      1. Is this action a sudo command
-      2. Is this a destructive command
-      3. Is this a recon command
-      4. Is this a failed login
-      5. Is this an exfiltration command
-      6. How many failed logins have happened before this action
-      7. How many sudo uses before this action
-      8. Position of action in session (normalized 0-1)
-      9. Failed login ratio in context so far
-      10. Did a failed login happen in the last 3 actions
-    """
-    recent = context[-3:] if len(context) >= 3 else context
+    ctx_fails      = context.count("login_failed")
+    ctx_sudo       = context.count("sudo")
+    ctx_destructive= sum(1 for a in context if any(kw in a for kw in DESTRUCTIVE))
+    position       = min(len(context) / 50.0, 1.0)
+    fail_ratio     = ctx_fails / max(len(context), 1)
+    recent         = context[-3:] if len(context) >= 3 else context
+    recent_fail    = 1 if "login_failed" in recent else 0
+
+    # Extra weight — destructive after sudo is the most critical pattern
+    destructive_after_sudo = 1 if (is_destructive and ctx_sudo > 0) else 0
+    failed_then_sudo = 1 if (is_sudo and ctx_fails >= 2) else 0
 
     return [
-        1 if action == "sudo" or action.startswith("sudo ") else 0,
-        1 if any(kw in action for kw in DESTRUCTIVE) else 0,
-        1 if any(kw in action for kw in RECON) else 0,
-        1 if action == "login_failed" else 0,
-        1 if any(kw in action for kw in EXFIL) else 0,
-        context.count("login_failed"),
-        context.count("sudo"),
-        min(len(context) / 50.0, 1.0),
-        context.count("login_failed") / max(len(context), 1),
-        1 if "login_failed" in recent else 0,
+        is_sudo, is_destructive, is_recon, is_failed, is_exfil,
+        ctx_fails, ctx_sudo, ctx_destructive,
+        position, fail_ratio, recent_fail,
+        destructive_after_sudo,   # new
+        failed_then_sudo,         # new
     ]
 
 
@@ -126,15 +121,13 @@ def build_action_training_data(user_sessions: dict) -> list:
 def train_action_model(user_sessions: dict) -> IsolationForest:
     X = build_action_training_data(user_sessions)
     if len(X) < 5:
-        print("[ML] Not enough actions to train action model — need at least 5")
+        print("[ML] Not enough actions to train action model")
         return None
-
-    model = IsolationForest(contamination=0.05, random_state=42)
+    model = IsolationForest(contamination=0.1, random_state=42)  # raised from 0.05
     model.fit(X)
     joblib.dump(model, ACTION_MODEL_PATH)
-    print(f"[ML] Action model trained on {len(X)} action samples → {ACTION_MODEL_PATH}")
+    print(f"[ML] Action model trained on {len(X)} samples → {ACTION_MODEL_PATH}")
     return model
-
 
 def load_action_model() -> IsolationForest:
     if os.path.exists(ACTION_MODEL_PATH):
