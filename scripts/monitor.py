@@ -351,7 +351,7 @@ def main():
         print(f"[ERROR] auth.log not found at {LOG_PATH}")
         sys.exit(1)
 
-    rebuild_state_from_db()
+    # rebuild_state_from_db()
     watch(LOG_PATH)
 
 
