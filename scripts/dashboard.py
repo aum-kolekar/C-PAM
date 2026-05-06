@@ -540,24 +540,6 @@ async function loadUserDetail(user) {
   }, 100);
 }
 
- /*   detail.innerHTML = html;
-
-  // Load session insights async
-  sessions.forEach((s, i) => {
-    fetch('/api/session-insight/' + s.session_id)
-      .then(r => r.json())
-        .then(d => {
-            const el = document.getElementById('sess-insight-' + i);
-            if (el) el.innerHTML = d.insight
-                ? `<div style="background:rgba(59,130,246,0.07);border:1px solid
-                   rgba(59,130,246,0.2);border-radius:6px;padding:10px;
-                   margin-top:8px;line-height:1.7;color:var(--text);
-                   font-style:normal">${d.insight}</div>`
-                : '';
-        });
-  });
-}*/
-
 function switchSession(idx) {
   document.querySelectorAll('.sess-tab').forEach((t,i) => t.classList.toggle('active', i===idx));
   document.querySelectorAll('.sess-panel').forEach((p,i) => p.classList.toggle('active', i===idx));
