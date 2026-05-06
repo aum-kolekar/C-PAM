@@ -4,7 +4,13 @@
 
 from datetime import datetime
 from typing import Optional
+import os as _os
 
+def _is_destructive(action: str) -> bool:
+    parts = action.strip().split()
+    cmd   = _os.path.basename(parts[0]) if parts else action
+    reconstructed = cmd + " " + " ".join(parts[1:]) if len(parts) > 1 else cmd
+    return any(kw in action or kw in reconstructed for kw in DESTRUCTIVE)
 
 def _to_dt(ts: Optional[str]) -> Optional[datetime]:
     if not ts:

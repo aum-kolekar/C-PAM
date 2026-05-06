@@ -508,6 +508,40 @@ async function loadUserDetail(user) {
 
   detail.innerHTML = html;
 
+  // FIXED: Load session insights AFTER DOM render
+  setTimeout(() => {
+    sessions.forEach((s, i) => {
+      const el = document.getElementById('sess-insight-' + i);
+      if (!el) return;
+
+      el.innerHTML = '<span style="color:var(--muted);font-size:11px">Loading summary...</span>';
+
+      fetch('/api/session-insight/' + encodeURIComponent(s.session_id))
+        .then(r => r.json())
+        .then(d => {
+          if (el) {
+            el.innerHTML = d.insight
+              ? `<div style="background:rgba(59,130,246,0.07);
+                     border:1px solid rgba(59,130,246,0.2);
+                     border-radius:6px;padding:10px;margin-top:10px;
+                     line-height:1.7;color:var(--text);font-size:12px">
+                     <span style="font-size:10px;font-weight:600;
+                     color:var(--info);text-transform:uppercase;
+                     letter-spacing:0.07em;display:block;margin-bottom:6px">
+                     Session Summary</span>
+                     ${d.insight}</div>`
+              : '<span style="color:var(--muted);font-size:11px">No summary available for this session.</span>';
+          }
+        })
+        .catch(() => {
+          if (el) el.innerHTML = '';
+        });
+    });
+  }, 100);
+}
+
+  detail.innerHTML = html;
+
   // Load session insights async
   sessions.forEach((s, i) => {
     fetch('/api/session-insight/' + s.session_id)
