@@ -188,9 +188,9 @@ DASHBOARD_HTML = """
     <h2>User risk scores</h2>
     <table>
       <thead><tr>
-        <th>User</th><th>Risk score</th><th>Level</th>
-        <th>ML flag</th><th>Rule flag</th><th>Verdict</th>
-      </tr></thead>
+        <th>User</th><th>Risk level</th><th>ML anomaly</th><th>Verdict</th>
+        </tr></thead>
+      <!--</tr></thead>-->
       <tbody id="risk-table-body"></tbody>
     </table>
   </div>
@@ -237,14 +237,13 @@ let allRiskData = [];
 async function loadUserList() {
   const users = await fetch('/api/users').then(r => r.json());
 
-  document.getElementById('user-list-body').innerHTML = users.map(u => `
-    <div class="user-item" id="uitem-${u.user}" onclick="loadUserDetail('${u.user}')">
-      <div>
-        <div class="uname">${u.user}</div>
-        <div style="font-size:11px;color:var(--muted);margin-top:2px">${u.normalized_risk}% risk</div>
-      </div>
-      <span class="badge ${u.risk_level}">${u.risk_level}</span>
-    </div>`).join('');
+  document.getElementById('risk-table-body').innerHTML = rows.map(r => `
+    <tr onclick="goToUser('${r.user}')">
+      <td><strong>${r.user}</strong></td>
+      <td><span class="badge ${r.risk_level}">${r.risk_level}</span></td>
+      <td><span class="badge ${r.ml_flag}">${r.ml_flag}</span></td>
+      <td><span class="badge ${r.final_verdict}">${r.final_verdict}</span></td>
+    </tr>`).join('');
 
   // Auto-select the highest risk user
   if (users.length > 0) loadUserDetail(users[0].user);
