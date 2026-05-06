@@ -14,6 +14,8 @@ from db import init_db, upsert_users, insert_risk_scores, insert_sessions, inser
 from threat_patterns import detect_patterns
 from insight_engine import run_insights
 from db import insert_insights
+from insight_engine import generate_session_insight
+from db import insert_session_insight
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 LOG_DIR  = os.path.join(BASE_DIR, "..", "logs")
@@ -144,6 +146,16 @@ def run_pipeline():
     print("[Insight] Generating LLM narratives...")
     insights = run_insights(all_pattern_data)
     insert_insights(insights, all_pattern_data)
+    # Generate session-wise AI summaries
+    print("\n[Insight] Generating session-wise summaries...")
+    
+
+    for user, sessions in all_sessions.items():
+        for s in sessions:
+            if s.get("suspicious_sequence") or s.get("sudo_count", 0) > 0:
+                print(f"  → Session insight: {s['session_id']}")
+                sess_insight = generate_session_insight(user, s)
+                insert_session_insight(s["session_id"], user, sess_insight)
 
     # 10. Print narratives
     print("\n=== THREAT NARRATIVES ===")

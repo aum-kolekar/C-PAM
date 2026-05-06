@@ -77,6 +77,14 @@ def init_db():
             patterns_json     TEXT,
             FOREIGN KEY (user) REFERENCES users(user)
         );
+                    
+        CREATE TABLE IF NOT EXISTS session_insights (
+            id            INTEGER PRIMARY KEY AUTOINCREMENT,
+            session_id    TEXT UNIQUE,
+            user          TEXT,
+            insight       TEXT,
+            run_timestamp TEXT
+        );
     """)
 
     conn.commit()
@@ -276,3 +284,23 @@ def get_user_insight(user: str) -> dict:
     result = dict(row)
     result["patterns"] = json.loads(result.get("patterns_json") or "[]")
     return result
+
+def insert_session_insight(session_id: str, user: str, insight: str):
+    conn = get_connection()
+    conn.execute("DELETE FROM session_insights WHERE session_id = ?", (session_id,))
+    conn.execute("""
+        INSERT INTO session_insights (session_id, user, insight, run_timestamp)
+        VALUES (?, ?, ?, ?)
+    """, (session_id, user, insight, datetime.now().isoformat()))
+    conn.commit()
+    conn.close()
+
+
+def get_session_insight(session_id: str) -> str:
+    conn = get_connection()
+    row  = conn.execute(
+        "SELECT insight FROM session_insights WHERE session_id = ?",
+        (session_id,)
+    ).fetchone()
+    conn.close()
+    return row["insight"] if row else ""

@@ -122,6 +122,53 @@ def generate_insight(pattern_data: dict) -> dict:
         "highest_severity": highest,
     }
 
+def generate_session_insight(user: str, session: dict) -> str:
+    """
+    Generates a short AI summary for a single session.
+    Called per session from monitor.py or main.py.
+    """
+    actions  = session.get("actions", [])
+    duration = session.get("duration_seconds")
+    sid      = session.get("session_id", "unknown")
+
+    prompt = (
+        f"User '{user}' completed session '{sid}'. "
+        f"Duration: {duration}s. "
+        f"Actions performed: {' → '.join(actions[:20])}. "
+        f"Sudo count: {session.get('sudo_count', 0)}. "
+        f"Failed logins: {session.get('failed_logins', 0)}. "
+        f"Destructive commands: {session.get('destructive_count', 0)}. "
+        f"Suspicious sequence detected: {session.get('suspicious_sequence', False)}. "
+        f"In 2 sentences, summarise what happened in this session and flag anything suspicious. "
+        f"No headers. No bullets. Be direct."
+    )
+    return _call_ollama(prompt)
+
+
+def generate_overall_insight(user: str, all_sessions: list,
+                              risk_context: dict) -> str:
+    """
+    Generates an overall summary across all sessions for a user.
+    This is the existing narrative — now explicitly labelled as overall.
+    """
+    total_sessions    = len(all_sessions)
+    total_actions     = sum(s.get("action_count", 0) for s in all_sessions)
+    total_sudo        = sum(s.get("sudo_count", 0) for s in all_sessions)
+    total_failed      = sum(s.get("failed_logins", 0) for s in all_sessions)
+    total_destructive = sum(s.get("destructive_count", 0) for s in all_sessions)
+    any_suspicious    = any(s.get("suspicious_sequence") for s in all_sessions)
+
+    prompt = (
+        f"User '{user}' overall behavior summary across {total_sessions} sessions. "
+        f"Total actions: {total_actions}. Sudo uses: {total_sudo}. "
+        f"Failed logins: {total_failed}. Destructive commands: {total_destructive}. "
+        f"Any suspicious sequences: {any_suspicious}. "
+        f"Risk level: {risk_context.get('risk_level')}. "
+        f"ML verdict: {risk_context.get('ml_flag')}. "
+        f"In 2-3 sentences, give an overall threat assessment of this user. "
+        f"No headers. No bullets. Be direct."
+    )
+    return _call_ollama(prompt)
 
 def run_insights(all_pattern_data: list) -> dict:
     results = {}

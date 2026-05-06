@@ -503,11 +503,30 @@ async function loadUserDetail(user) {
                 <span class="action-cmd ${actionClass(a)}">${a}</span>
               </div>`).join('')}
           </div>
+          <div id="sess-insight-${i}" style="margin-top:12px;font-size:12px;
+            color:var(--muted);font-style:italic;padding:8px 0">
+            Loading session summary...
+          </div>
         </div>`;
     });
   }
 
   detail.innerHTML = html;
+
+  // Load session insights async
+  sessions.forEach((s, i) => {
+    fetch('/api/session-insight/' + s.session_id)
+      .then(r => r.json())
+        .then(d => {
+            const el = document.getElementById('sess-insight-' + i);
+            if (el) el.innerHTML = d.insight
+                ? `<div style="background:rgba(59,130,246,0.07);border:1px solid
+                   rgba(59,130,246,0.2);border-radius:6px;padding:10px;
+                   margin-top:8px;line-height:1.7;color:var(--text);
+                   font-style:normal">${d.insight}</div>`
+                : '';
+        });
+  });
 }
 
 function switchSession(idx) {
@@ -592,6 +611,11 @@ def api_alerts_count():
         return jsonify({"count": 0})
     finally:
         conn.close()
+
+@app.route("/api/session-insight/<session_id>")
+def api_session_insight(session_id):
+    from db import get_session_insight
+    return jsonify({"insight": get_session_insight(session_id)})
 
 if __name__ == "__main__":
     print("C-PAM Dashboard → http://localhost:5000")
