@@ -263,20 +263,6 @@ def should_alert(action: str, actions: list, norm: float,
 
     return False
 
-def rebuild_state_from_db():
-    """Reload user session history from DB so context is preserved on restart."""
-    conn = get_connection()
-    try:
-        rows = conn.execute(
-            "SELECT user, action FROM events ORDER BY timestamp ASC"
-        ).fetchall()
-        for row in rows:
-            user_sessions[row["user"]].append(row["action"])
-        print(f"[Monitor] Rebuilt state: {len(user_sessions)} users from DB")
-    except Exception as e:
-        print(f"[Monitor] Could not rebuild state: {e}")
-    finally:
-        conn.close()
 
 # ── WATCH LOOP (UPDATED) ───────────────────────────────
 
