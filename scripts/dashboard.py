@@ -182,7 +182,7 @@ DASHBOARD_HTML = """
   <div class="stats" id="stats-row"></div>
   <div class="grid-2">
     <div class="card"><h2>Risk distribution</h2><canvas id="riskChart"></canvas></div>
-    <div class="card"><h2>ML vs rule flags</h2><canvas id="flagChart"></canvas></div>
+    <!--<div class="card"><h2>ML vs rule flags</h2><canvas id="flagChart"></canvas></div>-->
   </div>
   <div class="card">
     <h2>User risk scores</h2>
@@ -360,13 +360,8 @@ async function loadRiskTable() {
   document.getElementById('risk-table-body').innerHTML = rows.map(r => `
     <tr onclick="goToUser('${r.user}')">
       <td><strong>${r.user}</strong></td>
-      <td><div style="display:flex;align-items:center;gap:8px">
-        <div class="risk-bar-wrap"><div class="risk-bar"
-          style="width:${r.normalized_risk}%;background:${barColor(r.risk_level)}"></div></div>
-        <span>${r.normalized_risk}%</span></div></td>
       <td><span class="badge ${r.risk_level}">${r.risk_level}</span></td>
       <td><span class="badge ${r.ml_flag}">${r.ml_flag}</span></td>
-      <td><span class="badge ${r.rule_flag}">${r.rule_flag}</span></td>
       <td><span class="badge ${r.final_verdict}">${r.final_verdict}</span></td>
     </tr>`).join('');
 
