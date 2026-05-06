@@ -219,15 +219,31 @@ def update_realtime_insight(user: str, summary: str, norm: float):
     conn.close()
 
 
-def should_alert(action, actions):
-    if action in ALERT_TRIGGERS:
-        return True
+def should_alert(action: str, actions: list, norm: float,
+                 action_ml: dict = None) -> bool:
+    """Only alert if risk is HIGH/CRITICAL or ML flags it as anomaly."""
+
+    # Must meet minimum risk threshold
+    if norm < 40:
+        return False
+
+    # Destructive command — always alert regardless
     if any(kw in action for kw in DESTRUCTIVE):
         return True
+
+    # ML flagged this specific action with high confidence
+    if action_ml and action_ml.get("ml_flag") == "ANOMALY" \
+            and action_ml.get("confidence") in ("HIGH", "MEDIUM"):
+        return True
+
+    # Brute force threshold
     if actions.count("login_failed") >= 3:
         return True
-    if actions.count("sudo") >= 2:
+
+    # Privilege escalation after failures
+    if action == "sudo" and actions.count("login_failed") >= 2:
         return True
+
     return False
 
 
@@ -281,19 +297,13 @@ def watch(log_path: str):
             ml_tag = f"[ML:{action_ml['ml_flag']}:{action_ml['confidence']}]" \
                      if action_ml['ml_flag'] == "ANOMALY" else ""
 
-            flag = "⚠ " if (
-                should_alert(action, actions) or
-                action_ml['ml_flag'] == "ANOMALY"
-            ) else "  "
+            flag = "⚠ " if should_alert(action, actions, norm, action_ml) else "  "
 
             print(f"{flag}[{ts}] {user:<15} {action:<35} "
                   f"risk: {norm:>5.1f}% [{level_str}] {ml_tag}")
 
             #  ALERT condition (rule OR ML)
-            if should_alert(action, actions) or (
-                action_ml['ml_flag'] == "ANOMALY" and
-                action_ml['confidence'] in ("HIGH", "MEDIUM")
-            ):
+            if should_alert(action, actions, norm, action_ml):
                 print(f"   → Generating AI summary for {user}...")
                 summary = get_ai_summary(user, action, actions, norm)
                 print(f"   → {summary}\n")
