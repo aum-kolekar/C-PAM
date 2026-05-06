@@ -69,42 +69,30 @@ def get_ai_summary(user: str, action: str, recent_actions: list, score: float) -
 
 def update_realtime_session(user: str, action: str, ts: str,
                              actions: list, session_counter: dict):
+    """
+    Maintains a live session in the sessions table.
+    Creates a new session on login, updates it on every action,
+    closes it on logout.
+    """
     conn = get_connection()
 
     SESSION_START = {"login_success", "session_open"}
     SESSION_END   = {"session_close"}
+    DESTRUCTIVE   = ["rm -rf", "dd if=", "mkfs", "shred"]
 
-    # On session start — always create a new session with unique timestamp
+    # Get or create session ID for this user
     if action in SESSION_START:
-        # Count existing sessions for this user in DB to get next number
-        existing_count = conn.execute(
-            "SELECT COUNT(*) FROM sessions WHERE user = ?", (user,)
-        ).fetchone()[0]
-        session_counter[user] = existing_count + 1
+        session_counter[user] = session_counter.get(user, 0) + 1
 
-    # If no session started yet for this user in this run, use last DB session
-    if user not in session_counter:
-        last = conn.execute(
-            "SELECT session_id FROM sessions WHERE user = ? ORDER BY login_time DESC LIMIT 1",
-            (user,)
-        ).fetchone()
-        if last:
-            # Extract number from existing session_id e.g. main_rt_3 → 3
-            try:
-                session_counter[user] = int(last["session_id"].split("_rt_")[-1])
-            except Exception:
-                session_counter[user] = 1
-        else:
-            session_counter[user] = 1
+    session_id = f"{user}_rt_{session_counter.get(user, 1)}"
 
-    session_id = f"{user}_rt_{session_counter[user]}"
-
-    # Compute metrics
-    sudo_count        = sum(1 for a in actions if a == "sudo" or a.startswith("sudo "))
+    # Compute session metrics from current actions
+    sudo_count        = actions.count("sudo")
     failed_logins     = actions.count("login_failed")
-    destructive_count = sum(1 for a in actions if _is_destructive(a))
+    destructive_count = sum(1 for a in actions if any(kw in a for kw in DESTRUCTIVE))
     action_count      = len(actions)
 
+    # Detect suspicious sequence
     suspicious = False
     if failed_logins >= 2 and sudo_count > 0:
         last_fail  = max((i for i, a in enumerate(actions) if a == "login_failed"), default=-1)
@@ -112,11 +100,13 @@ def update_realtime_session(user: str, action: str, ts: str,
         if first_sudo > last_fail:
             suspicious = True
 
+    # Check if session row exists
     existing = conn.execute(
         "SELECT id FROM sessions WHERE session_id = ?", (session_id,)
     ).fetchone()
 
     if existing:
+        # Update existing session
         conn.execute("""
             UPDATE sessions SET
                 action_count        = ?,
@@ -135,6 +125,7 @@ def update_realtime_session(user: str, action: str, ts: str,
             session_id
         ))
     else:
+        # Insert new session
         conn.execute("""
             INSERT INTO sessions
               (session_id, user, login_time, logout_time, duration_seconds,
@@ -148,11 +139,12 @@ def update_realtime_session(user: str, action: str, ts: str,
             json.dumps(actions),
         ))
 
+    # Update duration if session is closing
     if action in SESSION_END:
-        conn.execute(
-            "UPDATE sessions SET logout_time = ? WHERE session_id = ?",
-            (ts, session_id)
-        )
+        conn.execute("""
+            UPDATE sessions SET logout_time = ?
+            WHERE session_id = ?
+        """, (ts, session_id))
 
     conn.commit()
     conn.close()
@@ -337,7 +329,6 @@ def main():
         print(f"[ERROR] auth.log not found at {LOG_PATH}")
         sys.exit(1)
 
-    # rebuild_state_from_db()
     watch(LOG_PATH)
 
 
