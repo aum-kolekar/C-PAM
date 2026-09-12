@@ -56,7 +56,7 @@ def get_ai_summary(user: str, action: str, recent_actions: list, score: float) -
 
     try:
         req = urllib.request.Request(
-            "http://192.168.56.1:11434/api/generate",
+            "http://10.178.103.204:11434/api/generate",
             data=payload,
             headers={"Content-Type": "application/json"},
             method="POST",
@@ -69,30 +69,40 @@ def get_ai_summary(user: str, action: str, recent_actions: list, score: float) -
 
 def update_realtime_session(user: str, action: str, ts: str,
                              actions: list, session_counter: dict):
-    """
-    Maintains a live session in the sessions table.
-    Creates a new session on login, updates it on every action,
-    closes it on logout.
-    """
     conn = get_connection()
 
     SESSION_START = {"login_success", "session_open"}
     SESSION_END   = {"session_close"}
-    DESTRUCTIVE   = ["rm -rf", "dd if=", "mkfs", "shred"]
 
-    # Get or create session ID for this user
+    # Generate a new unique session on every login
     if action in SESSION_START:
-        session_counter[user] = session_counter.get(user, 0) + 1
+        # Use timestamp to guarantee uniqueness across restarts
+        session_counter[user] = ts.replace(":", "").replace("-", "").replace("T", "_")[:15]
 
-    session_id = f"{user}_rt_{session_counter.get(user, 1)}"
+    # If no session exists for this user yet in this run, find the latest open one
+    if user not in session_counter:
+        last = conn.execute("""
+            SELECT session_id, logout_time 
+            FROM sessions 
+            WHERE user = ? 
+            ORDER BY login_time DESC LIMIT 1
+        """, (user,)).fetchone()
 
-    # Compute session metrics from current actions
-    sudo_count        = actions.count("sudo")
+        if last and last["logout_time"] is None:
+            # Resume the existing open session
+            session_counter[user] = last["session_id"].replace(f"{user}_rt_", "")
+        else:
+            # No open session — create one with current timestamp
+            session_counter[user] = datetime.now().strftime("%Y%m%d_%H%M%S")
+
+    session_id = f"{user}_rt_{session_counter[user]}"
+
+    # Compute metrics
+    sudo_count        = sum(1 for a in actions if a == "sudo" or a.startswith("sudo "))
     failed_logins     = actions.count("login_failed")
-    destructive_count = sum(1 for a in actions if any(kw in a for kw in DESTRUCTIVE))
+    destructive_count = sum(1 for a in actions if _is_destructive(a))
     action_count      = len(actions)
 
-    # Detect suspicious sequence
     suspicious = False
     if failed_logins >= 2 and sudo_count > 0:
         last_fail  = max((i for i, a in enumerate(actions) if a == "login_failed"), default=-1)
@@ -100,13 +110,11 @@ def update_realtime_session(user: str, action: str, ts: str,
         if first_sudo > last_fail:
             suspicious = True
 
-    # Check if session row exists
     existing = conn.execute(
         "SELECT id FROM sessions WHERE session_id = ?", (session_id,)
     ).fetchone()
 
     if existing:
-        # Update existing session
         conn.execute("""
             UPDATE sessions SET
                 action_count        = ?,
@@ -125,7 +133,6 @@ def update_realtime_session(user: str, action: str, ts: str,
             session_id
         ))
     else:
-        # Insert new session
         conn.execute("""
             INSERT INTO sessions
               (session_id, user, login_time, logout_time, duration_seconds,
@@ -139,16 +146,14 @@ def update_realtime_session(user: str, action: str, ts: str,
             json.dumps(actions),
         ))
 
-    # Update duration if session is closing
     if action in SESSION_END:
-        conn.execute("""
-            UPDATE sessions SET logout_time = ?
-            WHERE session_id = ?
-        """, (ts, session_id))
+        conn.execute(
+            "UPDATE sessions SET logout_time = ? WHERE session_id = ?",
+            (ts, session_id)
+        )
 
     conn.commit()
     conn.close()
-
 # ── UPDATED DB FUNCTION ────────────────────────────────
 
 def store_realtime_event(log: dict, privilege: str, raw_score: int,

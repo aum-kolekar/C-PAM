@@ -397,6 +397,7 @@ function goToUser(user) {
 
 async function loadUserDetail(user) {
   // Highlight selected user
+  activeUser = user;
   document.querySelectorAll('.user-item').forEach(el => el.classList.remove('active'));
   const item = document.getElementById('uitem-' + user);
   if (item) item.classList.add('active');
@@ -530,7 +531,7 @@ async function loadUserDetail(user) {
                      letter-spacing:0.07em;display:block;margin-bottom:6px">
                      Session Summary</span>
                      ${d.insight}</div>`
-              : '<span style="color:var(--muted);font-size:11px">No summary available for this session.</span>';
+              : '<span style="color:var(--muted);font-size:11px"></span>';
           }
         })
         .catch(() => {
@@ -545,8 +546,16 @@ function switchSession(idx) {
   document.querySelectorAll('.sess-panel').forEach((p,i) => p.classList.toggle('active', i===idx));
 }
 
+let activeUser = null;
+
 async function refresh() {
   await Promise.all([loadStats(), loadRiskTable(), checkAlertBadge()]);
+  
+  // Auto-refresh active user's session detail if one is selected
+  if (activeUser) {
+    await loadUserDetail(activeUser);
+  }
+
   document.getElementById('last-refresh').textContent =
     'Last refresh: ' + new Date().toLocaleTimeString();
 }
