@@ -224,7 +224,7 @@ DASHBOARD_HTML = """
   <div class="card">
     <h2>Real-time alerts</h2>
     <div style="font-size:12px;color:var(--muted);margin-bottom:16px">
-      Triggered instantly when suspicious actions are detected. AI summary generated per alert.
+      Triggered instantly when suspicious actions are detected.
     </div>
     <div id="alerts-feed"></div>
   </div>
@@ -320,7 +320,7 @@ async function loadStats() {
     <div class="stat-card critical"><div class="label">Critical risk</div><div class="value">${d.critical_users}</div></div>
     <div class="stat-card anomaly"><div class="label">Anomalies</div><div class="value">${d.anomaly_users}</div></div>
     <div class="stat-card info"><div class="label">Total events</div><div class="value">${d.total_events}</div></div>
-    <div class="stat-card"><div class="label">Suspicious sessions</div><div class="value">${d.suspicious_sessions}</div></div>
+    
   `;
 }
 
@@ -484,10 +484,7 @@ async function loadUserDetail(user) {
               <div class="ml">Destructive cmds</div>
               <div class="mv">${s.destructive_count}</div>
             </div>
-            <div class="meta-box ${s.suspicious_sequence?'warn':''}">
-              <div class="ml">Suspicious seq.</div>
-              <div class="mv" style="font-size:13px">${s.suspicious_sequence?'YES ⚠':'No'}</div>
-            </div>
+            
           </div>
           <div style="font-size:11px;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.07em">
             Action timeline — ${actions.length} events
@@ -499,10 +496,6 @@ async function loadUserDetail(user) {
                 <span class="action-cmd ${actionClass(a)}">${a}</span>
               </div>`).join('')}
           </div>
-          <div id="sess-insight-${i}" style="margin-top:12px;font-size:12px;
-            color:var(--muted);font-style:italic;padding:8px 0">
-            Loading session summary...
-          </div>
         </div>`;
     });
   }
@@ -510,35 +503,7 @@ async function loadUserDetail(user) {
   detail.innerHTML = html;
 
   // FIXED: Load session insights AFTER DOM render
-  setTimeout(() => {
-    sessions.forEach((s, i) => {
-      const el = document.getElementById('sess-insight-' + i);
-      if (!el) return;
-
-      el.innerHTML = '<span style="color:var(--muted);font-size:11px">Loading summary...</span>';
-
-      fetch('/api/session-insight/' + encodeURIComponent(s.session_id))
-        .then(r => r.json())
-        .then(d => {
-          if (el) {
-            el.innerHTML = d.insight
-              ? `<div style="background:rgba(59,130,246,0.07);
-                     border:1px solid rgba(59,130,246,0.2);
-                     border-radius:6px;padding:10px;margin-top:10px;
-                     line-height:1.7;color:var(--text);font-size:12px">
-                     <span style="font-size:10px;font-weight:600;
-                     color:var(--info);text-transform:uppercase;
-                     letter-spacing:0.07em;display:block;margin-bottom:6px">
-                     Session Summary</span>
-                     ${d.insight}</div>`
-              : '<span style="color:var(--muted);font-size:11px"></span>';
-          }
-        })
-        .catch(() => {
-          if (el) el.innerHTML = '';
-        });
-    });
-  }, 100);
+  
 }
 
 function switchSession(idx) {
